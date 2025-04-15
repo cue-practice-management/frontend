@@ -1,0 +1,167 @@
+@import '@styles/variables';
+
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap, $gap: 0) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    flex-wrap: $wrap;
+    gap: $gap;
+}
+
+
+@mixin mobile {
+    @media (min-width: $breakpoint-sm) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: $breakpoint-md) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media (min-width: $breakpoint-lg) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: $breakpoint-xl) {
+        @content;
+    }
+}
+
+@mixin large-desktop {
+    @media (min-width: $breakpoint-2xl) {
+        @content;
+    }
+}
+
+
+@mixin padding-y($value: 1rem) {
+    padding-top: $value;
+    padding-bottom: $value;
+}
+
+@mixin padding-x($value: 1rem) {
+    padding-left: $value;
+    padding-right: $value;
+}
+
+
+
+@mixin space-x($value: 1rem) {
+    >*+* {
+        margin-left: $value;
+    }
+}
+
+@mixin space-y($value: 1rem) {
+    >*+* {
+        margin-top: $value;
+    }
+}
+
+
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin text-sm {
+    font-size: 0.875rem;
+
+    @include laptop() {
+        font-size: 0.975rem;
+    }
+
+    @include desktop() {
+        font-size: 1rem;
+    }
+}
+
+@mixin text-md {
+    font-size: 1rem;
+
+    @include laptop() {
+        font-size: 1.125rem;
+    }
+
+    @include desktop() {
+        font-size: 1.2rem;
+    }
+}
+
+@mixin text-lg {
+    font-size: 1.25rem;
+
+    @include tablet() {
+        font-size: 1.375rem;
+    }
+
+    @include laptop() {
+        font-size: 1.5rem;
+    }
+
+    @include desktop() {
+        font-size: 1.625rem;
+    }
+}
+
+@mixin text-xl {
+    font-size: 1.5rem;
+
+    @include tablet() {
+        font-size: 1.7rem;
+    }
+
+    @include laptop() {
+        font-size: 1.8rem;
+    }
+
+    @include desktop() {
+        font-size: 2rem;
+    }
+}
+
+@mixin text-2xl {
+    font-size: 1.75rem;
+
+    @include tablet() {
+        font-size: 1.875rem;
+    }
+
+    @include laptop() {
+        font-size: 2rem;
+    }
+
+    @include desktop() {
+        font-size: 2.125rem;
+    }
+}
+
+@mixin container($max-width: 1280px) {
+    width: 100%;
+    max-width: $max-width;
+    margin: 0 auto;
+}
+
+@mixin box-shadow-sm() {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+@mixin box-shadow-md() {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@mixin box-shadow-lg() {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@mixin box-shadow-xl() {
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.1);
+}
