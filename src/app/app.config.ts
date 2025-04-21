@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, ApplicationConfig, inject } from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig,  inject } from '@angular/core';
 
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './features/auth/interceptors/auth.interceptor';
