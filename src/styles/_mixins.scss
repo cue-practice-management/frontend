@@ -1,4 +1,4 @@
-@import '@styles/variables';
+@import 'variables';
 
 @mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap, $gap: 0) {
     display: flex;
@@ -7,6 +7,10 @@
     align-items: $align;
     flex-wrap: $wrap;
     gap: $gap;
+}
+
+@mixin width-full {
+    width: 100%;
 }
 
 
@@ -113,7 +117,7 @@
 }
 
 @mixin text-xl {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 
     @include tablet() {
         font-size: 1.7rem;

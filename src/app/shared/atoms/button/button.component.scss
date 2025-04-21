@@ -1,0 +1,111 @@
+@import 'variables';
+@import 'mixins';
+
+.button {
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  text-align: center;
+  white-space: nowrap;
+  position: relative;
+  display: inline-block;
+
+  @include text-md;
+  @include padding-y(0.5rem);
+  @include padding-x(1.25rem);
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+  &--sm {
+    @include text-sm;
+    @include padding-y(0.4rem);
+    @include padding-x(1rem);
+  }
+
+  &--md {
+    @include text-md;
+  }
+
+  &--lg {
+    @include text-lg;
+    @include padding-y(0.75rem);
+    @include padding-x(2rem);
+  }
+
+  &--primary {
+    background-color: $primary-color;
+    color: $white-color;
+
+    &:hover:not(:disabled) {
+      background-color: $primary-color-light;
+    }
+  }
+
+  &--success {
+    background-color: $success-color;
+    color: $white-color;
+
+    &:hover:not(:disabled) {
+      background-color: $success-color-light;
+    }
+  }
+
+  &--danger {
+    background-color: $error-color;
+    color: $white-color;
+
+    &:hover:not(:disabled) {
+      background-color: $error-color-light;
+    }
+  }
+
+  &--light {
+    background-color: $light-color;
+    color: $dark-color;
+
+    &:hover:not(:disabled) {
+      background-color: darken($light-color, 5%);
+    }
+  }
+
+  &--dark {
+    background-color: $dark-color;
+    color: $white-color;
+
+    &:hover:not(:disabled) {
+      background-color: lighten($dark-color, 10%);
+    }
+  }
+
+  &__spinner {
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: $white-color;
+    border-radius: 50%;
+    width: 1.2rem;
+    height: 1.2rem;
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__content {
+    display: inline-block;
+    &--hidden {
+      opacity: 0;
+    }
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

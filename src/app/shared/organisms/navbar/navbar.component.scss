@@ -1,0 +1,30 @@
+@import 'mixins';
+@import 'variables';
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 1.2rem 0;
+    transition: all 0.3s ease;
+    transform: translateY(0);
+    background-color: transparent;
+
+    &--scrolled {
+        background-color: $white-color;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    &--hidden {
+        transform: translateY(-100%);
+    }
+
+    &__list {
+        @include container();
+        @include flex(row, space-between, center);
+        width: 100%;
+        list-style: none;
+    }
+}
