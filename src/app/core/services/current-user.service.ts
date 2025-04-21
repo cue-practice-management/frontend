@@ -11,22 +11,19 @@ export class CurrentUserService {
 
   constructor(private http: HttpClient) { }
 
-
-  load(): Promise<void> {
-    return firstValueFrom(
-      this.http.get<User>(API_ENDPOINTS.AUTH.ME).pipe(
-        catchError(() => {
-          this.currentUserSubject.next(null);
-          return of(null);
-        })
-      )
-    ).then(user => {
-      if (user) {
-        this.currentUserSubject.next(user);
-      }
-    });
+  async loadCurrentUser(): Promise<void> {
+    try {
+      const user = await firstValueFrom(
+        this.http.get<User>(API_ENDPOINTS.AUTH.ME, { withCredentials: true }).pipe(
+          catchError(() => of(null)) 
+        )
+      );
+      this.currentUserSubject.next(user);
+    } catch (error) {
+      this.currentUserSubject.next(null);
+    }
   }
-
+  
 
   clear(): void {
     this.currentUserSubject.next(null);
