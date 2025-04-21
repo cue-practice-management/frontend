@@ -1,21 +1,7 @@
 import { Component, OnInit, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate, useAnimation, animation } from '@angular/animations';
-
-const slideInLeft = animation([
-  style({ opacity: 0, transform: 'translateX(-40px)' }),
-  animate('{{duration}} ease-out', style({ opacity: 1, transform: 'translateX(0)' }))
-]);
-
-const slideInRight = animation([
-  style({ opacity: 0, transform: 'translateX(40px)' }),
-  animate('{{duration}} ease-out', style({ opacity: 1, transform: 'translateX(0)' }))
-]);
-
-const fadeInScale = animation([
-  style({ opacity: 0, transform: 'scale(0.95)' }),
-  animate('{{duration}} ease-out', style({ opacity: 1, transform: 'scale(1)' }))
-]);
+import { fadeInScale, slideInLeft, slideInRight } from '@/shared/animations/enter-animations';
 
 interface BentoItem {
   backgroundImageUrl?: string;
