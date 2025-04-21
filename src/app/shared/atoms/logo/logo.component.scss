@@ -1,0 +1,75 @@
+@import 'mixins';
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  img {
+    display: block;
+    object-fit: contain;
+  }
+
+  &--sm img {
+    width: 120px;
+
+    @include tablet() {
+      width: 130px;
+    }
+
+    @include laptop() {
+      width: 140px;
+    }
+
+    @include desktop() {
+      width: 150px;
+    }
+  }
+
+  &--md img {
+    width: 140px;
+
+    @include tablet() {
+      width: 160px;
+    }
+
+    @include laptop() {
+      width: 170px;
+    }
+
+    @include desktop() {
+      width: 180px;
+    }
+  }
+
+  &--lg img {
+    width: 160px;
+
+    @include tablet() {
+      width: 180px;
+    }
+
+    @include laptop() {
+      width: 200px;
+    }
+
+    @include desktop() {
+      width: 220px;
+    }
+  }
+
+  &--xl img {
+    width: 180px;
+
+    @include tablet() {
+      width: 200px;
+    }
+
+    @include laptop() {
+      width: 220px;
+    }
+
+    @include desktop() {
+      width: 240px;
+    }
+  }
+}

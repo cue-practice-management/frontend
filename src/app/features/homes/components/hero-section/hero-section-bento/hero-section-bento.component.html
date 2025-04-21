@@ -1,0 +1,29 @@
+<!-- HTML Template -->
+<section class="hero-bento">
+  <div
+    *ngFor="let item of bentoItems"
+    class="hero-bento__item"
+    [ngClass]="[
+      'hero-bento__item--type-' + item.type,
+      item.backgroundImageUrl ? 'hero-bento__item--with-bg' : ''
+    ]"
+    [attr.data-bg-url]="item.backgroundImageUrl"
+    [@slideInLeft]="item.animation === 'slideInLeft' ? '' : null"
+    [@slideInRight]="item.animation === 'slideInRight' ? '' : null"
+    [@fadeInScale]="item.animation === 'fadeInScale' ? '' : null"
+  >
+    <ng-container *ngIf="!item.isHeadline">
+      <div class="hero-bento__icon" *ngIf="item.icon">{{ item.icon }}</div>
+      <h3 class="hero-bento__title">{{ item.title }}</h3>
+      <p class="hero-bento__description">{{ item.description }}</p>
+      <span class="hero-bento__counter" *ngIf="item.counter">
+        <span class="hero-bento__counter--number">{{item.counter.value}}</span>
+        {{ item.counter.label}}
+      </span>
+    </ng-container>
+    <ng-container *ngIf="item.isHeadline">
+      <h1 class="hero-bento__headline">{{ item.title }}</h1>
+      <p class="hero-bento__subheadline">{{ item.description }}</p>
+    </ng-container>
+  </div>
+</section>
