@@ -1,0 +1,48 @@
+@import 'variables';
+
+.toast-container {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 9999;
+  }
+  
+  .toast {
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: 500;
+    animation: fadeInOut 0.3s ease-in-out;
+    min-width: 250px;
+  
+    &--success {
+      background-color: $success-color-light;
+    }
+  
+    &--error {
+      background-color: $error-color-light;
+    }
+  
+    &--info {
+      background-color: $info-color;
+    }
+  
+    &--warning {
+      background-color: $warning-color;
+    }
+  }
+  
+  @keyframes fadeInOut {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

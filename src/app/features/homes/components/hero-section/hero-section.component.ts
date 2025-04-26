@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { SectionWrapperComponent } from "@/shared/atoms/section-wrapper/section-wrapper.component";
 import { HeroSectionBentoComponent } from "./hero-section-bento/hero-section-bento.component";
 import { transition, trigger, useAnimation } from '@angular/animations';
 import { fadeInScale } from '@/shared/animations/enter-animations';
+import { SectionWrapperComponent } from '@/shared/components/atoms/section-wrapper/section-wrapper.component';
 
 @Component({
   selector: 'app-hero-section',

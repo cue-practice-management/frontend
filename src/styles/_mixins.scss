@@ -13,6 +13,19 @@
     width: 100%;
 }
 
+@mixin padding-from-navbar() {
+    padding-top: 6rem;
+
+    @include desktop() {
+        padding-top: 8rem;
+    }
+
+    @include large-desktop() {
+        padding-top: 10rem;
+    }
+
+}
+
 
 @mixin mobile {
     @media (min-width: $breakpoint-sm) {
@@ -96,7 +109,7 @@
     }
 
     @include desktop() {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
 }
 

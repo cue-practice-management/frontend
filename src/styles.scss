@@ -9,6 +9,10 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -16,11 +20,13 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    min-height: 100vh;
+    height: 100%;
     color: $dark-color;
 }
 
-html {
-    scroll-behavior: smooth;
-    height: 100%;
+input, 
+select, textarea {
+    font-family: 'Poppins', sans-serif;
+    color: $dark-color;
 }
+

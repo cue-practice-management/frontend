@@ -1,0 +1,16 @@
+@import 'mixins';
+
+.section {
+    @include width-full;
+    display: flex;
+    flex-direction: column;
+    &__content {
+        flex: 1; 
+        @include container;
+        padding: 2rem;
+
+        @include laptop {
+            padding: 0;
+        }
+    }
+}

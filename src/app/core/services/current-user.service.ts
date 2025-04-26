@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, firstValueFrom, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
@@ -6,8 +6,10 @@ import { API_ENDPOINTS } from '../constants/api-endpoints.constants';
 
 @Injectable({ providedIn: 'root' })
 export class CurrentUserService {
-  private currentUserSubject = new BehaviorSubject<User | null>(null);
-  currentUser$: Observable<User | null> = this.currentUserSubject.asObservable();
+
+  private _currentUser = signal<User | null>(null);
+
+  readonly currentUser = computed(() => this._currentUser());
 
   constructor(private http: HttpClient) { }
 
@@ -18,18 +20,18 @@ export class CurrentUserService {
           catchError(() => of(null)) 
         )
       );
-      this.currentUserSubject.next(user);
+      this._currentUser.set(user);
     } catch (error) {
-      this.currentUserSubject.next(null);
+      this._currentUser.set(null); 
     }
   }
   
 
   clear(): void {
-    this.currentUserSubject.next(null);
+    this._currentUser.set(null);
   }
 
-  get currentUser(): User | null {
-    return this.currentUserSubject.value;
+  get currentUserValue(): User | null {
+    return this._currentUser();
   }
 }

@@ -1,0 +1,9 @@
+@import 'mixins';
+
+.main-layout {
+
+    &__content{
+        @include padding-from-navbar;
+        min-height: 100vh;
+    }
+}

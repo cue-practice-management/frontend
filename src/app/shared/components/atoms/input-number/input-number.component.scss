@@ -1,0 +1,24 @@
+@import 'variables';
+
+.input-number {
+    padding: 0.5rem 1rem;
+    border: 1px solid $dark-color;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    background-color: $light-color;
+
+    &:focus {
+        outline: none;
+        border-color: $primary-color;
+        background-color: $white-color;
+    }
+
+    &.ng-invalid.ng-touched {
+        border-color: $error-color;
+        background-color: rgba($error-color-light, 0.1);
+        box-shadow: 0 0 2px $error-color;
+    }
+
+
+}
