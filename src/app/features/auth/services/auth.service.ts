@@ -22,6 +22,7 @@ export class AuthService {
     }).pipe(
       tap(response => {
         this.accessToken = response.accessToken;
+        this.currentUserService.loadCurrentUser();
       })
     );
   }

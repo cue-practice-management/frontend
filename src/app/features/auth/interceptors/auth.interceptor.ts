@@ -10,20 +10,18 @@ export function authInterceptor(
   next: HttpHandlerFn
 ): Observable<HttpEvent<unknown>> {
   const authService = inject(AuthService);
-  
+
   const isAuthRequest = [
     API_ENDPOINTS.AUTH.LOGIN,
     API_ENDPOINTS.AUTH.REFRESH,
     API_ENDPOINTS.AUTH.LOGOUT,
-    API_ENDPOINTS.AUTH.ME
   ].some(url => req.url.includes(url));
   
-
   if (isAuthRequest) {
     return next(req);
   }
-  const token = authService.getAccessToken();
 
+  const token = authService.getAccessToken();
   let authReq = req;
   if (token) {
     authReq = req.clone({
