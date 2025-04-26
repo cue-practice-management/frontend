@@ -34,14 +34,14 @@
         right: 0;
         bottom: 0;
         background-image: linear-gradient(to bottom,
-            rgba($primary-color, 0.75),
+            rgba($primary-color-darkest, 0.75),
             rgba(0, 0, 0, 0.7),
           ),
           var(--item-bg-image);
-        background-size: cover;
+        background-size:cover;
         background-position: center;
         background-repeat: no-repeat;
-        filter: blur(1.75px);
+        filter: blur(1.25px);
         z-index: 0;
       }
 
