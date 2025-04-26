@@ -32,6 +32,8 @@
 
   &--md {
     @include text-md;
+    @include padding-y(0.5rem);
+    @include padding-x(1.65rem);
   }
 
   &--lg {
