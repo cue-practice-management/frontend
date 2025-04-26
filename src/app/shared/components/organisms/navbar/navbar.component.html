@@ -1,0 +1,11 @@
+<nav class="navbar" [ngClass]="{'navbar--scrolled': isScrolled, 'navbar--hidden': isHidden}">
+    <ul class="navbar__list">
+        <li class="navbar__list-item">
+            <app-logo size="lg"></app-logo>
+        </li>
+        <li class="navbar__list-item">
+            <app-button (click)="navigateToLogin()" *ngIf="!user">Ingresar</app-button>
+            <span *ngIf="user">Bienvenido, <strong> {{user.firstName}}</strong></span>
+        </li>
+    </ul>
+</nav>

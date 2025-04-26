@@ -1,0 +1,13 @@
+<div class="input-form-row">
+  <label class="input-form-row__label" [for]="id">{{ label }}</label>
+
+  <ng-container [ngSwitch]="type">
+    <app-input-text *ngSwitchCase="'text'" [control]="control" [id]="id" [placeholder]="placeholder" />
+    <app-input-number *ngSwitchCase="'number'" [control]="control" [id]="id" [placeholder]="placeholder" />
+    <app-input-password *ngSwitchCase="'password'" [control]="control" [id]="id" [placeholder]="placeholder" />
+  </ng-container>
+
+  <div class="input-form-row__error" [class.input-form-row__error--visible]="showError">
+    {{ showError ? errorMessage : '' }}
+  </div>
+</div>

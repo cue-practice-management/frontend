@@ -1,0 +1,20 @@
+<form class="dynamic-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <header *ngIf="dynamicFormConfig.title">
+    <h2 class="dynamic-form__title">{{ dynamicFormConfig.title }}</h2>
+  </header>
+  <ng-container *ngFor="let section of dynamicFormConfig.sections">
+    <h3 class="dynamic-form__section-title" *ngIf="section.title">{{ section.title }}</h3>
+
+    <ng-container *ngFor="let field of section.fields">
+      <app-input-form-row [control]="getFormControl(field.key)" [id]="field.key" [label]="field.label"
+        [placeholder]="field.placeholder || ''" [type]="field.type" />
+    </ng-container>
+  </ng-container>
+
+  <div class="dynamic-form__button-container">
+    <app-button type="submit" [disabled]="isLoading">
+      {{ buttonLabel}}
+    </app-button>
+  </div>
+
+</form>
