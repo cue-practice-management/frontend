@@ -49,6 +49,8 @@ export class LoginFormComponent extends FormSubmitComponent<LoginRequestDto, Log
     this.submitForm(formValue);
   }
 
+  protected override successMessage: string = 'Bienvenido de nuevo!';
+
   override submitData(loginRequest: LoginRequestDto): Observable<LoginResponseDto> {
 
     return this.authService.login(loginRequest);
