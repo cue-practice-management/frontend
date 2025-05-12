@@ -14,7 +14,7 @@ import { AuthService } from '@/features/auth/services/auth.service';
 @Component({
   selector: 'app-admin-sidebar',
   standalone: true,
-  imports: [CommonModule, LucideAngularModule, RouterModule, LogoComponent, AvatarComponent, DropdownComponent],
+  imports: [CommonModule, LucideAngularModule, LogoComponent, AvatarComponent, DropdownComponent, RouterModule],
   templateUrl: './admin-sidebar.component.html',
   styleUrl: './admin-sidebar.component.scss'
 })

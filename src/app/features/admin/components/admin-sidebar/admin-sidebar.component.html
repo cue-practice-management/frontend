@@ -8,7 +8,7 @@
     </header>
 
     <nav class="admin-sidebar__nav">
-        <a *ngFor="let item of sidebarItems" [routerLink]="item.route" routerLinkActive="active"
+        <a *ngFor="let item of sidebarItems" [routerLink]="'/' + item.route" routerLinkActive="active"
             class="admin-sidebar__link">
             <lucide-icon [name]="item.icon" size="20"></lucide-icon>
             <span *ngIf="!isCollapsed()">{{ item.label }}</span>
