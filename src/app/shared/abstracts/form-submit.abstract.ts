@@ -4,8 +4,11 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { inject } from "@angular/core";
 import { catchError, finalize, Observable, tap, throwError } from "rxjs";
 
+const DEFAULT_ERROR_MESSAGE = 'Ocurrió un error inesperado.';
+const DEFAULT_SUCCESS_MESSAGE = 'Guardado exitosamente';
+
 export abstract class FormSubmitComponent<V, T> {
-    protected successMessage = 'Guardado exitosamente';
+    protected successMessage = DEFAULT_SUCCESS_MESSAGE;
     protected onSuccess?(res: T): void;
     protected abstract submitData(data: V): Observable<T>;
 
@@ -20,8 +23,9 @@ export abstract class FormSubmitComponent<V, T> {
             tap(() => this.toastSevice.show(this.successMessage, ToastType.SUCCESS)),
             catchError((err: HttpErrorResponse) => {
                 const errorResponse = err.error as ErrorResponse;
+                const errorMessage = errorResponse.message || DEFAULT_ERROR_MESSAGE;
                 
-                this.toastSevice.show(errorResponse.message, ToastType.ERROR)
+                this.toastSevice.show(errorMessage, ToastType.ERROR)
                 return throwError(() => err);
             }),
             finalize(() => this.isLoading = false)
