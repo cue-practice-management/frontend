@@ -1,0 +1,19 @@
+<div
+  class="spinner"
+  [ngClass]="['spinner--' + size, 'spinner--' + color]"
+  role="status"
+  aria-live="polite"
+>
+  <svg
+    class="spinner__svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <circle class="spinner__bg" cx="12" cy="12" r="10"></circle>
+    <path class="spinner__fg" d="M22 12a10 10 0 0 1-10 10"></path>
+  </svg>
+</div>
