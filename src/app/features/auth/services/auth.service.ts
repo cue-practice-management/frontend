@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, of, tap } from 'rxjs';
+import { Observable, catchError, from, map, of, switchMap, tap } from 'rxjs';
 import { LoginRequestDto } from '../models/login-request.dto';
 import { LoginResponseDto } from '../models/login-response.dto';
 import { RefreshTokenResponseDto } from '../models/refresh-token-response.dto';
 import { API_ENDPOINTS } from '@/core/constants/api-endpoints.constants';
 import { CurrentUserService } from '@/core/services/current-user.service';
+import { UserRole } from '@/core/enums/user-role.enum';
+import { ROUTES } from '@/core/constants/routes.constants';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -13,8 +16,9 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private currentUserService: CurrentUserService
-  ) {}
+    private currentUserService: CurrentUserService,
+    private router: Router
+  ) { }
 
   login(credentials: LoginRequestDto): Observable<LoginResponseDto> {
     return this.http.post<LoginResponseDto>(API_ENDPOINTS.AUTH.LOGIN, credentials, {
@@ -22,11 +26,22 @@ export class AuthService {
     }).pipe(
       tap(response => {
         this.accessToken = response.accessToken;
-        this.currentUserService.loadCurrentUser();
-      })
+      }),
+      switchMap(response =>
+        from(this.currentUserService.loadCurrentUser()).pipe(
+          tap(() => {
+            const user = this.currentUserService.currentUserValue;
+            if (user) {
+              const redirectTo = this.getRedirectUrlByRole(user.role);
+              this.router.navigate([redirectTo]);
+            }
+          }),
+          map(() => response)
+        )
+      )
     );
   }
-
+  
   refreshToken(): Observable<RefreshTokenResponseDto | null> {
     return this.http.post<RefreshTokenResponseDto>(
       API_ENDPOINTS.AUTH.REFRESH,
@@ -38,7 +53,7 @@ export class AuthService {
       }),
       catchError(error => {
         this.accessToken = null;
-        return of(null); 
+        return of(null);
       })
     );
   }
@@ -51,7 +66,6 @@ export class AuthService {
       withCredentials: true
     }).pipe(
       catchError(error => {
-        console.warn('Logout failed', error);
         return of();
       })
     );
@@ -63,5 +77,14 @@ export class AuthService {
 
   setAccessToken(token: string) {
     this.accessToken = token;
+  }
+
+  private getRedirectUrlByRole(role: UserRole): string {
+    switch (role) {
+      case UserRole.ADMIN:
+        return ROUTES.ADMIN.HOME;
+      default:
+        return ROUTES.HOME;
+    }
   }
 }

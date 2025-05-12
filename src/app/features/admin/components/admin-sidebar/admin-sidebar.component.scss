@@ -1,0 +1,95 @@
+@import 'variables';
+@import 'mixins';
+
+.admin-sidebar {
+    background-color: $white-color;
+    color: $dark-color;
+    height: 100vh;
+    width: 100%;
+    max-width: 16rem;
+    transition: max-width 0.3s ease;
+    overflow-x: hidden;
+    border-right: 1px solid $gray-light-color;
+    position: fixed;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+
+    &.collapsed {
+        max-width: 4.5rem;
+
+        .admin-sidebar__user-info,
+        .admin-sidebar__link span {
+            display: none;
+        }
+
+        .admin-sidebar__toggle {
+            justify-content: center;
+        }
+    }
+
+    &__header {
+        @include flex(row, center, center);
+        @include padding-x(1rem);
+        @include padding-y(1rem);
+        border-bottom: 1px solid $gray-light-color;
+    }
+
+    &__footer {
+        @include flex(row, center, center);
+        @include padding-x(1rem);
+        @include padding-y(1rem);
+        border-bottom: 1px solid $gray-light-color;
+    }
+
+    &__user-info {
+        margin-left: 0.5rem;
+        @include flex(column);
+        @include text-sm;
+    }
+
+    &__user-name {
+        font-weight: bold;
+    }
+
+    &__user-role {
+        color: $gray-dark-color;
+        opacity: 0.7;
+    }
+
+    &__toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin-left: auto;
+        color: $dark-color;
+    }
+
+    &__nav {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        flex:1;
+    }
+
+    &__link {
+        @include flex(row, flex-start, center, nowrap, 0.75rem);
+        @include padding-y(0.75rem);
+        @include padding-x(1rem);
+        color: $dark-color;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-weight: 500;
+
+        &:hover,
+        &.active {
+            background-color: $light-color;
+            border-left: 4px solid $primary-color;
+        }
+
+        lucide-icon {
+            min-width: 20px;
+        }
+    }
+}

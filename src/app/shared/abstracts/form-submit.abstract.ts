@@ -17,7 +17,7 @@ export abstract class FormSubmitComponent<V, T> {
         this.isLoading = true;
 
         this.submitData(data).pipe(
-            tap(() => alert(this.successMessage)),
+            tap(() => this.toastSevice.show(this.successMessage, ToastType.SUCCESS)),
             catchError((err: HttpErrorResponse) => {
                 const errorResponse = err.error as ErrorResponse;
                 
