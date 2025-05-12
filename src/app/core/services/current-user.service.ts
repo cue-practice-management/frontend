@@ -1,5 +1,5 @@
 import { computed, Injectable, signal } from '@angular/core';
-import { BehaviorSubject, Observable, catchError, firstValueFrom, of } from 'rxjs';
+import { catchError, firstValueFrom, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
 import { API_ENDPOINTS } from '../constants/api-endpoints.constants';
@@ -17,15 +17,15 @@ export class CurrentUserService {
     try {
       const user = await firstValueFrom(
         this.http.get<User>(API_ENDPOINTS.AUTH.ME, { withCredentials: true }).pipe(
-          catchError(() => of(null)) 
+          catchError(() => of(null))
         )
       );
       this._currentUser.set(user);
     } catch (error) {
-      this._currentUser.set(null); 
+      this._currentUser.set(null);
     }
   }
-  
+
 
   clear(): void {
     this._currentUser.set(null);
