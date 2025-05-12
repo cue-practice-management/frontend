@@ -16,9 +16,15 @@
     </nav>
 
     <footer class="admin-sidebar__footer">
-        <app-avatar [src]="currentUser?.photoUrl"></app-avatar>
-        <div class="admin-sidebar__user-info" *ngIf="!isCollapsed()">
-            <p class="admin-sidebar__user-name">{{ currentUser?.firstName }} {{ currentUser?.lastName }}</p>
-        </div>
+        <app-dropdown [items]="dropdownItems">
+            <div dropdownTrigger class="admin-sidebar__user">
+                <app-avatar [src]="currentUser?.photoUrl"></app-avatar>
+                <div class="admin-sidebar__user-info" *ngIf="!isCollapsed()">
+                    <p class="admin-sidebar__user-name">
+                        {{ currentUser?.firstName }} {{ currentUser?.lastName }}
+                    </p>
+                </div>
+            </div>
+        </app-dropdown>
     </footer>
 </aside>

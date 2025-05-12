@@ -41,7 +41,7 @@ export class AuthService {
       )
     );
   }
-  
+
   refreshToken(): Observable<RefreshTokenResponseDto | null> {
     return this.http.post<RefreshTokenResponseDto>(
       API_ENDPOINTS.AUTH.REFRESH,
@@ -58,17 +58,20 @@ export class AuthService {
     );
   }
 
-  logout(): Observable<void> {
-    this.accessToken = null;
-    this.currentUserService.clear();
-
-    return this.http.post<void>(API_ENDPOINTS.AUTH.LOGOUT, {}, {
+  logout(): void {
+    this.http.post<void>(API_ENDPOINTS.AUTH.LOGOUT, {}, {
       withCredentials: true
     }).pipe(
+      tap(() => {
+        this.currentUserService.clear();
+        this.accessToken = null;
+        this.router.navigate([ROUTES.HOME]);
+      }),
       catchError(error => {
-        return of();
+        console.error('Logout error', error);
+        return of(void 0);
       })
-    );
+    ).subscribe();
   }
 
   getAccessToken(): string | null {

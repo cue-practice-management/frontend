@@ -1,0 +1,29 @@
+<div class="dropdown-menu" (keydown.escape)="isOpen.set(false)">
+  <div #trigger class="dropdown-menu__trigger" (click)="toggle()" tabindex="0" role="button" aria-haspopup="menu" [attr.aria-expanded]="isOpen()">
+    <ng-content select="[dropdownTrigger]"></ng-content>
+    <lucide-icon [img]="ChevronDown" size="16" class="dropdown-menu__chevron" />
+  </div>
+
+  <ul
+    *ngIf="isOpen()"
+    #menu
+    class="dropdown-menu__content"
+    role="menu"
+    [class.dropdown-menu__content--top]="position === 'top'"
+    [class.dropdown-menu__content--bottom]="position === 'bottom'"
+  >
+    <li
+      *ngFor="let item of items"
+      role="menuitem"
+      tabindex="0"
+      class="dropdown-menu__item"
+      [class.disabled]="item.disabled"
+      [class.danger]="item.danger"
+      (click)="onItemClick(item)"
+    >
+      <lucide-icon *ngIf="item.icon" [name]="item.icon" size="16" />
+      <span class="label">{{ item.label }}</span>
+      <span class="shortcut" *ngIf="item.shortcut">{{ item.shortcut }}</span>
+    </li>
+  </ul>
+</div>
