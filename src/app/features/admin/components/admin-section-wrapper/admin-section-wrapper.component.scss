@@ -12,12 +12,19 @@
   &__header {
     @include flex(row, space-between, center);
     margin-bottom: 1.5rem;
+    border-bottom: 1px solid $gray-light-color;
   }
 
   &__title {
     font-size: 1.5rem;
     font-weight: 600;
     color: $primary-color-darkest;
+    margin: 0;
+  }
+
+  &__description {
+    font-size: 1rem;
+    color: $gray-dark-color;
     margin: 0;
   }
 

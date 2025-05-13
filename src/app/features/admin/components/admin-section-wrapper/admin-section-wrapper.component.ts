@@ -5,11 +5,11 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-admin-section-wrapper',
   standalone: true,
-  imports: [CommonModule, ButtonComponent],
+  imports: [CommonModule],
   templateUrl: './admin-section-wrapper.component.html',
   styleUrl: './admin-section-wrapper.component.scss'
 })
 export class AdminSectionWrapperComponent {
     @Input() title!: string;
-
+    @Input() description?: string;
 }
