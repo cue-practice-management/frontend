@@ -7,5 +7,6 @@ export const API_ENDPOINTS = {
     },
     FACULTY: {
         GET: '/faculty',
+        CREATE: '/faculty/create',
     }
 };

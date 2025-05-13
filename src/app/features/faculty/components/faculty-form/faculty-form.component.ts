@@ -1,10 +1,15 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Faculty } from '../../faculty.models';
+import { Component, Input } from '@angular/core';
+import { CreateFacultyRequest, Faculty } from '../../faculty.models';
 import { DynamicFormComponent } from '@/shared/components/organisms/dynamic-form/dynamic-form.component';
 import { Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DynacmicFormConfig } from '@/shared/components/organisms/dynamic-form/dynamic.form.models';
 import { FormFieldType } from '@/shared/models/form-field-type.enum';
+import { FormSubmitComponent } from '@/shared/abstracts/form-submit.abstract';
+import { FacultyService } from '../../services/faculty.service';
+import { ModalRef } from '@/shared/components/organisms/modal/modal.ref';
+import { Observable } from 'rxjs';
+import { FACULTY_MIN_DESCRIPTION_LENGTH } from '../../faculty.constants';
 
 @Component({
   selector: 'app-faculty-form',
@@ -13,12 +18,14 @@ import { FormFieldType } from '@/shared/models/form-field-type.enum';
   templateUrl: './faculty-form.component.html',
   styleUrl: './faculty-form.component.scss'
 })
-export class FacultyFormComponent {
+export class FacultyFormComponent extends FormSubmitComponent<Partial<Faculty>, Faculty> {
   @Input() faculty?: Faculty;
-  @Input() isLoading = false;
-  @Output() submitted = new EventEmitter<Partial<Faculty>>();
 
-  readonly dynamicFormConfig: DynacmicFormConfig = {
+  constructor(private facultyService: FacultyService, private modalRef: ModalRef) {
+    super();
+  }
+
+  readonly facultyFormConfig: DynacmicFormConfig = {
     title: this.faculty ? 'Editar facultad' : 'Crear facultad',
     buttonLabel: this.faculty ? 'Guardar cambios' : 'Crear facultad',
     sections: [
@@ -38,7 +45,7 @@ export class FacultyFormComponent {
             value: this.faculty?.description,
             type: FormFieldType.TEXT,
             placeholder: 'Breve descripción',
-            validators: [Validators.required]
+            validators: [Validators.required, Validators.minLength(FACULTY_MIN_DESCRIPTION_LENGTH)]
           },
           {
             key: 'deanName',
@@ -61,8 +68,15 @@ export class FacultyFormComponent {
     ]
   };
 
+  override submitData(data: CreateFacultyRequest): Observable<Faculty> {
+    return this.facultyService.createFaculty(data);
+  }
 
-  onFormSubmit(data: Partial<Faculty>) {
-    this.submitted.emit(data);
+  override onSuccess = (faculty: Faculty): void => {
+    this.modalRef.close(faculty);
+  };
+
+  onFormSubmit(formValue: CreateFacultyRequest): void {
+    this.submitForm(formValue);
   }
 }

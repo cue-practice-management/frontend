@@ -1,0 +1,1 @@
+export const FACULTY_MIN_DESCRIPTION_LENGTH = 10;

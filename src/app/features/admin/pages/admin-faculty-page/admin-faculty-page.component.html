@@ -1,8 +1,10 @@
+<app-admin-section-wrapper title="Facultades"
+  description="Gestiona las facultades de la Coorporación Universitaria Empresarial Alexander Von Humboldt">
 
-<app-admin-section-wrapper title="Facultades" description="Gestiona las facultades de la Coorporación Universitaria Empresarial Alexander Von Humboldt">
-  <app-faculty-table
-    [allowedActions]="[TableAction.EDIT, TableAction.DELETE]"
-    (edit)="onEditFaculty($event)"
-    (delete)="onDeleteFaculty($event)"
-  />
+  <app-faculty-table [allowedActions]="[TableAction.EDIT, TableAction.DELETE]" (edit)="onEditFaculty($event)"
+    (delete)="onDeleteFaculty($event)" />
+
+  <app-button (click)="openModal()">
+    Crear facultad
+  </app-button>
 </app-admin-section-wrapper>

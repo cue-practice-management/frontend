@@ -14,3 +14,10 @@ export interface FacultyFilter extends PaginationQuery {
     deanName?: string;
     deanEmail?: string;
 }
+
+export interface CreateFacultyRequest {
+    name: string;
+    description: string;
+    deanName: string;
+    deanEmail: string;
+}

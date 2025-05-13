@@ -2,6 +2,6 @@
   [pageData]="pageData"
   [columns]="columns"
   [actions]="actions"
-  [loading]="loading"
-  (pageChange)="pageChange.emit($event)"
+  [loading]="isLoading"
+  (pageChange)="onPageChange($event)"
 />

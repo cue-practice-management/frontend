@@ -4,8 +4,7 @@ import { FormControl } from '@angular/forms';
 import { InputTextComponent } from '../../atoms/input-text/input-text.component';
 import { InputNumberComponent } from '../../atoms/input-number/input-number.component';
 import { InputPasswordComponent } from '../../atoms/input-password/input-password.component';
-
-type InputFormType = 'text' | 'number' | 'password';
+import { FormFieldType } from '@/shared/models/form-field-type.enum';
 
 @Component({
   selector: 'app-input-form-row',
@@ -24,7 +23,7 @@ export class InputFormRowComponent {
   @Input() id = '';
   @Input() label = '';
   @Input() placeholder = '';
-  @Input() type: InputFormType = 'text';
+  @Input() type: FormFieldType = FormFieldType.TEXT;
 
   get showError(): boolean {
     return this.control.invalid && (this.control.dirty || this.control.touched);

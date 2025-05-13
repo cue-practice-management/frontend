@@ -1,0 +1,9 @@
+<div class="modal-overlay" (click)="onBackdropClick()" tabindex="-1">
+  <div
+    class="modal"
+    [ngStyle]="{ width: config.width || '500px' }"
+    (click)="$event.stopPropagation()"
+  >
+    <ng-template #modalContent></ng-template>
+  </div>
+</div>
