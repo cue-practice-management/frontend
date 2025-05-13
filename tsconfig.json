@@ -39,6 +39,9 @@
       "@core/*": [
         "src/app/core/*"
       ],
+      "@admin/*": [
+        "src/app/features/admin/*"
+      ]
     },
   },
   "angularCompilerOptions": {
