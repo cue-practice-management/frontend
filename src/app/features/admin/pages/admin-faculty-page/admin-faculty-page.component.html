@@ -1,7 +1,9 @@
 <app-admin-section-wrapper title="Facultades" description="Gestiona las facultades de la Coorporación Universitaria Empresarial Alexander Von Humboldt">
-    <div>
-        test
-    </div>
-
-
+  <app-faculty-table
+    [pageData]="pageData"
+    [loading]="isLoading"
+    (pageChange)="onPageChange($event)"
+    (edit)="onEditFaculty($event)"
+    (delete)="onDeleteFaculty($event)"
+  />
 </app-admin-section-wrapper>

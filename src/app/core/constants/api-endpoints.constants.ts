@@ -4,5 +4,8 @@ export const API_ENDPOINTS = {
         REFRESH: '/auth/refresh',
         LOGOUT: '/auth/logout',
         ME: '/auth/me',
+    },
+    FACULTY: {
+        GET: '/faculty',
     }
 };

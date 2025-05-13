@@ -1,0 +1,7 @@
+<app-data-table
+  [pageData]="pageData"
+  [columns]="columns"
+  [actions]="actions"
+  [loading]="loading"
+  (pageChange)="pageChange.emit($event)"
+/>
