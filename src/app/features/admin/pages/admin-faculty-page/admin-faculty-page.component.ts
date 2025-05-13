@@ -1,12 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { AdminSectionWrapperComponent } from '../../components/admin-section-wrapper/admin-section-wrapper.component';
-import { RetrievePaginatedData } from '@/shared/abstracts/retrieve-paginated-data';
-import { PaginatedResult } from '@/core/models/paginated-result.model';
 import { Faculty } from '@/features/faculty/faculty.models';
-import { Observable } from 'rxjs';
-import { FacultyService } from '@/features/faculty/services/faculty.service';
-import { FacultyFilter } from '@/features/faculty/faculty.models';
 import { FacultyTableComponent } from '@/features/faculty/components/faculty-table/faculty-table.component';
+import { TableAction } from '@/shared/models/table-actions.enum';
 
 @Component({
   selector: 'app-admin-faculty-page',
@@ -15,28 +11,9 @@ import { FacultyTableComponent } from '@/features/faculty/components/faculty-tab
   templateUrl: './admin-faculty-page.component.html',
   styleUrl: './admin-faculty-page.component.scss'
 })
-export class AdminFacultyPageComponent extends RetrievePaginatedData<Faculty, FacultyFilter> implements OnInit {
-  
-  override filter: FacultyFilter = {
-    page: 1,
-    limit: 10
-  };
+export class AdminFacultyPageComponent {
+  readonly TableAction = TableAction;
 
-  constructor(private facultyService: FacultyService) {
-    super();
-  }
-
-  ngOnInit(): void {
-    this.loadPageData(this.filter); 
-  }
-
-  override fetchPage(filter: FacultyFilter): Observable<PaginatedResult<Faculty>> {
-    return this.facultyService.getFaculties(filter);
-  }
-
-  onPageChange(page: number): void {
-    this.loadPageData({ ...this.filter, page });
-  }
 
   onEditFaculty(faculty: Faculty): void {
     console.log('Editar facultad:', faculty);

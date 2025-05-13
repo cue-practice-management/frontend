@@ -1,4 +1,4 @@
-import { FormFieldType } from '@/shared/models/form-field-type.model';
+import { FormFieldType } from '@/shared/models/form-field-type.enum';
 import { ValidatorFn } from '@angular/forms';
 
 
@@ -14,6 +14,8 @@ export interface FormField {
   placeholder?: string;
   options?: FieldOption[]; 
   validators?: ValidatorFn[];
+  disabled?: boolean;
+  value?: string | number | boolean;
 }
 
 export interface FormFieldSection {

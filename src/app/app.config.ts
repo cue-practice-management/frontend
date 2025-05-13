@@ -4,8 +4,6 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './features/auth/interceptors/auth.interceptor';
 import { baseUrlInterceptor } from './core/interceptors/base-url.interceptor';
 import { CurrentUserService } from './core/services/current-user.service';
-import { catchError, firstValueFrom, of } from 'rxjs';
-import { AuthService } from './features/auth/services/auth.service';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';

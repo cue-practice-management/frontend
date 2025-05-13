@@ -27,7 +27,6 @@ export class InputFormRowComponent {
   @Input() type: InputFormType = 'text';
 
   get showError(): boolean {
-    console.log(this.control.invalid && (this.control.dirty || this.control.touched));
     return this.control.invalid && (this.control.dirty || this.control.touched);
   }
 
@@ -40,6 +39,10 @@ export class InputFormRowComponent {
     }
     if (this.control.hasError('pattern')) return 'Formato inválido.';
     return 'Valor inválido.';
+  }
+
+  get isDisabled(): boolean {
+    return this.control.disabled;
   }
 
 
