@@ -1,0 +1,14 @@
+<section class="admin-section">
+  <header class="admin-section__header">
+    <div>
+      <h2 class="admin-section__title">{{ title }}</h2>
+      <p class="admin-section__description">{{description}}</p>
+    </div>
+
+    <ng-content select="[sectionActions]"></ng-content>
+  </header>
+
+  <div class="admin-section__content">
+    <ng-content></ng-content>
+  </div>
+</section>

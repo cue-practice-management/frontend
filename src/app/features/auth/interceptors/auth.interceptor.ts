@@ -45,7 +45,7 @@ export function authInterceptor(
             return next(retryReq);
           }),
           catchError(err => {
-            authService.logout().subscribe();
+            authService.logout();
             return throwError(() => err);
           })
         );

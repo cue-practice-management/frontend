@@ -8,7 +8,7 @@
     </header>
 
     <nav class="admin-sidebar__nav">
-        <a *ngFor="let item of sidebarItems" [routerLink]="item.route" routerLinkActive="active"
+        <a *ngFor="let item of sidebarItems" [routerLink]="'/' + item.route" routerLinkActive="active"
             class="admin-sidebar__link">
             <lucide-icon [name]="item.icon" size="20"></lucide-icon>
             <span *ngIf="!isCollapsed()">{{ item.label }}</span>
@@ -16,9 +16,15 @@
     </nav>
 
     <footer class="admin-sidebar__footer">
-        <app-avatar [src]="currentUser?.photoUrl"></app-avatar>
-        <div class="admin-sidebar__user-info" *ngIf="!isCollapsed()">
-            <p class="admin-sidebar__user-name">{{ currentUser?.firstName }} {{ currentUser?.lastName }}</p>
-        </div>
+        <app-dropdown [items]="dropdownItems">
+            <div dropdownTrigger class="admin-sidebar__user">
+                <app-avatar [src]="currentUser?.photoUrl"></app-avatar>
+                <div class="admin-sidebar__user-info" *ngIf="!isCollapsed()">
+                    <p class="admin-sidebar__user-name">
+                        {{ currentUser?.firstName }} {{ currentUser?.lastName }}
+                    </p>
+                </div>
+            </div>
+        </app-dropdown>
     </footer>
 </aside>
