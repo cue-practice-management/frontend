@@ -6,6 +6,7 @@ export interface ColumnConfig<T> {
     field?: keyof T;
     cell?: (row: T) => string | number | TemplateRef<any>;
     align?: 'left' | 'center' | 'right';
+    sortable?: boolean;
 }
 
 export interface TableRowAction<T> {
