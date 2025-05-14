@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { AdminSectionWrapperComponent } from '../../components/admin-section-wrapper/admin-section-wrapper.component';
 import { Faculty } from '@/features/faculty/faculty.models';
 import { FacultyTableComponent } from '@/features/faculty/components/faculty-table/faculty-table.component';
@@ -17,29 +17,18 @@ import { FacultyFormComponent } from '@/features/faculty/components/faculty-form
 export class AdminFacultyPageComponent {
   readonly TableAction = TableAction;
 
-  constructor(private modalService: ModalService) {}
-
-
-  onEditFaculty(faculty: Faculty): void {
-    console.log('Editar facultad:', faculty);
-  }
-
-  onDeleteFaculty(faculty: Faculty): void {
-    console.log('Eliminar facultad:', faculty);
-  }
+  constructor(private modalService: ModalService) { }
 
   openModal(): void {
     this.modalService.open(FacultyFormComponent, {
-      closeOnBackdropClick: true,
-      closeOnEsc: true,
       data: {
         faculty: null
       }
     }).afterClosed()
-    .subscribe((result) => {
-      if(result){
-        
-      }
-    });
+      .subscribe((result) => {
+        if (result) {
+
+        }
+      });
   }
 }

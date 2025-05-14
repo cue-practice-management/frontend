@@ -18,7 +18,7 @@ export class ModalComponent {
   modalContent!: ViewContainerRef;
   constructor(private injector: Injector) { }
 
-  create<T>(
+  create<T extends object>(
     component: Type<T>,
     config: ModalConfig,
     modalRef: ModalRef,
@@ -35,10 +35,24 @@ export class ModalComponent {
       parent: this.injector
     });
 
-    this.modalContent.createComponent(component, {
+    const componentRef = this.modalContent.createComponent(component, {
       environmentInjector: envInjector,
-      injector: customInjector
+      injector: customInjector,
     });
+
+    if (config.data) {
+      Object.entries(config.data).forEach(([key, value]) => {
+        if (componentRef.setInput) {
+          componentRef.setInput(key, value);
+        } else {
+          if (key in componentRef.instance) {
+            (componentRef.instance as any)[key] = value;
+          }
+        }
+      });
+    }
+
+    componentRef.changeDetectorRef.detectChanges();
   }
 
   @HostListener('document:keydown.escape')

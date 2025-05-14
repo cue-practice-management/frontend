@@ -17,7 +17,7 @@ export class ModalService {
     private envInjector: EnvironmentInjector 
   ) {}
 
-  open<T, D = any>(component: Type<T>, config: ModalConfig<D> = {}): ModalRef {
+  open<T extends object, D = any>(component: Type<T>, config: ModalConfig<D> = {}): ModalRef  {
     const modalRef = new ModalRef();
 
     const containerRef = createComponent(ModalComponent, {
