@@ -10,13 +10,20 @@
       <table class="data-table__table">
         <thead class="data-table__thead">
           <tr>
-            <th
-              *ngFor="let col of columns"
-              class="data-table__th"
-              [ngClass]="'data-table__th--' + (col.align || 'left')"
-            >
-              {{ col.label }}
+            <th *ngFor="let col of columns" class="data-table__th"
+              [ngClass]="['data-table__th--' + (col.align || 'left'), col.sortable ? 'data-table__th--sortable' : '', col.sortable && col.field === pagination.sortBy ? 'data-table__th--active-sort' : '']"
+              (click)="col.sortable && col.field ? onSort(col.field.toString()) : null">
+              <span class="data-table__th-content">
+                {{ col.label }}
+                <ng-container *ngIf="col.sortable">
+                  <lucide-icon *ngIf="col.field === pagination.sortBy"
+                    [name]="pagination.sortOrder === 'asc' ? ChevronUp : ChevronDown" size="14" />
+                  <lucide-icon *ngIf="col.field !== pagination.sortBy" [name]="ChevronDown" class="invisible-icon"
+                    size="14" />
+                </ng-container>
+              </span>
             </th>
+
             <th *ngIf="actions.length" class="data-table__th data-table__th--center">Acciones</th>
           </tr>
         </thead>
@@ -24,11 +31,8 @@
         <tbody class="data-table__tbody">
           <ng-container *ngIf="!loading && pageData.docs.length; else loadingOrEmpty">
             <tr *ngFor="let row of pageData.docs">
-              <td
-                *ngFor="let col of columns"
-                class="data-table__td"
-                [ngClass]="'data-table__td--' + (col.align || 'left')"
-              >
+              <td *ngFor="let col of columns" class="data-table__td"
+                [ngClass]="'data-table__td--' + (col.align || 'left')">
                 <ng-container *ngIf="col.cell; else defaultCell">
                   {{ col.cell(row) }}
                 </ng-container>
@@ -38,13 +42,9 @@
               </td>
 
               <td *ngIf="actions.length" class="data-table__td data-table__td--center">
-                <button
-                  *ngFor="let action of actions"
-                  class="data-table__action"
-                  [ngClass]="{ 'data-table__action--danger': action.danger }"
-                  [disabled]="action.disabled?.(row)"
-                  (click)="action.action(row)"
-                >
+                <button *ngFor="let action of actions" class="data-table__action"
+                  [ngClass]="{ 'data-table__action--danger': action.danger }" [disabled]="action.disabled?.(row)"
+                  (click)="action.action(row)">
                   <lucide-icon [name]="action.icon" size="16"></lucide-icon>
                 </button>
               </td>
@@ -56,42 +56,27 @@
 
     <ng-template #loadingOrEmpty>
       <tr *ngIf="loading">
-        <td
-          [attr.colspan]="columns.length + (actions.length ? 1 : 0)"
-          class="data-table__td data-table__td--center"
-        >
+        <td [attr.colspan]="columns.length + (actions.length ? 1 : 0)" class="data-table__td data-table__td--center">
           <app-spinner label="Cargando..." />
         </td>
       </tr>
       <tr *ngIf="!loading && (pageData?.docs?.length ?? 0) === 0">
-        <td
-          [attr.colspan]="columns.length + (actions.length ? 1 : 0)"
-          class="data-table__td data-table__td--center"
-        >
+        <td [attr.colspan]="columns.length + (actions.length ? 1 : 0)" class="data-table__td data-table__td--center">
           Sin resultados.
         </td>
       </tr>
     </ng-template>
 
-    <div
-      class="data-table__pagination"
-      *ngIf="pageData && pageData.totalPages > 1"
-    >
-      <button
-        (click)="goToPage(pageData.page - 1)"
-        [disabled]="pageData.page === 1"
-      >
+    <div class="data-table__pagination" *ngIf="pageData && pageData.totalPages > 1">
+      <app-button size="sm" variant="outline" (click)="goToPage(pageData.page - 1)" [disabled]="pageData.page === 1">
         Anterior
-      </button>
+      </app-button>
       <span>
         Página {{ pageData.page }} de {{ pageData.totalPages }}
       </span>
-      <button
-        (click)="goToPage(pageData.page + 1)"
-        [disabled]="pageData.page === pageData.totalPages"
-      >
+      <app-button size="sm" (click)="goToPage(pageData.page + 1)" [disabled]="pageData.page === pageData.totalPages">
         Siguiente
-      </button>
+      </app-button>
     </div>
   </ng-template>
 </div>

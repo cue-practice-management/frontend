@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AdminSectionWrapperComponent } from '../../components/admin-section-wrapper/admin-section-wrapper.component';
 import { Faculty } from '@/features/faculty/faculty.models';
 import { FacultyTableComponent } from '@/features/faculty/components/faculty-table/faculty-table.component';
@@ -17,6 +17,8 @@ import { FacultyFormComponent } from '@/features/faculty/components/faculty-form
 export class AdminFacultyPageComponent {
   readonly TableAction = TableAction;
 
+  @ViewChild(FacultyTableComponent) facultyTable!: FacultyTableComponent;
+
   constructor(private modalService: ModalService) { }
 
   openModal(): void {
@@ -27,7 +29,7 @@ export class AdminFacultyPageComponent {
     }).afterClosed()
       .subscribe((result) => {
         if (result) {
-
+          this.facultyTable.realoadData();
         }
       });
   }

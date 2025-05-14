@@ -13,7 +13,7 @@ import { SpinnerComponent } from "../spinner/spinner.component";
   styleUrl: './button.component.scss'
 })
 export class ButtonComponent {
-  @Input() variant: 'primary' | 'success' | 'danger' | 'light' | 'dark' = 'primary';
+  @Input() variant: 'primary' | 'success' | 'danger' | 'light' | 'dark' | 'ghost'| 'outline' = 'primary';
   @Input() size: 'sm' | 'md' | 'lg' = 'md';
   @Input() type: 'button' | 'submit' = 'button';
   @Input() disabled = false;

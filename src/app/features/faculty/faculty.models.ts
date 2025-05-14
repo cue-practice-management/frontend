@@ -21,3 +21,10 @@ export interface CreateFacultyRequest {
     deanName: string;
     deanEmail: string;
 }
+
+export interface UpdateFacultyRequest {
+    name?: string;
+    description?: string;
+    deanName?: string;
+    deanEmail?: string;
+}

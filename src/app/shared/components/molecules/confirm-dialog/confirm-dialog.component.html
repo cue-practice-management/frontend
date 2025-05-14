@@ -1,0 +1,16 @@
+    <div class="confirm-dialog">
+      <h2 class="confirm-dialog__title">{{ confirmDialogData.title }}</h2>
+      <p class="confirm-dialog__message">{{ confirmDialogData.message }}</p>
+
+      <div class="confirm-dialog__actions">
+        <app-button (click)="cancel()" variant="outline">
+          {{ confirmDialogData.cancelText || 'Cancelar' }}
+        </app-button>
+        <app-button
+          [variant]="confirmDialogData.danger ? 'danger' : 'primary'"
+          (click)="confirm()"
+        >
+          {{ confirmDialogData.confirmText || 'Aceptar' }}
+        </app-button>
+      </div>
+    </div>

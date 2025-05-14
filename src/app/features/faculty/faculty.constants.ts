@@ -1,1 +1,2 @@
 export const FACULTY_MIN_DESCRIPTION_LENGTH = 10;
+export const FACULTY_MIN_NAME_LENGTH = 3;
