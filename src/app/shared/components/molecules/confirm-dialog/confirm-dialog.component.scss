@@ -1,0 +1,20 @@
+@import 'mixins';
+
+.confirm-dialog {
+    text-align: center;
+
+    &__title {
+        @include text-lg;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    &__message {
+        @include text-md;
+        margin-bottom: 1.5rem;
+    }
+
+    &__actions {
+        @include flex(row, center, center, nowrap, 1rem);
+    }
+}
