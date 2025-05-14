@@ -1,4 +1,5 @@
 import { TemplateRef } from "@angular/core";
+import { LucideIconData } from "lucide-angular";
 
 export interface ColumnConfig<T> {
     label: string;
@@ -8,7 +9,7 @@ export interface ColumnConfig<T> {
 }
 
 export interface TableRowAction<T> {
-    icon: string; 
+    icon: LucideIconData; 
     label: string;
     action: (row: T) => void;
     danger?: boolean;

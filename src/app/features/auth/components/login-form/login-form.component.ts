@@ -8,6 +8,7 @@ import { FormSubmitComponent } from '@/shared/abstracts/form-submit.abstract';
 import { LoginResponseDto } from '../../models/login-response.dto';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
+import { FormFieldType } from '@/shared/models/form-field-type.enum';
 
 @Component({
   selector: 'app-login-form',
@@ -29,14 +30,14 @@ export class LoginFormComponent extends FormSubmitComponent<LoginRequestDto, Log
             {
               key: 'email',
               label: 'Correo electrónico',
-              type: 'text',
+              type: FormFieldType.TEXT,
               placeholder: 'ejemplo@correo.com',
               validators: [Validators.required, Validators.email],
             },
             {
               key: 'password',
               label: 'Contraseña',
-              type: 'password',
+              type: FormFieldType.PASSWORD,
               placeholder: '••••••••',
               validators: [Validators.required, Validators.minLength(6)],
             }

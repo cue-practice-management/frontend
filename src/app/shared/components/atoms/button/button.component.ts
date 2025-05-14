@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { SpinnerComponent } from "../spinner/spinner.component";
 
 @Component({
   selector: 'app-button',
   standalone: true,
   imports: [
-    CommonModule
-  ],
+    CommonModule,
+    SpinnerComponent
+],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss'
 })
