@@ -11,6 +11,8 @@ import { DEFAULT_QUERY_PAGINATION } from '@/core/constants/pagination.constants'
 import { TableAction } from '@/shared/models/table-actions.enum';
 import { ModalService } from '@/core/services/modal.service';
 import { FacultyFormComponent } from '../faculty-form/faculty-form.component';
+import { ConfirmDialogComponent } from '@/shared/components/molecules/confirm-dialog/confirm-dialog.component';
+import { PaginationQuery } from '@/core/models/pagination-query.model';
 
 @Component({
   selector: 'app-faculty-table',
@@ -23,8 +25,8 @@ export class FacultyTableComponent extends RetrievePaginatedData<Faculty, Facult
   @Input() allowedActions?: TableAction[];
   override filter: FacultyFilter = DEFAULT_QUERY_PAGINATION;
   readonly columns: ColumnConfig<Faculty>[] = [
-    { label: 'Nombre', field: 'name' },
-    { label: 'Descripción', field: 'description' },
+    { label: 'Nombre', field: 'name', sortable: true },
+    { label: 'Descripción', field: 'description', sortable: true },
     { label: 'Decano', cell: (f) => `${f.deanName} (${f.deanEmail})` }
   ];
 
@@ -59,14 +61,16 @@ export class FacultyTableComponent extends RetrievePaginatedData<Faculty, Facult
     return list;
   }
 
-
+  realoadData(): void {
+    this.loadPageData(this.filter);
+  }
 
   override fetchPage(filter: FacultyFilter): Observable<PaginatedResult<Faculty>> {
     return this.facultyService.getFaculties(filter);
   }
 
-  onPageChange(page: number): void {
-    this.loadPageData({ ...this.filter, page });
+  onPaginationChange(query: PaginationQuery): void {
+    this.loadPageData({...this.filter, ...query });
   }
 
   private editFaculty(faculty: Faculty): void {
@@ -83,6 +87,24 @@ export class FacultyTableComponent extends RetrievePaginatedData<Faculty, Facult
   }
 
   private deleteFaculty(faculty: Faculty): void {
-    console.log('Delete faculty', faculty);
+    this.modalService
+      .open(ConfirmDialogComponent, {
+        data: {
+          confirmDialogData: {
+            title: '¿Eliminar facultad?',
+            message: `¿Estás seguro de eliminar la facultad "${faculty.name}"?`,
+            confirmText: 'Eliminar',
+            cancelText: 'Cancelar',
+            danger: true
+          }
+
+        }
+      })
+      .afterClosed()
+      .subscribe((confirmed) => {
+        if (confirmed) {
+          this.facultyService.deleteFaculty(faculty._id).subscribe(() => this.realoadData());
+        }
+      });
   }
 }

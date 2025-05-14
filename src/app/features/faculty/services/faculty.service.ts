@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CreateFacultyRequest, Faculty, FacultyFilter } from '../faculty.models';
+import { CreateFacultyRequest, Faculty, FacultyFilter, UpdateFacultyRequest } from '../faculty.models';
 import { PaginatedResult } from '@/core/models/paginated-result.model';
 import { API_ENDPOINTS } from '@/core/constants/api-endpoints.constants';
 import { objectToHttpParams } from '@/core/utils/http-params.util';
@@ -20,5 +20,13 @@ export class FacultyService {
 
   createFaculty(createFacultyRequest: CreateFacultyRequest): Observable<Faculty> {
     return this.http.post<Faculty>(API_ENDPOINTS.FACULTY.CREATE, createFacultyRequest);
+  }
+
+  updateFaculty(id: string, updateFacultyRequestDto: UpdateFacultyRequest): Observable<Faculty> {
+    return this.http.put<Faculty>(API_ENDPOINTS.FACULTY.UPDATE(id), updateFacultyRequestDto);
+  }
+
+  deleteFaculty(id: string): Observable<void> {
+    return this.http.delete<void>(API_ENDPOINTS.FACULTY.DELETE(id));
   }
 }

@@ -9,7 +9,7 @@ import { FormSubmitComponent } from '@/shared/abstracts/form-submit.abstract';
 import { FacultyService } from '../../services/faculty.service';
 import { ModalRef } from '@/shared/components/organisms/modal/modal.ref';
 import { Observable } from 'rxjs';
-import { FACULTY_MIN_DESCRIPTION_LENGTH } from '../../faculty.constants';
+import { FACULTY_MIN_DESCRIPTION_LENGTH, FACULTY_MIN_NAME_LENGTH } from '../../faculty.constants';
 
 
 @Component({
@@ -49,7 +49,7 @@ export class FacultyFormComponent extends FormSubmitComponent<Partial<Faculty>, 
               value: this.faculty?.name,
               type: FormFieldType.TEXT,
               placeholder: 'Nombre de la facultad',
-              validators: [Validators.required]
+              validators: [Validators.required, Validators.minLength(FACULTY_MIN_NAME_LENGTH)]
             },
             {
               key: 'description',
@@ -82,7 +82,11 @@ export class FacultyFormComponent extends FormSubmitComponent<Partial<Faculty>, 
   }
 
   override submitData(data: CreateFacultyRequest): Observable<Faculty> {
-    return this.facultyService.createFaculty(data);
+    if (this.faculty) {
+      return this.facultyService.updateFaculty(this.faculty._id, data);
+    } else {
+      return this.facultyService.createFaculty(data);
+    }
   }
 
   override onSuccess = (faculty: Faculty): void => {
