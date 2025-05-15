@@ -83,7 +83,7 @@
         @include padding-x(1rem);
         color: $dark-color;
         text-decoration: none;
-        transition: all 0.3s ease;
+        transition: border 0.3s ease;
         font-weight: 500;
 
         &:hover,

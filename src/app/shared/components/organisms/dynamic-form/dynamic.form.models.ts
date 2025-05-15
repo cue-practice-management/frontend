@@ -1,4 +1,5 @@
 import { FormFieldType } from '@/shared/models/form-field-type.enum';
+import { TypeaheadConfig } from '@/shared/models/typeahead-item.model';
 import { ValidatorFn } from '@angular/forms';
 
 
@@ -12,10 +13,11 @@ export interface FormField {
   label: string;
   type: FormFieldType;
   placeholder?: string;
-  options?: FieldOption[]; 
+  options?: FieldOption[];
   validators?: ValidatorFn[];
   disabled?: boolean;
   value?: string | number | boolean;
+  typeaheadConfig?: TypeaheadConfig;
 }
 
 export interface FormFieldSection {

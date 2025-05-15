@@ -5,6 +5,8 @@ import { InputTextComponent } from '../../atoms/input-text/input-text.component'
 import { InputNumberComponent } from '../../atoms/input-number/input-number.component';
 import { InputPasswordComponent } from '../../atoms/input-password/input-password.component';
 import { FormFieldType } from '@/shared/models/form-field-type.enum';
+import { TypeaheadConfig } from '@/shared/models/typeahead-item.model';
+import { InputTypeaheadComponent } from "../../atoms/input-typeahead/input-typeahead.component";
 
 @Component({
   selector: 'app-input-form-row',
@@ -13,8 +15,9 @@ import { FormFieldType } from '@/shared/models/form-field-type.enum';
     InputTextComponent,
     InputNumberComponent,
     InputPasswordComponent,
-    CommonModule
-  ],
+    CommonModule,
+    InputTypeaheadComponent
+],
   templateUrl: './input-form-row.component.html',
   styleUrl: './input-form-row.component.scss'
 })
@@ -24,6 +27,7 @@ export class InputFormRowComponent {
   @Input() label = '';
   @Input() placeholder = '';
   @Input() type: FormFieldType = FormFieldType.TEXT;
+  @Input() typeaheadConfig?: TypeaheadConfig;
 
   get showError(): boolean {
     return this.control.invalid && (this.control.dirty || this.control.touched);

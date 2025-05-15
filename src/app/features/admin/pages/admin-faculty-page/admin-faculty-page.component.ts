@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { AdminSectionWrapperComponent } from '../../components/admin-section-wrapper/admin-section-wrapper.component';
-import { Faculty } from '@/features/faculty/faculty.models';
 import { FacultyTableComponent } from '@/features/faculty/components/faculty-table/faculty-table.component';
 import { TableAction } from '@/shared/models/table-actions.enum';
 import { ButtonComponent } from '@/shared/components/atoms/button/button.component';
@@ -29,7 +28,7 @@ export class AdminFacultyPageComponent {
     }).afterClosed()
       .subscribe((result) => {
         if (result) {
-          this.facultyTable.realoadData();
+          this.facultyTable.reloadPageData();
         }
       });
   }

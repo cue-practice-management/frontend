@@ -1,4 +1,3 @@
-import { ROUTES } from "@/core/constants/routes.constants";
 import { Routes } from "@angular/router";
 
 export const ADMIN_ROUTES: Routes = [
@@ -10,7 +9,11 @@ export const ADMIN_ROUTES: Routes = [
                 path: 'faculties',
                 loadComponent: () => import('./pages/admin-faculty-page/admin-faculty-page.component').then(m => m.AdminFacultyPageComponent),
 
-            }   
+            },
+            {
+                path: 'academic-programs',
+                loadComponent: () => import('./pages/admin-academic-program-page/admin-academic-program-page.component').then(m => m.AdminAcademicProgramPageComponent),
+            }
 
         ]
     }
