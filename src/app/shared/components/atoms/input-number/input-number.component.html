@@ -1,1 +1,1 @@
-<input [id]="id" type="text" [value]="displayValue" [placeholder]="placeholder" class="input-number" />
+<input [id]="id" type="text" [value]="displayValue"  [placeholder]="placeholder" class="input-number" (blur)="onBlur()"  [class.error]="hasErrors()" />

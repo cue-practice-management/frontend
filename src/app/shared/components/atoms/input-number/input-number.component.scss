@@ -14,7 +14,7 @@
         background-color: $white-color;
     }
 
-    &.ng-invalid.ng-touched {
+    &.error {
         border-color: $error-color;
         background-color: rgba($error-color-light, 0.1);
         box-shadow: 0 0 2px $error-color;
