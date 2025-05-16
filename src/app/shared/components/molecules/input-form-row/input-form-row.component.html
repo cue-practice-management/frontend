@@ -5,6 +5,7 @@
     <app-input-text *ngSwitchCase="'text'" [control]="control" [id]="id" [placeholder]="placeholder" />
     <app-input-number *ngSwitchCase="'number'" [control]="control" [id]="id" [placeholder]="placeholder" />
     <app-input-password *ngSwitchCase="'password'" [control]="control" [id]="id" [placeholder]="placeholder" />
+    <app-input-typeahead *ngSwitchCase="'typeahead'" [control]="control" [id]="id" [config]="typeaheadConfig!" />
   </ng-container>
 
   <div class="input-form-row__error" [class.input-form-row__error--visible]="showError">

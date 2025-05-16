@@ -4,7 +4,7 @@ import * as LucideIcons from 'lucide-angular';
 
 export const ADMIN_SIDEBAR_ITEMS: SidebarItem[] = [
     { label: 'Facultades', route: ROUTES.ADMIN.FACULTIES, icon: LucideIcons.SwatchBook },
-    { label: 'Calendario', route: '/admin/calendar', icon: LucideIcons.CalendarDays },
+    { label: 'Programas Academicos', route: ROUTES.ADMIN.ACADEMIC_PROGRAMS, icon: LucideIcons.BookType },
     { label: 'Equipos', route: '/admin/teams', icon: LucideIcons.Users },
     { label: 'Configuración', route: '/admin/settings', icon: LucideIcons.Settings },
 ];

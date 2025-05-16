@@ -7,6 +7,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
 html {
@@ -15,7 +16,6 @@ html {
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
     background-color: $light-color;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -24,9 +24,8 @@ body {
     color: $dark-color;
 }
 
-input, 
-select, textarea {
-    font-family: 'Poppins', sans-serif;
+input,
+select,
+textarea {
     color: $dark-color;
 }
-

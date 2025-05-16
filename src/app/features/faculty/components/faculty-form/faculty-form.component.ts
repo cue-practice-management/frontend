@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { CreateFacultyRequest, Faculty } from '../../faculty.models';
 import { DynamicFormComponent } from '@/shared/components/organisms/dynamic-form/dynamic-form.component';
 import { Validators, ReactiveFormsModule } from '@angular/forms';
@@ -21,17 +21,16 @@ import { FACULTY_MIN_DESCRIPTION_LENGTH, FACULTY_MIN_NAME_LENGTH } from '../../f
 })
 export class FacultyFormComponent extends FormSubmitComponent<Partial<Faculty>, Faculty> implements OnInit, OnChanges {
   @Input() faculty!: Faculty | null;
+  facultyFormConfig!: DynacmicFormConfig;
 
   constructor(private facultyService: FacultyService, private modalRef: ModalRef) {
     super();
   }
 
- facultyFormConfig!: DynacmicFormConfig;
-
   ngOnInit(): void {
     this.updateFormConfig();
   }
-  
+
   ngOnChanges(): void {
     this.updateFormConfig();
   }

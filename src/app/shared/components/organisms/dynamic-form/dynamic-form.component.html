@@ -7,7 +7,7 @@
 
     <ng-container *ngFor="let field of section.fields">
       <app-input-form-row [control]="getFormControl(field.key)" [id]="field.key" [label]="field.label"
-        [placeholder]="field.placeholder || ''" [type]="field.type" />
+        [placeholder]="field.placeholder || ''" [type]="field.type" [typeaheadConfig]="field.typeaheadConfig" />
     </ng-container>
   </ng-container>
 

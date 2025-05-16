@@ -1,0 +1,25 @@
+<div class="input-typeahead">
+  <input
+    [id]="id"
+    class="input-typeahead__input"
+    type="text"
+    [value]="displayLabel"
+    (input)="onInput($event)"
+    [placeholder]="config.placeholder"
+    autocomplete="off"
+  />
+
+  <div class="input-typeahead__dropdown" *ngIf="showDropdown && config.options.length">
+    <div
+      class="input-typeahead__option"
+      *ngFor="let option of config.options"
+      (click)="selectOption(option)"
+    >
+      {{ option.label }}
+    </div>
+  </div>
+
+  <div class="input-typeahead__loading" *ngIf="config.loading">
+    Cargando...
+  </div>
+</div>

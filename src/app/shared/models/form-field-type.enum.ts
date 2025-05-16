@@ -3,4 +3,5 @@ export enum FormFieldType {
     NUMBER = 'number',
     PASSWORD = 'password',
     EMAIL = 'email',
+    TYPEAHEAD = 'typeahead',
 } 

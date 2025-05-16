@@ -6,6 +6,10 @@ export abstract class RetrievePaginatedData<T, U extends PaginationQuery = Pagin
   isLoading = false;
   pageData!: PaginatedResult<T>;
   protected filter!: U;
+  
+  constructor() {
+    this.filter = this.getInitialFilter();
+  }
 
   loadPageData(filter: U): void {
     this.isLoading = true;
@@ -31,6 +35,7 @@ export abstract class RetrievePaginatedData<T, U extends PaginationQuery = Pagin
       limit: filter.limit
     };
   }
+  protected abstract getInitialFilter(): U;
 
   protected abstract fetchPage(filter: U): Observable<PaginatedResult<T>>;
 }
