@@ -17,7 +17,7 @@ import { InputTypeaheadComponent } from "../../atoms/input-typeahead/input-typea
     InputPasswordComponent,
     CommonModule,
     InputTypeaheadComponent
-],
+  ],
   templateUrl: './input-form-row.component.html',
   styleUrl: './input-form-row.component.scss'
 })
@@ -34,13 +34,23 @@ export class InputFormRowComponent {
   }
 
   get errorMessage(): string {
+    if (this.control.hasError('invalidOption')) return 'Selecciona una opción válida del listado.';
     if (this.control.hasError('required')) return 'Este campo es obligatorio.';
     if (this.control.hasError('email')) return 'Correo inválido.';
     if (this.control.hasError('minlength')) {
       const { requiredLength } = this.control.getError('minlength');
       return `Debe tener al menos ${requiredLength} caracteres.`;
     }
+    if(this.control.hasError('min')){
+      const { min } = this.control.getError('min');
+      return `El valor mínimo es ${min}.`;
+    }
+    if(this.control.hasError('max')){
+      const { max } = this.control.getError('max');
+      return `El valor máximo es ${max}.`;
+    }
     if (this.control.hasError('pattern')) return 'Formato inválido.';
+    console.error(this.control.errors);
     return 'Valor inválido.';
   }
 

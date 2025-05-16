@@ -22,7 +22,7 @@ export class AcademicProgramTableComponent extends DataTable<AcademicProgram, Ac
   override entityName = 'Programa Académico';
   override entityKeyName = 'academicProgram';
   override formComponent = AcademicProgramFormComponent;
-  @Input() override allowedActions = [TableAction.EDIT, TableAction.DELETE];
+  @Input() override allowedActions!: TableAction[];
 
   readonly columns: ColumnConfig<AcademicProgram>[] = [
     { label: 'Nombre', field: 'name', sortable: true },
@@ -48,11 +48,7 @@ export class AcademicProgramTableComponent extends DataTable<AcademicProgram, Ac
   ngOnInit(): void {
     this.loadPageData(this.getInitialFilter());
   }
-
-  reloadPageData(): void {
-    this.loadPageData(this.filter);
-  }
-
+  
   override getAll(filter: AcademicProgramFilter): Observable<PaginatedResult<AcademicProgram>> {
     return this.academicProgramService.getAcademicPrograms(filter);
   }

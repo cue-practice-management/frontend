@@ -1,25 +1,26 @@
-<div class="input-typeahead">
+<div class="input-typeahead" [class.input-typeahead--above]="dropdownAbove" (appClickOutside)="onOutsideClick()">
   <input
     [id]="id"
-    class="input-typeahead__input"
     type="text"
-    [value]="displayLabel"
-    (input)="onInput($event)"
+    class="input-text input-typeahead__input"
+    [formControl]="inputControl"
     [placeholder]="config.placeholder"
+    (blur)="onBlur()"
     autocomplete="off"
+    [class.error]="hasErrors()"
   />
 
-  <div class="input-typeahead__dropdown" *ngIf="showDropdown && config.options.length">
+  <div
+    class="input-typeahead__dropdown"
+    *ngIf="showDropdown && options.length"
+    [class.input-typeahead__dropdown--above]="dropdownAbove"
+  >
     <div
       class="input-typeahead__option"
-      *ngFor="let option of config.options"
+      *ngFor="let option of options"
       (click)="selectOption(option)"
     >
       {{ option.label }}
     </div>
-  </div>
-
-  <div class="input-typeahead__loading" *ngIf="config.loading">
-    Cargando...
   </div>
 </div>

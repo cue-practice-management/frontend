@@ -5,6 +5,7 @@ export interface AcademicProgram {
     _id: string;
     name: string;
     description: string;
+    durationInSemesters: number;
     faculty: Faculty;
     coordinatorName: string;
     coordinatorEmail: string;

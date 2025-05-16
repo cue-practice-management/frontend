@@ -12,7 +12,7 @@
   </ng-container>
 
   <div class="dynamic-form__button-container">
-    <app-button type="submit" [disabled]="isLoading">
+    <app-button size="sm" type="submit" [disabled]="isLoading">
       <span *ngIf="!isLoading">{{buttonLabel}}</span>
       <app-spinner *ngIf="isLoading" label="Loading..." />
     </app-button>

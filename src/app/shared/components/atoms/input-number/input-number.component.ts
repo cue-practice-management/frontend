@@ -1,4 +1,4 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -8,18 +8,25 @@ import { FormControl } from '@angular/forms';
   templateUrl: './input-number.component.html',
   styleUrl: './input-number.component.scss'
 })
-export class InputNumberComponent {
+export class InputNumberComponent implements OnInit {
   @Input() control!: FormControl;
   @Input() id = '';
   @Input() placeholder = '';
 
   private rawValue = '';
 
+    ngOnInit(): void {
+    const initialValue = this.control.value;
+    if (initialValue != null && !isNaN(initialValue)) {
+      this.rawValue = String(initialValue);
+    }
+  }
+
   @HostListener('input', ['$event.target.value'])
   onInput(value: string): void {
-    const sanitized = value.replace(/\D/g, ''); 
-
+    const sanitized = value.replace(/\D/g, '');
     this.rawValue = sanitized;
+
     const numericValue = sanitized === '' ? null : Number(sanitized);
     this.control.setValue(numericValue);
   }
@@ -41,5 +48,13 @@ export class InputNumberComponent {
 
   private isValidNumber(value: string): boolean {
     return /^\d+$/.test(value);
+  }
+
+  hasErrors(): boolean {
+    return this.control.invalid && (this.control.dirty || this.control.touched);
+  }
+  onBlur(): void {
+    this.control.markAsTouched();
+    this.control.updateValueAndValidity();
   }
 }

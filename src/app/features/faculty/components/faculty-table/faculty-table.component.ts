@@ -38,10 +38,6 @@ export class FacultyTableComponent extends DataTable<Faculty, FacultyFilter> imp
     this.loadPageData(this.filter);
   }
 
-  reloadPageData(): void {
-    this.loadPageData(this.filter);
-  }
-
   override getAll(filter: FacultyFilter): Observable<PaginatedResult<Faculty>> {
     return this.facultyService.getFaculties(filter);
   }

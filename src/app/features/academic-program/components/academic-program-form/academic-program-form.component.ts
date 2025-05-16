@@ -9,7 +9,8 @@ import { FormFieldType } from '@/shared/models/form-field-type.enum';
 import { Observable } from 'rxjs';
 import { DynamicFormComponent } from "@organisms/dynamic-form/dynamic-form.component";
 import { FacultyService } from '@/features/faculty/services/faculty.service';
-import { TypeaheadService } from '@/core/services/typeahead.service';
+import { MAX_SEMESTER_DURATION, MIN_SEMESTER_DURATION } from '../../academic-program.constants';
+import { TypeaheadConfig } from '@/shared/models/typeahead-item.model';
 
 @Component({
   selector: 'app-academic-program-form',
@@ -26,7 +27,6 @@ export class AcademicProgramFormComponent extends FormSubmitComponent<CreateAcad
   constructor(
     private academicProgramService: AcademicProgramService,
     private facultyService: FacultyService,
-    private typeaheadService: TypeaheadService,
     private modalRef: ModalRef) {
     super();
   }
@@ -63,14 +63,37 @@ export class AcademicProgramFormComponent extends FormSubmitComponent<CreateAcad
               validators: [Validators.required]
             },
             {
-              key: 'facultyName',
+              key: 'durationInSemesters',
+              label: 'Duración en semestres',
+              value: this.academicProgram?.durationInSemesters,
+              type: FormFieldType.NUMBER,
+              placeholder: 'Duración en semestres',
+              validators: [Validators.required, Validators.min(MIN_SEMESTER_DURATION), Validators.max(MAX_SEMESTER_DURATION)],
+            },
+            {
+              key: 'faculty',
               label: 'Facultad',
+              value: this.academicProgram?.faculty._id,
               type: FormFieldType.TYPEAHEAD,
               placeholder: 'Busca una facultad...',
-              typeaheadConfig: this.typeaheadService.createTypaheadConfig(
-                (term) => this.facultyService.getTypeaheadFaculties(term),
-              ),
+              typeaheadConfig: this.facultyTypeaheadConfig,
               validators: [Validators.required]
+            },
+            {
+              key: 'coordinatorName',
+              label: 'Coordinador',
+              value: this.academicProgram?.coordinatorName,
+              type: FormFieldType.TEXT,
+              placeholder: 'Nombre del coordinador',
+              validators: [Validators.required]
+            },
+            {
+              key: 'coordinatorEmail',
+              label: 'Email del coordinador',
+              value: this.academicProgram?.coordinatorEmail,
+              type: FormFieldType.TEXT,
+              placeholder: 'Email del coordinador',
+              validators: [Validators.required, Validators.email]
             }
           ]
         }
@@ -92,6 +115,18 @@ export class AcademicProgramFormComponent extends FormSubmitComponent<CreateAcad
 
   onFormSubmit(formValue: CreateAcademicProgramRequest | UpdateAcademicProgramRequest): void {
     this.submitForm(formValue);
+  }
+
+  get facultyTypeaheadConfig(): TypeaheadConfig {
+    const config: TypeaheadConfig = {
+      placeholder: 'Busca una facultad...',
+      retrieveOptions: (term: string) => this.facultyService.getTypeaheadFaculties(term),
+    }
+    if (this.academicProgram) {
+      config.retrieveOptionsFromExistingValue = () => this.facultyService.getTypeaheadFaculties(this.academicProgram!.faculty.name);
+    }
+
+    return config;
   }
 
 }
