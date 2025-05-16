@@ -1,12 +1,1 @@
-<app-admin-section-wrapper title="Facultades"
-  description="Gestiona las facultades de la Coorporación Universitaria Empresarial Alexander Von Humboldt">
-
-  <app-faculty-table [allowedActions]="[TableAction.EDIT, TableAction.DELETE]" />
-
-  <ng-container sectionActions>
-    <app-button (click)="openModal()" size="sm">
-      Crear facultad
-    </app-button>
-  </ng-container>
-
-</app-admin-section-wrapper>
+<app-admin-entity-page [config]="facultyPageConfig"/>

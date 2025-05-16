@@ -1,0 +1,9 @@
+<app-admin-section-wrapper [title]="config.title" [description]="config.description">
+  <ng-container #tableContainer></ng-container>
+
+  <ng-container sectionActions>
+    <app-button (click)="openCreateEntityModal()" size="sm">
+      {{ config.createButtonLabel }}
+    </app-button>
+  </ng-container>
+</app-admin-section-wrapper>
