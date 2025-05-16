@@ -1,0 +1,2 @@
+export const MIN_SEMESTER_DURATION = 1;
+export const MAX_SEMESTER_DURATION = 12;

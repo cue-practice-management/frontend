@@ -23,16 +23,21 @@ export abstract class DataTable<T extends { _id: string }, U extends PaginationQ
     abstract getAll(filter: U): Observable<PaginatedResult<T>>;
     abstract delete(id: string): Observable<void>;
 
+
+    onPaginationChange(query: PaginationQuery): void {
+        this.loadPageData({ ...this.filter, ...query });
+    }
+
+    reloadPageData(): void {
+        this.loadPageData(this.filter);
+    }
+
     override fetchPage(filter: U): Observable<PaginatedResult<T>> {
         return this.getAll(filter);
     }
 
     override getInitialFilter(): U {
         return { ...DEFAULT_QUERY_PAGINATION } as U;
-    }
-
-    onPaginationChange(query: PaginationQuery): void {
-        this.loadPageData({ ...this.filter, ...query });
     }
 
     protected editEntity(entity: T): void {
