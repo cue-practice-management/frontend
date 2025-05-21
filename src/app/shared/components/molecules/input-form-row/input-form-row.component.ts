@@ -7,6 +7,8 @@ import { InputPasswordComponent } from '../../atoms/input-password/input-passwor
 import { FormFieldType } from '@/shared/models/form-field-type.enum';
 import { TypeaheadConfig } from '@/shared/models/typeahead-item.model';
 import { InputTypeaheadComponent } from "../../atoms/input-typeahead/input-typeahead.component";
+import { InputSelectComponent } from "../../atoms/input-select/input-select.component";
+import { SelectOption } from '../../atoms/input-select/input-select.models';
 
 @Component({
   selector: 'app-input-form-row',
@@ -16,7 +18,8 @@ import { InputTypeaheadComponent } from "../../atoms/input-typeahead/input-typea
     InputNumberComponent,
     InputPasswordComponent,
     CommonModule,
-    InputTypeaheadComponent
+    InputTypeaheadComponent,
+    InputSelectComponent
   ],
   templateUrl: './input-form-row.component.html',
   styleUrl: './input-form-row.component.scss'
@@ -28,6 +31,7 @@ export class InputFormRowComponent {
   @Input() placeholder = '';
   @Input() type: FormFieldType = FormFieldType.TEXT;
   @Input() typeaheadConfig?: TypeaheadConfig;
+  @Input() selectOptions?: SelectOption[];
 
   get showError(): boolean {
     return this.control.invalid && (this.control.dirty || this.control.touched);
@@ -41,11 +45,11 @@ export class InputFormRowComponent {
       const { requiredLength } = this.control.getError('minlength');
       return `Debe tener al menos ${requiredLength} caracteres.`;
     }
-    if(this.control.hasError('min')){
+    if (this.control.hasError('min')) {
       const { min } = this.control.getError('min');
       return `El valor mínimo es ${min}.`;
     }
-    if(this.control.hasError('max')){
+    if (this.control.hasError('max')) {
       const { max } = this.control.getError('max');
       return `El valor máximo es ${max}.`;
     }
