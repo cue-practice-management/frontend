@@ -5,6 +5,13 @@ export const API_ENDPOINTS = {
         LOGOUT: '/auth/logout',
         ME: '/auth/me',
     },
+    STUDENT: {
+        GET: '/students',
+        CREATE: '/students/create',
+        UPDATE: (id: string) => `/students/update/${id}`,
+        DELETE: (id: string) => `/students/delete/${id}`,
+        GET_TYPEAHEAD: '/students/typeahead',
+    },
     FACULTY: {
         GET: '/faculty',
         GET_TYPEAHEAD: '/faculty/typeahead',
@@ -17,5 +24,6 @@ export const API_ENDPOINTS = {
         CREATE: '/academic-programs/create',
         UPDATE: (id: string) => `/academic-programs/update/${id}`,
         DELETE: (id: string) => `/academic-programs/delete/${id}`,
+        GET_TYPEAHEAD: '/academic-programs/typeahead',
     },
 };
