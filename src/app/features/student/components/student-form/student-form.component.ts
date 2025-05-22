@@ -13,6 +13,7 @@ import { TypeaheadConfig } from '@/shared/models/typeahead-item.model';
 import { MIN_CURRENT_SEMESTER } from '../../student.constants';
 import { Gender } from '@/core/enums/gender.enum';
 import { DocumentType } from '@/core/enums/document-type.enum';
+import { colombianPhoneValidator } from '@/core/validators/colombian-phone.validator';
 
 @Component({
   selector: 'app-student-form',
@@ -92,7 +93,7 @@ export class StudentFormComponent extends FormSubmitComponent<CreateStudentReque
               key: 'documentNumber',
               label: 'Número de documento',
               value: this.student?.documentNumber,
-              type: FormFieldType.TEXT,
+              type: FormFieldType.NUMBER,
               placeholder: 'Número de documento del estudiante',
               validators: [Validators.required]
             },
@@ -101,6 +102,7 @@ export class StudentFormComponent extends FormSubmitComponent<CreateStudentReque
               label: 'Número de teléfono',
               value: this.student?.phoneNumber,
               type: FormFieldType.TEXT,
+              validators: [colombianPhoneValidator()],
               placeholder: 'Número de teléfono del estudiante'
             },
             {
