@@ -16,9 +16,9 @@ import { AdminEntityPageComponent } from "../../components/admin-entity-page/adm
 export class AdminFacultyPageComponent {
 
   facultyPageConfig: AdminEntityPageConfig<Faculty, FacultyFilter> = {
-    title: 'Programas Académicos',
-    description: 'Gestiona los programas académicos de la institución',
-    createButtonLabel: 'Crear programa académico',
+    title: 'Facultades',
+    description: 'Gestiona las facultades de la institución',
+    createButtonLabel: 'Crear facultad',
     tableComponent: FacultyTableComponent,
     formComponent: FacultyFormComponent,
     allowedActions: [TableAction.EDIT, TableAction.DELETE],
