@@ -45,3 +45,9 @@
     opacity: 1;
   }
 }
+
+.modal-hitbox {
+  display: inline-block;
+  position: relative;
+  z-index: 1; 
+}

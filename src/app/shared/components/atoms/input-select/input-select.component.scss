@@ -1,25 +1,70 @@
 @import 'variables';
 
 .input-select {
-    padding: 0.5rem 1rem;
-    border: 1px solid $dark-color;
-    background-color: $light-color;
-    border-radius: 0.5rem;
-    transition: all 0.3s ease-in-out;
+    position: relative;
     width: 100%;
-    appearance: none;
-    color: $dark-color;
 
-    &:focus {
-        outline: none;
-        background-color: $white-color;
-        border-color: $primary-color;
-        box-shadow: 0 0 2px $primary-color;
+    &__input {
+        padding: 0.5rem 1rem;
+        border: 1px solid $dark-color;
+        background-color: $light-color;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease-in-out;
+        width: 100%;
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+            background-color: $white-color;
+            border-color: $primary-color;
+            box-shadow: 0 0 2px $primary-color;
+        }
+
+        &.error {
+            border-color: $error-color;
+            background-color: rgba($error-color-light, 0.1);
+            box-shadow: 0 0 2px $error-color;
+        }
     }
 
-    &.ng-invalid.ng-touched {
-        border-color: $error-color;
-        background-color: rgba($error-color-light, 0.1);
-        box-shadow: 0 0 2px $error-color;
+    &__icon {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 0.75rem;
+        color: $dark-color;
+        opacity: 0.7;
+        pointer-events: none;
+    }
+
+    &__dropdown {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        background-color: $white-color;
+        border: 1px solid $gray-light-color;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 100;
+        top: 100%;
+
+        &--above {
+            bottom: 100%;
+            top: auto;
+            margin-bottom: 0.25rem;
+        }
+    }
+
+    &__option {
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+
+        &:hover {
+            background-color: $light-color;
+        }
     }
 }

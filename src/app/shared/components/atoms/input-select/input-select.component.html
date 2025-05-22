@@ -1,11 +1,34 @@
-<select
-  [id]="id"
+<div
   class="input-select"
-  [formControl]="control"
-  [ngClass]="{ 'ng-invalid ng-touched': control.invalid && control.touched }"
+  (appClickOutside)="closeDropdown()"
 >
-  <option value="" disabled hidden>{{ placeholder }}</option>
-  <option *ngFor="let option of options" [value]="option.value">
-    {{ option.label }}
-  </option>
-</select>
+  <input
+    [id]="id"
+    type="text"
+    class="input-select__input"
+    readonly
+    [placeholder]="placeholder"
+    [value]="labelSelected"
+    (click)="toggleDropdown()"
+    [class.error]="control.invalid && control.touched"
+    aria-haspopup="listbox"
+    [attr.aria-expanded]="showDropdown"
+    autocomplete="off"
+  />
+  <span class="input-select__icon">▼</span>
+
+  <div
+    class="input-select__dropdown"
+    *ngIf="showDropdown"
+    role="listbox"
+  >
+    <div
+      class="input-select__option"
+      *ngFor="let option of options"
+      role="option"
+      (click)="selectOption(option)"
+    >
+      {{ option.label }}
+    </div>
+  </div>
+</div>
