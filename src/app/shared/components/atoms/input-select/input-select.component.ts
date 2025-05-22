@@ -1,13 +1,14 @@
-import { Component, Input, OnInit, HostListener, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { SelectOption } from './input-select.models';
 import { ClickOutsideDirective } from '@/shared/directives/click-outside.directive';
+import { ChevronDown, LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-input-select',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ClickOutsideDirective],
+  imports: [CommonModule, ReactiveFormsModule, ClickOutsideDirective, LucideAngularModule],
   templateUrl: './input-select.component.html',
   styleUrl: './input-select.component.scss'
 })
@@ -19,6 +20,7 @@ export class InputSelectComponent implements OnInit, OnChanges {
 
   showDropdown = false;
   labelSelected = '';
+  ChevronDown = ChevronDown;
 
   ngOnInit(): void {
     this.setLabelSelected();
@@ -29,6 +31,7 @@ export class InputSelectComponent implements OnInit, OnChanges {
   }
 
   toggleDropdown(): void {
+    this.control.markAsTouched();
     this.showDropdown = !this.showDropdown;
   }
 
@@ -45,6 +48,12 @@ export class InputSelectComponent implements OnInit, OnChanges {
   get hasInitialValue(): boolean {
     return !!this.labelSelected;
   }
+
+  get hasErrors(): boolean {
+    return this.control.invalid && (this.control.dirty || this.control.touched);
+
+  }
+  
   private setLabelSelected(): void {
     const selected = this.options.find(o => o.value === this.control.value);
     if (selected) this.labelSelected = selected.label;
