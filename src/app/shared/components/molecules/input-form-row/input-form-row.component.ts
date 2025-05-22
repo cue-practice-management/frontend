@@ -53,6 +53,9 @@ export class InputFormRowComponent {
       const { max } = this.control.getError('max');
       return `El valor máximo es ${max}.`;
     }
+    if(this.control.hasError('colombianPhone')) {
+      return 'El número de teléfono no es válido, debe tener 10 dígitos y comenzar con 3.';
+    }
     if (this.control.hasError('pattern')) return 'Formato inválido.';
     console.error(this.control.errors);
     return 'Valor inválido.';

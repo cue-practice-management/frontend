@@ -4,8 +4,8 @@
         <app-input-text id="email" placeholder="Correo electrónico" [control]="email" />
         <app-input-text id="documentNumber" placeholder="Número de documento" [control]="documentNumber" />
         <app-input-text id="currentSemester" placeholder="Semestre actual" [control]="currentSemester" />
-                <app-input-select id="gender" [control]="gender" placeholder="Genero" [options]="genderSelectOptions" /> 
-
+        <app-academic-program-typeahead [control]="academicProgram" />
+        <app-input-select id="gender" [control]="gender" placeholder="Genero" [options]="genderSelectOptions" /> 
     </div>
 
 

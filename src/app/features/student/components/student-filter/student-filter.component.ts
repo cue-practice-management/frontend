@@ -6,8 +6,9 @@ import { InputTextComponent } from '@/shared/components/atoms/input-text/input-t
 import { ModalRef } from '@/shared/components/organisms/modal/modal.ref';
 import { Gender } from '@/core/enums/gender.enum';
 import { ButtonComponent } from '@/shared/components/atoms/button/button.component';
-import { InputSelectComponent } from "../../../../shared/components/atoms/input-select/input-select.component";
+import { InputSelectComponent } from "@atoms/input-select/input-select.component";
 import { SelectOption } from '@/shared/components/atoms/input-select/input-select.models';
+import { AcademicProgramTypeaheadComponent } from '@/features/academic-program/components/academic-program-typeahead/academic-program-typeahead.component';
 
 @Component({
   selector: 'app-student-filter',
@@ -17,7 +18,8 @@ import { SelectOption } from '@/shared/components/atoms/input-select/input-selec
     ReactiveFormsModule,
     InputTextComponent,
     ButtonComponent,
-    InputSelectComponent
+    InputSelectComponent,
+    AcademicProgramTypeaheadComponent
   ],
   templateUrl: './student-filter.component.html',
   styleUrl: './student-filter.component.scss'
