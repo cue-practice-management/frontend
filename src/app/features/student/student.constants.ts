@@ -1,0 +1,1 @@
+export const MIN_CURRENT_SEMESTER = 1;
