@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { PaginatedResult } from '@/core/models/paginated-result.model';
 import { API_ENDPOINTS } from '@/core/constants/api-endpoints.constants';
 import { objectToHttpParams } from '@/core/utils/http-params.util';
+import { TypeaheadItem } from '@/shared/models/typeahead-item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,12 @@ export class AcademicProgramService {
   getAcademicPrograms(academicProgramFilter: AcademicProgramFilter): Observable<PaginatedResult<AcademicProgram>> {
     const params = objectToHttpParams(academicProgramFilter);
     return this.http.get<PaginatedResult<AcademicProgram>>(API_ENDPOINTS.ACADEMIC_PROGRAM.GET, { params });
+  }
+
+  getTypeaheadAcademicPrograms(query: string): Observable<TypeaheadItem[]> {
+    return this.http.get<TypeaheadItem[]>(API_ENDPOINTS.ACADEMIC_PROGRAM.GET_TYPEAHEAD, {
+      params: { query }
+    });
   }
 
   updateAcademicProgram(id: string, updateAcademicProgramRequest: UpdateAcademicProgramRequest): Observable<AcademicProgram> {
