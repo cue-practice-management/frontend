@@ -5,14 +5,19 @@
   min-height: 100%;
   padding: 2rem;
   background-color: $white-color;
-  border-radius: 0.75rem;;
+  border-radius: 0.75rem;
+  ;
   margin-bottom: 2rem;
   @include box-shadow-sm();
 
   &__header {
-    @include flex(row, space-between, center);
+    @include flex-column($gap: 1rem);
     margin-bottom: 1.5rem;
     border-bottom: 1px solid $gray-light-color;
+
+    @include tablet() {
+      @include flex(row, space-between, center);
+    }
   }
 
   &__title {

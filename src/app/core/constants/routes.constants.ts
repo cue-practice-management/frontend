@@ -8,6 +8,7 @@ export const ROUTES = {
     HOME: '/',
     ADMIN: {
         HOME: `${ADMIN_PREFFIX}`,
+        STUDENTS: `${ADMIN_PREFFIX}/students`,
         FACULTIES: `${ADMIN_PREFFIX}/faculties`,
         ACADEMIC_PROGRAMS: `${ADMIN_PREFFIX}/academic-programs`,
 

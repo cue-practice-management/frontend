@@ -51,6 +51,13 @@ export class DataTableComponent<T> {
     this.paginationChange.emit(this.pagination);
   }
 
+  get hasData(): boolean {
+    return !!this.pageData && Array.isArray(this.pageData.docs) && this.pageData.docs.length > 0;
+  }
+
+  get hasPagination(): boolean {
+    return !!this.pageData && this.pageData.totalPages > 1;
+  }
 
   readonly ChevronUp = ChevronUp;
   readonly ChevronDown = ChevronDown;

@@ -5,7 +5,6 @@ import {
   ApplicationRef,
   EnvironmentInjector,
   Injectable,
-  Injector,
   Type,
   createComponent
 } from '@angular/core';

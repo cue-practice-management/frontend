@@ -1,0 +1,11 @@
+<select
+  [id]="id"
+  class="input-select"
+  [formControl]="control"
+  [ngClass]="{ 'ng-invalid ng-touched': control.invalid && control.touched }"
+>
+  <option value="" disabled hidden>{{ placeholder }}</option>
+  <option *ngFor="let option of options" [value]="option.value">
+    {{ option.label }}
+  </option>
+</select>

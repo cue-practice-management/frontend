@@ -13,6 +13,10 @@ export const ADMIN_ROUTES: Routes = [
             {
                 path: 'academic-programs',
                 loadComponent: () => import('./pages/admin-academic-program-page/admin-academic-program-page.component').then(m => m.AdminAcademicProgramPageComponent),
+            },
+            {
+                path: 'students',
+                loadComponent: () => import('./pages/admin-student-page/admin-student-page.component').then(m => m.AdminStudentPageComponent),
             }
 
         ]

@@ -1,0 +1,16 @@
+<form [formGroup]="form" (ngSubmit)="onApply()" class="student-filter">
+    <div class="student-filter__filters">
+        <app-input-text id="fullName" placeholder="Nombre completo" [control]="fullName" />
+        <app-input-text id="email" placeholder="Correo electrónico" [control]="email" />
+        <app-input-text id="documentNumber" placeholder="Número de documento" [control]="documentNumber" />
+        <app-input-text id="currentSemester" placeholder="Semestre actual" [control]="currentSemester" />
+                <app-input-select id="gender" [control]="gender" placeholder="Genero" [options]="genderSelectOptions" /> 
+
+    </div>
+
+
+    <div class="student-filter__actions">
+        <app-button type="submit" size="sm">Aplicar filtros</app-button>
+        <app-button variant="outline" type="button" size="sm">Limpiar</app-button>
+    </div>
+</form>

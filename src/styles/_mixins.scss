@@ -9,6 +9,14 @@
     gap: $gap;
 }
 
+@mixin flex-column($justify: flex-start, $align: stretch, $gap: 0) {
+    display: flex;
+    flex-direction: column;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}
+
 @mixin width-full {
     width: 100%;
 }

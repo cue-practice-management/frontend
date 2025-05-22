@@ -20,6 +20,8 @@ export interface AdminEntityPageConfig<T extends { _id: string }, U extends Pagi
   createButtonLabel: string;
   tableComponent: Type<DataTable<T, U>>;
   formComponent: Type<any>;
+  filterComponent?: Type<any>;
   allowedActions?: TableAction[];
+  modalWidth?: string;
   modalData?: Record<string, any> | (() => Record<string, any>);
 }
