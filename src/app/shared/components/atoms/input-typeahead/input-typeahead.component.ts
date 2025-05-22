@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { debounceTime } from 'rxjs';
@@ -16,6 +16,7 @@ export class InputTypeaheadComponent implements OnInit {
   @Input() id = '';
   @Input() control!: FormControl;
   @Input() config!: TypeaheadConfig;
+  @Output() selectedOption: EventEmitter<TypeaheadItem> = new EventEmitter<TypeaheadItem>();
 
   inputControl = new FormControl();
   options: TypeaheadItem[] = [];
@@ -85,6 +86,7 @@ export class InputTypeaheadComponent implements OnInit {
   selectOption(option: TypeaheadItem): void {
     this.control.setValue(option.value);
     this.inputControl.setValue(option.label, { emitEvent: false });
+    this.selectedOption.emit(option);
     this.showDropdown = false;
   }
 
@@ -92,24 +94,26 @@ export class InputTypeaheadComponent implements OnInit {
     this.showDropdown = false;
   }
 
-private setDropdownDirection(): void {
-  requestAnimationFrame(() => {
-    const inputEl = document.getElementById(this.id);
-    if (!inputEl) return;
+  private setDropdownDirection(): void {
+    requestAnimationFrame(() => {
+      const inputEl = document.getElementById(this.id);
+      if (!inputEl) return;
 
-    const rect = inputEl.getBoundingClientRect();
-    const spaceBelow = window.innerHeight - rect.bottom;
-    const dropdownHeight = 200;
-    this.dropdownAbove = spaceBelow < dropdownHeight;
-  });
-}
+      const rect = inputEl.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - rect.bottom;
+      const dropdownHeight = 200;
+      this.dropdownAbove = spaceBelow < dropdownHeight;
+    });
+  }
 
   onBlur(): void {
     const label = this.inputControl.value?.trim();
+    if(!label) {
+      this.control.setValue(null);
+      return;
+    };
+
     const match = this.options.find(o => o.label === label);
-
-    console.log('onBlur', label, this.options);
-
     if (!match) {
       this.control.setValue(null);
       const errors = { ...(this.control.errors || {}) };
@@ -126,7 +130,7 @@ private setDropdownDirection(): void {
   }
 
   hasErrors(): boolean {
-    return this.control.invalid && (this.control.dirty || this.control.touched);
+    return this.control.invalid && this.control.touched;
   }
 
 }
