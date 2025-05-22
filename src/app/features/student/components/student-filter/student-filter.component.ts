@@ -9,6 +9,7 @@ import { ButtonComponent } from '@/shared/components/atoms/button/button.compone
 import { InputSelectComponent } from "@atoms/input-select/input-select.component";
 import { SelectOption } from '@/shared/components/atoms/input-select/input-select.models';
 import { AcademicProgramTypeaheadComponent } from '@/features/academic-program/components/academic-program-typeahead/academic-program-typeahead.component';
+import { GENDER_SELECT_OPTIONS } from '@/core/constants/select-options.constants';
 
 @Component({
   selector: 'app-student-filter',
@@ -28,6 +29,9 @@ export class StudentFilterComponent {
   @Output() filterChange = new EventEmitter<StudentFilter>();
   form: FormGroup;
   modalRef = inject(ModalRef, { optional: true });
+
+  genderOptions: SelectOption[] = GENDER_SELECT_OPTIONS;
+
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       fullName: [''],
@@ -46,16 +50,9 @@ export class StudentFilterComponent {
 
   onClear(): void {
     this.form.reset();
+    this.form.get('gender')?.setValue(''); 
     this.filterChange.emit(this.form.value);
     this.modalRef?.close();
-  }
-
-  get genderSelectOptions(): SelectOption[] {
-    return [
-      { label: 'Masculino', value: Gender.MALE },
-      { label: 'Femenino', value: Gender.FEMALE },
-      { label: 'Otro', value: Gender.OTHER },
-    ]
   }
 
   get fullName(): FormControl {

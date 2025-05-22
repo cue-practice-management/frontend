@@ -5,12 +5,12 @@
         <app-input-text id="documentNumber" placeholder="Número de documento" [control]="documentNumber" />
         <app-input-text id="currentSemester" placeholder="Semestre actual" [control]="currentSemester" />
         <app-academic-program-typeahead [control]="academicProgram" />
-        <app-input-select id="gender" [control]="gender" placeholder="Genero" [options]="genderSelectOptions" /> 
+        <app-input-select id="gender" placeholder="Genero" [control]="gender" [options]="genderOptions" />
     </div>
 
 
     <div class="student-filter__actions">
         <app-button type="submit" size="sm">Aplicar filtros</app-button>
-        <app-button variant="outline" type="button" size="sm">Limpiar</app-button>
+        <app-button variant="outline" type="button" size="sm" (click)="onClear()">Limpiar</app-button>
     </div>
 </form>

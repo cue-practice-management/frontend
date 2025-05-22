@@ -14,6 +14,7 @@ import { MIN_CURRENT_SEMESTER } from '../../student.constants';
 import { Gender } from '@/core/enums/gender.enum';
 import { DocumentType } from '@/core/enums/document-type.enum';
 import { colombianPhoneValidator } from '@/core/validators/colombian-phone.validator';
+import { DOCUMENT_TYPE_SELECT_OPTIONS } from '@/core/constants/select-options.constants';
 
 @Component({
   selector: 'app-student-form',
@@ -80,12 +81,7 @@ export class StudentFormComponent extends FormSubmitComponent<CreateStudentReque
               label: 'Tipo de documento',
               value: this.student?.typeOfDocument,
               type: FormFieldType.SELECT,
-              selectOptions: [
-                { label: 'Cédula de ciudadanía', value: DocumentType.CC },
-                { label: 'Tarjeta de identidad', value: DocumentType.TI },
-                { label: 'Pasaporte', value: DocumentType.PASSPORT },
-                { label: 'Cédula de extranjería', value: DocumentType.CE },
-              ],
+              selectOptions: DOCUMENT_TYPE_SELECT_OPTIONS,
               placeholder: 'Selecciona un tipo de documento',
               validators: [Validators.required]
             },

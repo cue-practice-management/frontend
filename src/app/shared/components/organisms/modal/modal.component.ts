@@ -62,8 +62,8 @@ export class ModalComponent {
     }
   }
 
-  onBackdropClick(): void {
-    if (this.config.closeOnBackdropClick !== false) {
+  onBackdropClick(event: MouseEvent): void {
+    if ((event.target as HTMLElement).classList.contains('modal-overlay') && this.config.closeOnBackdropClick !== false) {
       this.modalRef.close(null);
     }
   }
