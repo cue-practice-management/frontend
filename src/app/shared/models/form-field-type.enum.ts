@@ -4,4 +4,5 @@ export enum FormFieldType {
     PASSWORD = 'password',
     EMAIL = 'email',
     TYPEAHEAD = 'typeahead',
+    SELECT = 'select',
 } 
