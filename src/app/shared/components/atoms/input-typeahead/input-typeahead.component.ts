@@ -23,6 +23,9 @@ export class InputTypeaheadComponent implements OnInit {
   dropdownAbove = false;
 
   ngOnInit(): void {
+    if (!this.control) {
+      throw new Error('Control is required');
+    }
     this.initializeOptions();
     this.handleInputChanges();
   }
@@ -89,7 +92,8 @@ export class InputTypeaheadComponent implements OnInit {
     this.showDropdown = false;
   }
 
-  private setDropdownDirection(): void {
+private setDropdownDirection(): void {
+  requestAnimationFrame(() => {
     const inputEl = document.getElementById(this.id);
     if (!inputEl) return;
 
@@ -97,7 +101,8 @@ export class InputTypeaheadComponent implements OnInit {
     const spaceBelow = window.innerHeight - rect.bottom;
     const dropdownHeight = 200;
     this.dropdownAbove = spaceBelow < dropdownHeight;
-  }
+  });
+}
 
   onBlur(): void {
     const label = this.inputControl.value?.trim();
