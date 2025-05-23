@@ -1,0 +1,26 @@
+@import 'mixins';
+@import 'variables';
+
+.generic-filter {
+    @include flex-column($gap: 1.5rem);
+    @include padding-y(1rem);
+
+    @include desktop {
+        @include flex($gap: 2rem, $justify: space-between);
+    }
+
+    &__filters {
+        @include flex($gap: 1rem);
+        @include laptop {
+            @include flex($gap: 2rem);
+        }
+    }
+
+    &__actions{
+        @include flex($gap: 1rem);
+
+        @include tablet {
+            @include flex($gap: 2rem);
+        }
+    }
+}

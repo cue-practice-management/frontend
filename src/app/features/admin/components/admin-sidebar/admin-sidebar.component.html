@@ -8,11 +8,34 @@
     </header>
 
     <nav class="admin-sidebar__nav">
-        <a *ngFor="let item of sidebarItems" [routerLink]="'/' + item.route" routerLinkActive="active"
-            class="admin-sidebar__link">
-            <lucide-icon [name]="item.icon" size="20"></lucide-icon>
-            <span *ngIf="!isCollapsed()">{{ item.label }}</span>
-        </a>
+        <ng-container *ngFor="let item of sidebarItems">
+            <ng-container *ngIf="!item.children; else hasChildren">
+                <a [routerLink]="'/' + item.route" routerLinkActive="active" class="admin-sidebar__link"
+                    [class.admin-sidebar__link--collapsed]="isCollapsed()">
+                    <lucide-icon [name]="item.icon" size="20"></lucide-icon>
+                    <span *ngIf="!isCollapsed()" class="admin-sidebar__link-text">{{ item.label }}</span>
+                </a>
+            </ng-container>
+
+            <ng-template #hasChildren>
+                <div class="admin-sidebar__link admin-sidebar__link--parent" (click)="toggleExpand(item.label)"
+                    [class.admin-sidebar__link--collapsed]="isCollapsed()">
+                    <lucide-icon [name]="item.icon" size="20"></lucide-icon>
+                    <span *ngIf="!isCollapsed()" class="admin-sidebar__link-text">{{ item.label }}</span>
+                    <lucide-icon [img]="ChevronDown" class="admin-sidebar__expand-icon"
+                        [ngClass]="{ 'admin-sidebar__expand-icon--expanded': isExpanded(item.label) }" size="16">
+                    </lucide-icon>
+                </div>
+
+                <div class="admin-sidebar__sub-items" *ngIf="!isCollapsed() && isExpanded(item.label)">
+                    <a *ngFor="let child of item.children" [routerLink]="'/' + child.route" routerLinkActive="active"
+                        class="admin-sidebar__link admin-sidebar__link--child">
+                        <lucide-icon [name]="child.icon" size="16"></lucide-icon>
+                        <span class="admin-sidebar__link-text">{{ child.label }}</span>
+                    </a>
+                </div>
+            </ng-template>
+        </ng-container>
     </nav>
 
     <footer class="admin-sidebar__footer">

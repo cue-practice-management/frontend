@@ -2,99 +2,140 @@
 @import 'mixins';
 
 .admin-sidebar {
-    background-color: $white-color;
+  background-color: $white-color;
+  color: $dark-color;
+  height: 100vh;
+  width: 100%;
+  max-width: 16rem;
+  transition: max-width 0.3s ease;
+  border-right: 1px solid $gray-light-color;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  &.collapsed {
+    max-width: 4.5rem;
+
+    .admin-sidebar__user-info,
+    .admin-sidebar__link-text {
+      display: none;
+    }
+
+    .admin-sidebar__toggle {
+      justify-content: center;
+    }
+  }
+
+  &__header {
+    @include flex(row, center, center);
+    @include padding-x(1rem);
+    @include padding-y(1rem);
+    border-bottom: 1px solid $gray-light-color;
+  }
+
+  &__toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: auto;
     color: $dark-color;
-    height: 100vh;
-    width: 100%;
-    max-width: 16rem;
-    transition: max-width 0.3s ease;
-    border-right: 1px solid $gray-light-color;
-    position:sticky;
-    top:0;
-    z-index: 10;
+  }
+
+  &__nav {
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    flex: 1;
+  }
 
-    &.collapsed {
-        max-width: 4.5rem;
+  &__link {
+    @include flex(row, flex-start, center, nowrap, 0.75rem);
+    @include padding-y(0.75rem);
+    @include padding-x(1rem);
+    color: $dark-color;
+    text-decoration: none;
+    transition: background-color 0.3s ease, border-left 0.3s ease;
+    font-weight: 500;
+    position: relative;
 
-        .admin-sidebar__user-info,
-        .admin-sidebar__link span {
-            display: none;
-        }
-
-        .admin-sidebar__toggle {
-            justify-content: center;
-        }
+    &:hover,
+    &.active {
+      background-color: $light-color;
+      border-left: 4px solid $primary-color;
     }
 
-    &__header {
-        @include flex(row, center, center);
-        @include padding-x(1rem);
-        @include padding-y(1rem);
-        border-bottom: 1px solid $gray-light-color;
+    &--parent {
+      cursor: pointer;
+      font-weight: 600;
     }
 
-    &__footer {
-        @include flex(row, center, center);
-        @include padding-x(1rem);
-        @include padding-y(1rem);
-        border-bottom: 1px solid $gray-light-color;
+    &--child {
+      font-size: 0.9rem;
+      padding-left: 2.5rem;
+
+      &:hover,
+      &.active {
+        background-color: $light-color;
+      }
     }
 
-    &__user-info {
-        margin-left: 0.5rem;
-        @include flex(column);
-        @include text-sm;
+    lucide-icon {
+      min-width: 20px;
     }
+  }
 
-    &__user-name {
-        font-weight: bold;
+  &__expand-icon {
+    margin-left: auto;
+    transition: transform 0.2s ease-in-out;
+
+    &--expanded {
+      transform: rotate(180deg);
     }
+  }
 
-    &__user-role {
-        color: $gray-dark-color;
-        opacity: 0.7;
-    }
-    &__user{
-        @include flex(row, center, center);
-    }
-    
+  &__sub-items {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.5rem;
+    border-left: 1px solid $gray-light-color;
+    padding-left: 0.5rem;
+    animation: fade-in 0.3s ease-in-out;
+  }
 
-    &__toggle {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        margin-left: auto;
-        color: $dark-color;
-    }
+  &__footer {
+    @include flex(row, center, center);
+    @include padding-x(1rem);
+    @include padding-y(1rem);
+    border-top: 1px solid $gray-light-color;
+  }
 
-    &__nav {
-        margin-top: 1rem;
-        display: flex;
-        flex-direction: column;
-        flex:1;
-    }
+  &__user {
+    @include flex(row, center, center);
+    width: 100%;
+  }
 
-    &__link {
-        @include flex(row, flex-start, center, nowrap, 0.75rem);
-        @include padding-y(0.75rem);
-        @include padding-x(1rem);
-        color: $dark-color;
-        text-decoration: none;
-        transition: border 0.3s ease;
-        font-weight: 500;
+  &__user-info {
+    margin-left: 0.5rem;
+    @include flex(column);
+    @include text-sm;
+  }
 
-        &:hover,
-        &.active {
-            background-color: $light-color;
-            border-left: 4px solid $primary-color;
-        }
+  &__user-name {
+    font-weight: bold;
+  }
+}
 
-        lucide-icon {
-            min-width: 20px;
-        }
-    }
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

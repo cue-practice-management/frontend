@@ -17,6 +17,10 @@ export const ADMIN_ROUTES: Routes = [
             {
                 path: 'students',
                 loadComponent: () => import('./pages/admin-student-page/admin-student-page.component').then(m => m.AdminStudentPageComponent),
+            },
+            {
+                path: 'professors',
+                loadComponent: () => import('./pages/admin-professor-page/admin-professor-page.component').then(m => m.AdminProfessorPageComponent),
             }
 
         ]
