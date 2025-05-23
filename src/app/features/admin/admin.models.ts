@@ -6,8 +6,9 @@ import { LucideIconData } from 'lucide-angular';
 
 export interface SidebarItem {
   label: string;
-  route: string;
+  route?: string;
   icon: LucideIconData;
+  children?: SidebarItem[];
 }
 
 export interface AdminEntityPageTable {
