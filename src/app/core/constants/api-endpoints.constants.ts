@@ -12,6 +12,13 @@ export const API_ENDPOINTS = {
         DELETE: (id: string) => `/students/delete/${id}`,
         GET_TYPEAHEAD: '/students/typeahead',
     },
+    PROFESSOR: {
+        GET: '/professors',
+        CREATE: '/professors/create',
+        UPDATE: (id: string) => `/professors/update/${id}`,
+        DELETE: (id: string) => `/professors/delete/${id}`,
+        GET_TYPEAHEAD: '/professors/typeahead',
+    },
     FACULTY: {
         GET: '/faculty',
         GET_TYPEAHEAD: '/faculty/typeahead',
