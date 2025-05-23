@@ -1,16 +1,3 @@
-<form [formGroup]="form" (ngSubmit)="onApply()" class="student-filter">
-    <div class="student-filter__filters">
-        <app-input-text id="fullName" placeholder="Nombre completo" [control]="fullName" />
-        <app-input-text id="email" placeholder="Correo electrónico" [control]="email" />
-        <app-input-text id="documentNumber" placeholder="Número de documento" [control]="documentNumber" />
-        <app-input-text id="currentSemester" placeholder="Semestre actual" [control]="currentSemester" />
-        <app-academic-program-typeahead [control]="academicProgram" />
-        <app-input-select id="gender" placeholder="Genero" [control]="gender" [options]="genderOptions" />
-    </div>
+<app-admin-entity-filter [fields]="fields" (filterChange)="onApply($event)">>
 
-
-    <div class="student-filter__actions">
-        <app-button type="submit" size="sm">Aplicar filtros</app-button>
-        <app-button variant="outline" type="button" size="sm" (click)="onClear()">Limpiar</app-button>
-    </div>
-</form>
+</app-admin-entity-filter>
