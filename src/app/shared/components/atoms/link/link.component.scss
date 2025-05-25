@@ -1,0 +1,21 @@
+@import 'variables';
+
+.link {
+  color: $primary-color;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: darken($primary-color, 10%);
+  }
+
+  &--underline {
+    text-decoration: underline;
+  }
+
+  &--disabled {
+    color: $gray-light-color;
+    cursor: not-allowed;
+  }
+}

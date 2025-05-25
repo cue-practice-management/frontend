@@ -4,6 +4,7 @@ export const ADMIN_PREFFIX = 'admin';
 export const ROUTES = {
     AUTH: {
         LOGIN: `${AUTH_PREFFIX}/login`,
+        RECOVER_PASSWORD: `${AUTH_PREFFIX}/recover-password`,
     },
     HOME: '/',
     ADMIN: {

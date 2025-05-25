@@ -1,14 +1,15 @@
-<app-section-wrapper sectionClass="login-section" sectionContentClass="login-section-content">
-    <header class="login-section__header">
-        <app-logo size="xxl"></app-logo>
-    </header>
-    <section class="login-section__content">
-        <div class="login-section__image">
-            <img src="assets/images/login/background.jpg" alt="Login Image" class="login-section__image" />
-        </div>
+<header class="login-section__header">
+    <app-logo size="xxl"></app-logo>
+</header>
+<section class="login-section__content">
+    <div class="login-section__image">
+        <img src="assets/images/login/background.jpg" alt="Login Image" class="login-section__image" />
+    </div>
 
-        <div class="login-section__form">
-            <app-login-form></app-login-form>
-        </div>
-    </section>
-</app-section-wrapper>
+    <div class="login-section__form">
+        <app-login-form></app-login-form>
+        <app-link [routerLink]="recoverPasswordLink" [underline]="false">
+            ¿Olvidaste la contraseña?
+        </app-link>
+    </div>
+</section>
