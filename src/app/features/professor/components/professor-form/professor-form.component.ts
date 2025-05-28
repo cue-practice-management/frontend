@@ -44,11 +44,11 @@ export class ProfessorFormComponent  extends FormSubmitComponent<CreateProfessor
   
     private updateFormConfig(): void {
       this.professorFormConfig = {
-        title: this.professor ? 'Editar estudiante' : 'Crear estudiante',
-        buttonLabel: this.professor ? 'Guardar cambios' : 'Crear estudiante',
+        title: this.professor ? 'Editar profesor' : 'Crear profesor',
+        buttonLabel: this.professor ? 'Guardar cambios' : 'Crear profesor',
         sections: [
           {
-            title: 'Información del estudiante',
+            title: 'Información del Profesor',
             fields: [
               {
                 key: 'firstName',
@@ -71,7 +71,7 @@ export class ProfessorFormComponent  extends FormSubmitComponent<CreateProfessor
                 label: 'Correo electrónico',
                 value: this.professor?.email,
                 type: FormFieldType.TEXT,
-                placeholder: 'Correo electrónico del estudiante',
+                placeholder: 'Correo electrónico del profesor',
                 validators: [Validators.required, Validators.email]
               },
               {
@@ -87,7 +87,7 @@ export class ProfessorFormComponent  extends FormSubmitComponent<CreateProfessor
                 key: 'documentNumber',
                 label: 'Número de documento',
                 value: this.professor?.documentNumber,
-                type: FormFieldType.NUMBER,
+                type: FormFieldType.TEXT,
                 placeholder: 'Número de documento del profesor',
                 validators: [Validators.required]
               },

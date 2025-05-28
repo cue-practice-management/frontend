@@ -11,10 +11,8 @@ import { DynamicFormComponent } from "@organisms/dynamic-form/dynamic-form.compo
 import { AcademicProgramService } from '@/features/academic-program/services/academic-program.service';
 import { TypeaheadConfig } from '@/shared/models/typeahead-item.model';
 import { MIN_CURRENT_SEMESTER } from '../../student.constants';
-import { Gender } from '@/core/enums/gender.enum';
-import { DocumentType } from '@/core/enums/document-type.enum';
 import { colombianPhoneValidator } from '@/core/validators/colombian-phone.validator';
-import { DOCUMENT_TYPE_SELECT_OPTIONS } from '@/core/constants/select-options.constants';
+import { DOCUMENT_TYPE_SELECT_OPTIONS, GENDER_SELECT_OPTIONS } from '@/core/constants/select-options.constants';
 
 @Component({
   selector: 'app-student-form',
@@ -89,7 +87,7 @@ export class StudentFormComponent extends FormSubmitComponent<CreateStudentReque
               key: 'documentNumber',
               label: 'Número de documento',
               value: this.student?.documentNumber,
-              type: FormFieldType.NUMBER,
+              type: FormFieldType.TEXT,
               placeholder: 'Número de documento del estudiante',
               validators: [Validators.required]
             },
@@ -107,11 +105,7 @@ export class StudentFormComponent extends FormSubmitComponent<CreateStudentReque
               value: this.student?.gender,
               type: FormFieldType.SELECT,
               placeholder: 'Selecciona un género',
-              selectOptions: [
-                { label: 'Masculino', value: Gender.MALE },
-                { label: 'Femenino', value: Gender.FEMALE },
-                { label: 'Otro', value: Gender.OTHER },
-              ],
+              selectOptions: GENDER_SELECT_OPTIONS,
               validators: [Validators.required]
             },
 

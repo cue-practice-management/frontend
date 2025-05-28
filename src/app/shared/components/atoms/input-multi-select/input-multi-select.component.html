@@ -1,0 +1,28 @@
+<div class="input-multiselect" (appClickOutside)="onOutsideClick()">
+  <div class="input-multiselect__selected-tags">
+    <span class="tag" *ngFor="let item of selectedItems">
+      {{ item.label }}
+      <button type="button" (click)="removeItem(item)">×</button>
+    </span>
+  </div>
+
+  <input
+    type="text"
+    class="input-multiselect__input"
+    [placeholder]="config.placeholder"
+    [(ngModel)]="inputTerm"
+    (input)="onInput(inputTerm)"
+    [id]="id"
+    autocomplete="off"
+  />
+
+  <div *ngIf="showDropdown" class="input-multiselect__dropdown">
+    <div
+      class="input-multiselect__option"
+      *ngFor="let option of filteredOptions"
+      (click)="selectOption(option)"
+    >
+      {{ option.label }}
+    </div>
+  </div>
+</div>

@@ -30,7 +30,6 @@ export class ProfessorTableComponent extends DataTable<Professor, ProfessorFilte
     { label: 'Teléfono', field: 'phoneNumber', sortable: false },
     { label: 'Número de documento', field: 'documentNumber', sortable: false },
     { label: 'Programa académico', field: 'academicProgram', cell: (row) => row.academicProgram.name, sortable: true },
-    { label: 'Semestre actual', field: 'currentSemester', sortable: false },
   ];
 
   constructor(private professorService: ProfessorService, modalService: ModalService) {
