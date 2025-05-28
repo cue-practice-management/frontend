@@ -1,0 +1,1 @@
+export const RECOVER_EMAIL_KEY = 'recover-email';
