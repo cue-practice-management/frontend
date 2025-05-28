@@ -4,6 +4,9 @@ export const API_ENDPOINTS = {
         REFRESH: '/auth/refresh',
         LOGOUT: '/auth/logout',
         ME: '/auth/me',
+        RECOVER_PASSWORD: '/auth/recover-password',
+        RECOVER_PASSWORD_VALIDATE: '/auth/recover-password/validate',
+        RECOVER_RESET_PASSWORD: '/auth/recover-password/reset',
     },
     STUDENT: {
         GET: '/students',
