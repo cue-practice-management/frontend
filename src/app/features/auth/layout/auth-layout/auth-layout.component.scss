@@ -12,3 +12,9 @@
 ::ng-deep .auth-section-content{
   @include flex(column, center, center, nowrap, 1rem);
 }
+
+.auth-section__header {
+  @include width-full;
+  @include flex(column, center, center);
+
+}
