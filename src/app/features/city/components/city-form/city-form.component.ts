@@ -9,11 +9,12 @@ import { ModalRef } from '@/shared/components/organisms/modal/modal.ref';
 import { FormSubmitComponent } from '@/shared/abstracts/form-submit.abstract';
 import { CountryService } from '@/features/country/services/country.service';
 import { TypeaheadConfig } from '@/shared/models/typeahead-item.model';
+import { DynamicFormComponent } from '@/shared/components/organisms/dynamic-form/dynamic-form.component';
 
 @Component({
   selector: 'app-city-form',
   standalone: true,
-  imports: [],
+  imports: [DynamicFormComponent],
   templateUrl: './city-form.component.html',
   styleUrl: './city-form.component.scss'
 })
