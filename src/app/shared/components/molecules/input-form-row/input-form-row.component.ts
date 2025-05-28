@@ -1,6 +1,6 @@
 import { CommonModule, NgIf, NgSwitch } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { InputTextComponent } from '../../atoms/input-text/input-text.component';
 import { InputNumberComponent } from '../../atoms/input-number/input-number.component';
 import { InputPasswordComponent } from '../../atoms/input-password/input-password.component';
@@ -9,6 +9,7 @@ import { TypeaheadConfig } from '@/shared/models/typeahead-item.model';
 import { InputTypeaheadComponent } from "../../atoms/input-typeahead/input-typeahead.component";
 import { InputSelectComponent } from "../../atoms/input-select/input-select.component";
 import { SelectOption } from '../../atoms/input-select/input-select.models';
+import { InputOtpComponent } from "../../atoms/input-otp/input-otp.component";
 
 @Component({
   selector: 'app-input-form-row',
@@ -17,9 +18,11 @@ import { SelectOption } from '../../atoms/input-select/input-select.models';
     InputTextComponent,
     InputNumberComponent,
     InputPasswordComponent,
-    CommonModule,
     InputTypeaheadComponent,
-    InputSelectComponent
+    InputSelectComponent,
+    InputOtpComponent,
+    ReactiveFormsModule,
+    CommonModule,
   ],
   templateUrl: './input-form-row.component.html',
   styleUrl: './input-form-row.component.scss'
@@ -53,7 +56,7 @@ export class InputFormRowComponent {
       const { max } = this.control.getError('max');
       return `El valor máximo es ${max}.`;
     }
-    if(this.control.hasError('colombianPhone')) {
+    if (this.control.hasError('colombianPhone')) {
       return 'El número de teléfono no es válido, debe tener 10 dígitos y comenzar con 3.';
     }
     if (this.control.hasError('pattern')) return 'Formato inválido.';

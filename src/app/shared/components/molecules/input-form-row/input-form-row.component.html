@@ -7,6 +7,7 @@
     <app-input-password *ngSwitchCase="'password'" [control]="control" [id]="id" [placeholder]="placeholder" />
     <app-input-typeahead *ngSwitchCase="'typeahead'" [control]="control" [id]="id" [config]="typeaheadConfig!" />
     <app-input-select *ngSwitchCase="'select'" [control]="control" [id]="id" [placeholder]="placeholder" [options]="selectOptions!" />
+    <app-input-otp *ngSwitchCase="'otp'" [formControl]="control" /> 
   </ng-container>
 
   <div class="input-form-row__error" [class.input-form-row__error--visible]="showError">
