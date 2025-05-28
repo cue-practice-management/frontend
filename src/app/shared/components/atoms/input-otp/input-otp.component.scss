@@ -1,0 +1,23 @@
+@import 'variables';
+
+::ng-deep .input-otp__cell {
+  width: 3rem;
+  height: 3rem;
+  text-align: center;
+  font-size: 1.5rem;
+  border: 1px solid $gray-color;
+  border-radius: 8px;
+  transition: border-color 0.2s;
+
+  &:focus {
+    border-color: $primary-color;
+    outline: none;
+  }
+}
+
+::ng-deep .input-otp__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
