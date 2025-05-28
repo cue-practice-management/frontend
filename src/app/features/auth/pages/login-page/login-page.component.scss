@@ -2,11 +2,6 @@
 @import 'variables';
 
 .login-section {
-  &__header {
-    @include width-full;
-    @include flex(column, center, center);
-  }
-
   &__content {
     @include flex(column);
     @include width-full;
