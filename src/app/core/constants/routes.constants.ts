@@ -5,6 +5,8 @@ export const ROUTES = {
     AUTH: {
         LOGIN: `${AUTH_PREFFIX}/login`,
         RECOVER_PASSWORD: `${AUTH_PREFFIX}/recover-password`,
+        RECOVER_PASSWORD_VALIDATE: `${AUTH_PREFFIX}/recover-password/validate`,
+        RECOVER_PASSWORD_RESET: `${AUTH_PREFFIX}/recover-password/reset`,
     },
     HOME: '/',
     ADMIN: {

@@ -1,4 +1,3 @@
-import { SectionWrapperComponent } from '@/shared/components/atoms/section-wrapper/section-wrapper.component';
 import { LoginFormComponent } from '../../components/login-form/login-form.component';
 import { Component } from '@angular/core';
 import { LogoComponent } from "@/shared/components/atoms/logo/logo.component";
@@ -9,7 +8,7 @@ import { toAbsolutePath } from '@/core/utils/router.utils';
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [SectionWrapperComponent, LoginFormComponent, LogoComponent, LinkComponent],
+  imports: [LoginFormComponent, LogoComponent, LinkComponent],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
 })

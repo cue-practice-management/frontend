@@ -9,6 +9,10 @@ import { CurrentUserService } from '@/core/services/current-user.service';
 import { UserRole } from '@/core/enums/user-role.enum';
 import { ROUTES } from '@/core/constants/routes.constants';
 import { Router } from '@angular/router';
+import { RecoverPasswordRequestDto } from '../models/recover-password-request.dto';
+import { RecoverPasswordValidateRequestDto } from '../models/recover-password-validate-request.dto';
+import { RecoverPasswordValidateResponseDto } from '../models/recover-password-validate-response.dto';
+import { RecoverResetPasswordRequestDto } from '../models/recover-reset-password-request.dto';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -72,6 +76,19 @@ export class AuthService {
         return of(void 0);
       })
     ).subscribe();
+  }
+
+  recoverPassword(dto: RecoverPasswordRequestDto): Observable<void> {
+    return this.http.post<void>(API_ENDPOINTS.AUTH.RECOVER_PASSWORD, dto);
+  }
+
+  recoverPasswordValidate(dto: RecoverPasswordValidateRequestDto): Observable<RecoverPasswordValidateResponseDto> {
+    return this.http.post<RecoverPasswordValidateResponseDto>(API_ENDPOINTS.AUTH.RECOVER_PASSWORD_VALIDATE, dto);
+
+  }
+
+  recoverResetPassword(dto: RecoverResetPasswordRequestDto): Observable<void> {
+    return this.http.post<void>(API_ENDPOINTS.AUTH.RECOVER_RESET_PASSWORD, dto);
   }
 
   getAccessToken(): string | null {

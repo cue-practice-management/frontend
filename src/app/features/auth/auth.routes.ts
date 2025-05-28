@@ -17,6 +17,16 @@ export const AUTH_ROUTES: Routes = [
         path: 'recover-password',
         canActivate: [guestGuard],
         loadComponent: () => import('./pages/recover-password-page/recover-password-page.component').then(m => m.RecoverPasswordPageComponent)
+      },
+      {
+        path: 'recover-password/validate',
+        canActivate: [guestGuard],
+        loadComponent: () => import('./pages/recover-password-validate-page/recover-password-validate-page.component').then(m => m.RecoverPasswordValidatePageComponent)
+      },
+      {
+        path: 'recover-password/reset',
+        canActivate: [guestGuard],
+        loadComponent: () => import('./pages/recover-password-reset-page/recover-password-reset-page.component').then(m => m.RecoverPasswordResetPageComponent)
       }
     ]
   }
