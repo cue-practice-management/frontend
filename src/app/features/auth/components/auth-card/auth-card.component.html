@@ -1,0 +1,11 @@
+<div class="auth-card">
+    <div class="auth-card__title">
+        <lucide-icon *ngIf="icon" class="auth-card__icon" [img]="icon"></lucide-icon>
+        {{ title }}
+    </div>
+    <div *ngIf="subtitle" class="auth-card__subtitle">
+        {{ subtitle }}
+    </div>
+
+    <ng-content></ng-content>
+</div>
