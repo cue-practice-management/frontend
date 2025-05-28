@@ -14,3 +14,4 @@ export const DOCUMENT_TYPE_SELECT_OPTIONS: SelectOption[] = [
     { label: 'Pasaporte', value: DocumentType.PASSPORT },
     { label: 'Cédula de extranjería', value: DocumentType.CE },
 ]
+

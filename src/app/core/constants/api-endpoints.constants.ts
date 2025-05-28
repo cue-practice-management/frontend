@@ -33,4 +33,25 @@ export const API_ENDPOINTS = {
         DELETE: (id: string) => `/academic-programs/delete/${id}`,
         GET_TYPEAHEAD: '/academic-programs/typeahead',
     },
+    COMPANY: {
+        GET: '/companies',
+        CREATE: '/companies/create',
+        UPDATE: (id: string) => `/companies/update/${id}`,
+        DELETE: (id: string) => `/companies/delete/${id}`,
+        GET_TYPEAHEAD: '/companies/typeahead',
+    },
+    COUNTRY: {
+        GET: '/country',
+        CREATE: '/country/create',
+        UPDATE: (id: string) => `/country/update/${id}`,
+        DELETE: (id: string) => `/country/delete/${id}`,
+        GET_TYPEAHEAD: '/country/typeahead',
+    },
+    CITY: {
+        GET: '/city',
+        CREATE: '/city/create',
+        UPDATE: (id: string) => `/city/update/${id}`,
+        DELETE: (id: string) => `/city/delete/${id}`,
+        GET_TYPEAHEAD: '/city/typeahead',
+    }
 };

@@ -21,8 +21,19 @@ export const ADMIN_ROUTES: Routes = [
             {
                 path: 'professors',
                 loadComponent: () => import('./pages/admin-professor-page/admin-professor-page.component').then(m => m.AdminProfessorPageComponent),
+            },
+            {
+                path: 'companies',
+                loadComponent: () => import('./pages/admin-company-page/admin-company-page.component').then(m => m.AdminCompanyPageComponent),
+            },
+            {
+                path: 'countries',
+                loadComponent: () => import('./pages/admin-country-page/admin-country-page.component').then(m => m.AdminCountryPageComponent),
+            },
+            {
+                path: 'cities',
+                loadComponent: () => import('./pages/admin-city-page/admin-city-page.component').then(m => m.AdminCityPageComponent),
             }
-
         ]
     }
 

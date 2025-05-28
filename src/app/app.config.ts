@@ -4,7 +4,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './features/auth/interceptors/auth.interceptor';
 import { baseUrlInterceptor } from './core/interceptors/base-url.interceptor';
 import { CurrentUserService } from './core/services/current-user.service';
-import { provideRouter } from '@angular/router';
+import { PreloadAllModules, provideRouter, withPreloading } from '@angular/router';
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
@@ -22,8 +22,8 @@ function initializeApp(): () => Promise<void> {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes),
-    provideAnimations(),
+   provideRouter(routes, withPreloading(PreloadAllModules)),
+   provideAnimations(),
     provideHttpClient(
       withInterceptors([
         baseUrlInterceptor,

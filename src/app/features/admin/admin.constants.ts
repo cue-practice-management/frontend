@@ -12,6 +12,11 @@ export const ADMIN_SIDEBAR_ITEMS: SidebarItem[] = [
     ]
   },
   {
+    label: 'Empresas',
+    route: ROUTES.ADMIN.COMPANIES,
+    icon: LucideIcons.Building
+  },
+  {
     label: 'Facultades',
     route: ROUTES.ADMIN.FACULTIES,
     icon: LucideIcons.SwatchBook
@@ -21,4 +26,12 @@ export const ADMIN_SIDEBAR_ITEMS: SidebarItem[] = [
     route: ROUTES.ADMIN.ACADEMIC_PROGRAMS,
     icon: LucideIcons.BookType
   },
+  {
+    label: 'Configuración',
+    icon: LucideIcons.Settings,
+    children: [
+      { label: 'Países', route: ROUTES.ADMIN.COUNTRIES, icon: LucideIcons.Globe },
+      { label: 'Ciudades', route: ROUTES.ADMIN.CITIES, icon: LucideIcons.MapPin }
+    ]
+  }
 ];
