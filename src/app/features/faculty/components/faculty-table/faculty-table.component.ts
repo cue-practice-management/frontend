@@ -22,7 +22,7 @@ export class FacultyTableComponent extends DataTable<Faculty, FacultyFilter> imp
   override entityName = 'Facultad';
   override entityKeyName = 'faculty';
   override formComponent = FacultyFormComponent;
-  @Input() override allowedActions = [TableAction.EDIT, TableAction.DELETE];
+  @Input() override allowedActions = [];
 
   readonly columns: ColumnConfig<Faculty>[] = [
     { label: 'Nombre', field: 'name', sortable: true },

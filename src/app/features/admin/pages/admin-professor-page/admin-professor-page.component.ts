@@ -6,6 +6,7 @@ import { ProfessorTableComponent } from '@/features/professor/components/profess
 import { StudentFormComponent } from '@/features/student/components/student-form/student-form.component';
 import { ProfessorFilterComponent } from '@/features/professor/components/professor-filter/professor-filter.component';
 import { Professor, ProfessorFilter } from '@/features/professor/professor.models';
+import { ProfessorFormComponent } from '@/features/professor/components/professor-form/professor-form.component';
 
 @Component({
   selector: 'app-admin-professor-page',
@@ -21,7 +22,7 @@ export class AdminProfessorPageComponent {
     description: 'Gestiona los profesores de la institución',
     createButtonLabel: 'Crear profesor',
     tableComponent: ProfessorTableComponent,
-    formComponent: StudentFormComponent,
+    formComponent: ProfessorFormComponent,
     filterComponent: ProfessorFilterComponent,
     allowedActions: [TableAction.EDIT, TableAction.DELETE],
     modalWidth: '800px',
