@@ -9,14 +9,17 @@ import { Observable } from 'rxjs';
 import { COMPANY_ID_PARAM } from '../../admin.constants';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { SpinnerComponent } from "../../../../shared/components/atoms/spinner/spinner.component";
+import { SpinnerComponent } from "@atoms/spinner/spinner.component";
 import { AdminSectionWrapperComponent } from "../../components/admin-section-wrapper/admin-section-wrapper.component";
 import { CompanyDetailInfoComponent } from "../../../company/components/company-detail-info/company-detail-info.component";
+import { TabsComponent } from "@organisms/tabs/tabs.component";
+import { TabComponent } from "@molecules/tab/tab.component";
+import { CompanyDetailContractsComponent } from "../../../company/components/company-detail-contracts/company-detail-contracts.component";
 
 @Component({
   selector: 'app-admin-company-detail-page',
   standalone: true,
-  imports: [CommonModule, SpinnerComponent, AdminSectionWrapperComponent, CompanyDetailInfoComponent],
+  imports: [CommonModule, SpinnerComponent, AdminSectionWrapperComponent, CompanyDetailInfoComponent, TabsComponent, TabComponent, CompanyDetailContractsComponent],
   templateUrl: './admin-company-detail-page.component.html',
   styleUrl: './admin-company-detail-page.component.scss'
 })
