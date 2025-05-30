@@ -1,8 +1,8 @@
   <app-data-table
-    [pageData]="mockedPageData"
+    [pageData]="pageData"
     [columns]="columns"
     [actions]="actions"
-    [loading]="loading"
-    [pagination]="{ page: 1, limit: contracts.length }"
+    [loading]="isLoading"
     [clickableRows]="false"
+    (paginationChange)="onPaginationChange($event)"
   />

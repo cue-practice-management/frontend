@@ -45,6 +45,9 @@ export const API_ENDPOINTS = {
         DELETE: (id: string) => `/companies/delete/${id}`,
         GET_TYPEAHEAD: '/companies/typeahead',
         CREATE_CONTRACT: (companyId: string) => `/companies/${companyId}/contracts`,
+        GET_CONTRACTS: (companyId: string) => `/companies/${companyId}/contracts`,
+        UPDATE_CONTRACT: (contractId: string) => `/companies/contracts/${contractId}`,
+        DELETE_CONTRACT: (id: string) => `/companies/contracts/${id}`,
     },
     COUNTRY: {
         GET: '/country',

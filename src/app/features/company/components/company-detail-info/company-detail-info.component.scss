@@ -53,9 +53,4 @@
     @include flex-column(flex-start, flex-start, 0.5rem);
   }
 
-  &__contracts{
-    width: 100%;
-    @include flex-column(center, 0.5rem);
-  }
-
 }

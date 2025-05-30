@@ -1,0 +1,37 @@
+@import 'variables';
+@import 'mixins';
+
+.tabs {
+  width: 100%;
+
+  &__headers {
+    display: flex;
+    border-bottom: 2px solid $gray-light-color;
+    gap: 1rem;
+    overflow-x: auto;
+  }
+
+  &__header {
+    background: none;
+    border: none;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    color: $gray-color;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+
+    &--active {
+      color: $primary-color;
+      border-color: $primary-color;
+    }
+
+    &:hover {
+      color: $primary-color-dark;
+    }
+  }
+
+  &__content {
+    padding-top: 1.5rem;
+  }
+}

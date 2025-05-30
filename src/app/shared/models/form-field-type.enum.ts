@@ -6,5 +6,7 @@ export enum FormFieldType {
     TYPEAHEAD = 'typeahead',
     SELECT = 'select',
     MULTISELECT = 'multiselect',
-    OTP = 'otp'
+    OTP = 'otp',
+    DATE = 'date',
+    FILE = 'file',
 } 

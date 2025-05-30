@@ -53,7 +53,7 @@ export abstract class DataTable<T extends { _id: string }, U extends PaginationQ
                 data: {
                     confirmDialogData: {
                         title: `¿Eliminar ${this.entityName}?`,
-                        message: `¿Estás seguro de eliminar "${entity.name ?? 'este registro'}"?`,
+                        message: `¿Estás seguro de eliminar ${entity.name ? `"${entity.name}"` : "este registro" }?`,
                         confirmText: 'Eliminar',
                         cancelText: 'Cancelar',
                         danger: true

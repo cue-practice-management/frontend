@@ -7,7 +7,7 @@ import { CompanyContractsTableComponent } from "../company-contracts-table/compa
 @Component({
   selector: 'app-company-detail-info',
   standalone: true,
-  imports: [CommonModule, CompanyLogoUploaderComponent, CompanyContractsTableComponent],
+  imports: [CommonModule, CompanyLogoUploaderComponent],
   templateUrl: './company-detail-info.component.html',
   styleUrl: './company-detail-info.component.scss'
 })

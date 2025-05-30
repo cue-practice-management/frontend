@@ -12,6 +12,9 @@ import { SelectOption } from '../../atoms/input-select/input-select.models';
 import { InputOtpComponent } from "../../atoms/input-otp/input-otp.component";
 import { MultiSelectConfig } from '../../atoms/input-multi-select/input-multi-select.models';
 import { InputMultiSelectComponent } from "../../atoms/input-multi-select/input-multi-select.component";
+import { FileConfig } from '../../atoms/input-file/input-file.models';
+import { InputDateComponent } from "../../atoms/input-date/input-date.component";
+import { InputFileComponent } from "../../atoms/input-file/input-file.component";
 
 @Component({
   selector: 'app-input-form-row',
@@ -25,7 +28,9 @@ import { InputMultiSelectComponent } from "../../atoms/input-multi-select/input-
     InputOtpComponent,
     ReactiveFormsModule,
     CommonModule,
-    InputMultiSelectComponent
+    InputMultiSelectComponent,
+    InputDateComponent,
+    InputFileComponent
 ],
   templateUrl: './input-form-row.component.html',
   styleUrl: './input-form-row.component.scss'
@@ -39,6 +44,7 @@ export class InputFormRowComponent {
   @Input() typeaheadConfig?: TypeaheadConfig;
   @Input() multiSelectConfig?: MultiSelectConfig;
   @Input() selectOptions?: SelectOption[];
+  @Input() fileConfig?: FileConfig;
 
 
   get showError(): boolean {
