@@ -6,6 +6,7 @@ import { CompanyService } from '../../services/company.service';
 import { ModalService } from '@/core/services/modal.service';
 import { CompanyFormComponent } from '../company-form/company-form.component';
 import { ColumnConfig } from '@/shared/components/organisms/data-table/data-table.models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-company-table',
@@ -31,6 +32,7 @@ export class CompanyTableComponent extends DataTable<Company, CompanyFilter> imp
 
   constructor(
     private readonly companyService: CompanyService,
+    private readonly router: Router,
     modalService: ModalService
   ) {
     super(modalService);
@@ -50,5 +52,9 @@ export class CompanyTableComponent extends DataTable<Company, CompanyFilter> imp
 
   get actions() {
     return this.getTableActions();
+  }
+
+  onRowClick(company: Company): void {
+    this.router.navigate(['/admin/companies', company._id]);
   }
 }
