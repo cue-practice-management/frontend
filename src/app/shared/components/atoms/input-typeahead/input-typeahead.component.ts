@@ -29,6 +29,7 @@ export class InputTypeaheadComponent implements OnInit {
     }
     this.initializeOptions();
     this.handleInputChanges();
+    this.detectInputChanges();
   }
 
   private handleInputChanges(): void {
@@ -52,6 +53,14 @@ export class InputTypeaheadComponent implements OnInit {
         return;
       }
 
+    });
+  }
+
+  private detectInputChanges(): void {
+    this.control.valueChanges.subscribe(value => {
+      if (!value) {
+        this.inputControl.setValue('', { emitEvent: false });
+      }
     });
   }
 
@@ -108,7 +117,7 @@ export class InputTypeaheadComponent implements OnInit {
 
   onBlur(): void {
     const label = this.inputControl.value?.trim();
-    if(!label) {
+    if (!label) {
       this.control.setValue(null);
       return;
     };
