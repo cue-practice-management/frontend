@@ -1,6 +1,8 @@
 import { PaginationQuery } from "@/core/models/pagination-query.model";
 import { AcademicProgram } from "../academic-program/academic-program.models";
-import { CompanyContractStatus, CompanyContractType } from "./comany.enums";
+import { CompanyContractStatus, CompanyContractType, CompanySize } from "./comany.enums";
+import { City } from "../city/city.models";
+import { Country } from "../country/country.models";
 
 export interface Company {
     _id: string;
@@ -8,16 +10,28 @@ export interface Company {
     corporateName: string;
     nit: string;
     phone: string;
+    city: City;
+    country: Country;
+    address: string;
+    size: CompanySize;
     logoUrl?: string;
     websiteUrl: string;
     openJobPositions: boolean;
     associatedAcademicPrograms: AcademicProgram[];
 }
 
+export interface CompanyDetail extends Company {
+    contracts: CompanyContract[];
+}
+
 export interface CreateCompanyRequest {
+    name: string;
+    corporateName: string;
+    nit: string;
     phone: string;
     websiteUrl: string;
     address: string;
+    size: CompanySize;
     country: string;
     city: string;
     associatedAcademicPrograms?: string[];
@@ -28,9 +42,11 @@ export interface UpdateCompanyRequest {
     corporateName?: string;
     nit?: string;
     phone?: string;
-    logoUrl?: string;
     websiteUrl?: string;
-    openJobPositions?: boolean;
+    address?: string;
+    size?: CompanySize;
+    country?: string;
+    city?: string;
     associatedAcademicPrograms?: string[];
 }
 

@@ -5,6 +5,7 @@ import { PaginatedResult } from '@/core/models/paginated-result.model';
 import { Observable } from 'rxjs';
 import { objectToHttpParams } from '@/core/utils/http-params.util';
 import { API_ENDPOINTS } from '@/core/constants/api-endpoints.constants';
+import { TypeaheadItem } from '@/shared/models/typeahead-item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +21,13 @@ export class CityService {
     return this.http.get<PaginatedResult<City>>(API_ENDPOINTS.CITY.GET, { params });
   }
 
-  getTypeaheadCities(query: string): Observable<City[]> {
-    return this.http.get<City[]>(API_ENDPOINTS.CITY.GET_TYPEAHEAD, {
-      params: { query }
+  getTypeaheadCities(query: string, country?:string): Observable<TypeaheadItem[]> {
+    const params: { [param: string]: string } = { query };
+    if (country !== undefined) {
+      params['country'] = country;
+    }
+    return this.http.get<TypeaheadItem[]>(API_ENDPOINTS.CITY.GET_TYPEAHEAD, {
+      params
     });
   }
 
