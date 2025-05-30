@@ -1,0 +1,39 @@
+@import 'variables';
+
+.input-file-wrapper {
+  width: 100%;
+}
+
+.input-file {
+  position: relative;
+  display: block;
+  width: 100%;
+
+  &__native {
+    display: none;
+  }
+
+  &__label {
+    display: block;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border: 1px solid $dark-color;
+    background-color: $light-color;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    font-size: 1rem;
+    color: $dark-color;
+    text-align: left;
+
+    &:hover {
+      background-color: $white-color;
+    }
+  }
+
+  .ng-invalid.ng-touched + &__label {
+    border-color: $error-color;
+    background-color: rgba($error-color-light, 0.1);
+    box-shadow: 0 0 2px $error-color;
+  }
+}
