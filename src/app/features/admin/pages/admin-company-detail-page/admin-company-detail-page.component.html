@@ -1,0 +1,10 @@
+<app-admin-section-wrapper [title]="'Detalles de la Empresa'"
+    [description]="'Aquí puedes ver los detalles de la empresa seleccionada.'">
+
+    <div *ngIf="isLoading">
+        <app-spinner></app-spinner>
+    </div>
+
+    <app-company-detail-info *ngIf="!isLoading && company" [company]="company" />
+
+</app-admin-section-wrapper>

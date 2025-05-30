@@ -10,6 +10,8 @@ import { InputTypeaheadComponent } from "../../atoms/input-typeahead/input-typea
 import { InputSelectComponent } from "../../atoms/input-select/input-select.component";
 import { SelectOption } from '../../atoms/input-select/input-select.models';
 import { InputOtpComponent } from "../../atoms/input-otp/input-otp.component";
+import { MultiSelectConfig } from '../../atoms/input-multi-select/input-multi-select.models';
+import { InputMultiSelectComponent } from "../../atoms/input-multi-select/input-multi-select.component";
 
 @Component({
   selector: 'app-input-form-row',
@@ -23,7 +25,8 @@ import { InputOtpComponent } from "../../atoms/input-otp/input-otp.component";
     InputOtpComponent,
     ReactiveFormsModule,
     CommonModule,
-  ],
+    InputMultiSelectComponent
+],
   templateUrl: './input-form-row.component.html',
   styleUrl: './input-form-row.component.scss'
 })
@@ -34,7 +37,9 @@ export class InputFormRowComponent {
   @Input() placeholder = '';
   @Input() type: FormFieldType = FormFieldType.TEXT;
   @Input() typeaheadConfig?: TypeaheadConfig;
+  @Input() multiSelectConfig?: MultiSelectConfig;
   @Input() selectOptions?: SelectOption[];
+
 
   get showError(): boolean {
     return this.control.invalid && (this.control.dirty || this.control.touched);

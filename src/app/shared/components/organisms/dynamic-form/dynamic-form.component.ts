@@ -18,24 +18,50 @@ export class DynamicFormComponent<T> implements OnInit {
   @Input() dynamicFormConfig!: DynacmicFormConfig;
   @Input() isLoading = false;
   @Output() submitted = new EventEmitter<T>();
+  @Output() fieldChanged = new EventEmitter<{ key: string; value: any; form: FormGroup }>();
+
   form!: FormGroup;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.form = this.buildForm(this.dynamicFormConfig);
+    this.subscribeToFieldChanges(this.dynamicFormConfig);
+  }
+
+  private buildForm(config: DynacmicFormConfig): FormGroup {
     const controlsConfig: Record<string, any> = {};
 
-    this.dynamicFormConfig.sections.forEach(section => {
+    config.sections.forEach(section => {
       section.fields.forEach(field => {
-        const control = {
-          value: field.value ?? '',
-          disabled: field.disabled ?? false
-        };
-        controlsConfig[field.key] = [control, field.validators ?? []];
+        controlsConfig[field.key] = [
+          {
+            value: field.value ?? '',
+            disabled: field.disabled ?? false,
+          },
+          field.validators ?? [],
+        ];
       });
     });
 
-    this.form = this.fb.group(controlsConfig);
+    return this.fb.group(controlsConfig);
+  }
+
+  private subscribeToFieldChanges(config: DynacmicFormConfig): void {
+    config.sections.forEach(section => {
+      section.fields.forEach(field => {
+        const control = this.form.get(field.key);
+        if (control) {
+          control.valueChanges.subscribe(value => {
+            this.fieldChanged.emit({
+              key: field.key,
+              value,
+              form: this.form,
+            });
+          });
+        }
+      });
+    });
   }
 
   onSubmit(): void {

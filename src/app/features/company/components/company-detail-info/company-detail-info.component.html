@@ -1,0 +1,35 @@
+<div class="company-detail-info">
+  <div class="company-detail-info__header">
+    <app-company-logo-uploader [companyId]="company._id" [logoUrl]="company.logoUrl"
+      (logoUpdated)="company.logoUrl = $event" />
+    <div class="company-detail-info__title">
+      <h2>{{ company.name }}</h2>
+      <p class="company-detail-info__corporate-name">{{ company.corporateName }}</p>
+    </div>
+  </div>
+
+  <div class="company-detail-info__grid">
+    <div class="company-detail-info__item"><strong>NIT:</strong> {{ company.nit }}</div>
+    <div class="company-detail-info__item"><strong>Teléfono:</strong> {{ company.phone }}</div>
+    <div class="company-detail-info__item"><strong>Ciudad:</strong> {{ company.city.name }}</div>
+    <div class="company-detail-info__item"><strong>País:</strong> {{ company.country.name }}</div>
+    <div class="company-detail-info__item"><strong>Dirección:</strong> {{ company.address }}</div>
+    <div class="company-detail-info__item">
+      <strong>Sitio Web: </strong>
+      <a [href]="company.websiteUrl" target="_blank" rel="noopener noreferrer">{{ company.websiteUrl }}</a>
+    </div>
+    <div class="company-detail-info__item"><strong>Vacantes abiertas:</strong> {{ company.openJobPositions ? 'Sí' : 'No'
+      }}</div>
+    <div class="company-detail-info__item">
+      <strong>Programas Académicos:</strong>
+      <span>
+        {{ companyAssociatedAcademicPrograms }}
+      </span>
+    </div>
+  </div>
+
+  <div class="company-detail-info__contracts">
+    <h2 class="company-detail-info__title">Contratos</h2>
+    <app-company-contracts-table [contracts]="company.contracts"></app-company-contracts-table>
+  </div>
+</div>

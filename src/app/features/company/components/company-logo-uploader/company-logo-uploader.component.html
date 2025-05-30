@@ -1,0 +1,25 @@
+<div
+  class="company-logo-uploader"
+  (mouseenter)="hover = true"
+  (mouseleave)="hover = false"
+>
+  <img
+    *ngIf="logoUrl; else noLogo"
+    [src]="logoUrl"
+    alt="Logo empresa"
+    class="company-logo-uploader__image"
+  />
+  <ng-template #noLogo>
+    <div class="company-logo-uploader__placeholder">
+      <lucide-icon [img]="Image" size="48" />
+    </div>
+  </ng-template>
+
+  <label
+    class="company-logo-uploader__overlay"
+    [class.visible]="hover"
+  >
+    <lucide-icon [img]="Camera" size="24" />
+    <input type="file" accept="image/*" (change)="onFileSelected($event)" hidden />
+  </label>
+</div>

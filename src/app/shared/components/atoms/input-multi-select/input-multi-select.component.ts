@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { MultiSelectConfig, MultiSelectItem } from './input-multi-select.models';
 import { FormControl, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -11,7 +11,7 @@ import { ClickOutsideDirective } from '@/shared/directives/click-outside.directi
   standalone: true,
   imports: [CommonModule, FormsModule, ClickOutsideDirective]
 })
-export class InputMultiSelectComponent implements OnInit {
+export class InputMultiSelectComponent implements OnInit, OnChanges {
   @Input() id = '';
   @Input() control!: FormControl<string[]>;
   @Input() config!: MultiSelectConfig;
@@ -24,6 +24,12 @@ export class InputMultiSelectComponent implements OnInit {
   ngOnInit(): void {
     if (!this.control) throw new Error('FormControl is required');
     this.loadSelectedFromControl();
+  }
+
+  ngOnChanges(): void {
+    if (this.control && this.config) {
+      this.loadSelectedFromControl();
+    }
   }
 
   onInput(term: string): void {
@@ -56,8 +62,17 @@ export class InputMultiSelectComponent implements OnInit {
 
   private loadSelectedFromControl(): void {
     const current = this.control.value || [];
-    const allOptions = this.config.staticOptions || [];
-    this.selectedItems = allOptions.filter(o => current.includes(o.value));
+
+    if (this.config.staticOptions) {
+      const allOptions = this.config.staticOptions;
+      this.selectedItems = allOptions.filter(o => current.includes(o.value));
+    }
+
+    else if (this.config.retrieveOptions) {
+      this.config.retrieveOptions('').subscribe(results => {
+        this.selectedItems = results.filter(o => current.includes(o.value));
+      });
+    }
   }
 
   private updateControl(): void {

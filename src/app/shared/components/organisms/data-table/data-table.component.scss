@@ -92,3 +92,11 @@ button {
     font-size: 0.875rem;
     @include padding-y(0.5rem);
 }
+
+tr.clickable {
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba($primary-color, 0.04);
+    }
+}

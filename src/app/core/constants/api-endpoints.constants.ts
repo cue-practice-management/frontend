@@ -38,10 +38,13 @@ export const API_ENDPOINTS = {
     },
     COMPANY: {
         GET: '/companies',
+        GET_BY_ID: (id: string) => `/companies/${id}`,
         CREATE: '/companies/create',
         UPDATE: (id: string) => `/companies/update/${id}`,
+        UPDATE_LOGO: (id: string) => `/companies/update-logo/${id}`,
         DELETE: (id: string) => `/companies/delete/${id}`,
         GET_TYPEAHEAD: '/companies/typeahead',
+        CREATE_CONTRACT: (companyId: string) => `/companies/${companyId}/contracts`,
     },
     COUNTRY: {
         GET: '/country',

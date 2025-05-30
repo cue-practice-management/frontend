@@ -43,7 +43,7 @@
       </tr>
 
       <!-- ROWS -->
-      <tr *ngFor="let row of pageData.docs">
+      <tr *ngFor="let row of pageData.docs" (click)="onRowClick(row)" [class.clickable]="clickableRows">
         <td *ngFor="let col of columns" [class.center]="col.align === 'center'" [class.right]="col.align === 'right'">
           <ng-container *ngIf="col.cell; else defaultCell">
             {{ col.cell(row) }}

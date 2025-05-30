@@ -3,4 +3,6 @@
   [columns]="columns"
   [actions]="actions"
   [loading]="isLoading"
+  [clickableRows]="true"
+  (rowClicked)="onRowClick($event)"
   (paginationChange)="onPaginationChange($event)"/>
