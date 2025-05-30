@@ -1,0 +1,9 @@
+<div class="company-detail-contracts">
+    <div class="company-detail-contracts__actions">   
+        <app-button (click)="onCreateContract()" size="sm" >
+            Crear contrato
+        </app-button>
+    </div>
+
+    <app-company-contracts-table [companyId]="companyId" ></app-company-contracts-table>
+</div>
