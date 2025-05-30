@@ -2,7 +2,7 @@ import { PaginatedResult } from '@/core/models/paginated-result.model';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ColumnConfig, TableRowAction } from './data-table.models';
 import { CommonModule } from '@angular/common';
-import { ChevronDown, ChevronUp, LucideAngularModule } from 'lucide-angular';
+import { ChevronDown, ChevronUp, File, LucideAngularModule } from 'lucide-angular';
 import { SpinnerComponent } from "../../atoms/spinner/spinner.component";
 import { PaginationQuery } from '@/core/models/pagination-query.model';
 import { ButtonComponent } from '../../atoms/button/button.component';
@@ -69,4 +69,5 @@ export class DataTableComponent<T> {
 
   readonly ChevronUp = ChevronUp;
   readonly ChevronDown = ChevronDown;
+  readonly File = File
 }

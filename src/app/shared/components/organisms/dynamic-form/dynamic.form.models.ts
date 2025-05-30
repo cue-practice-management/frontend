@@ -3,6 +3,7 @@ import { TypeaheadConfig } from '@/shared/models/typeahead-item.model';
 import { ValidatorFn } from '@angular/forms';
 import { SelectOption } from '../../atoms/input-select/input-select.models';
 import { MultiSelectConfig } from '../../atoms/input-multi-select/input-multi-select.models';
+import { FileConfig } from '../../atoms/input-file/input-file.models';
 
 export interface FormField {
   key: string;
@@ -11,10 +12,11 @@ export interface FormField {
   placeholder?: string;
   validators?: ValidatorFn[];
   disabled?: boolean;
-  value?: string | number | boolean | string[] | number[];
+  value?: string | number | boolean | string[] | number[] | Date;
   typeaheadConfig?: TypeaheadConfig;
   multiSelectConfig?: MultiSelectConfig;
   selectOptions?: SelectOption[];
+  fileConfig?: FileConfig;
 }
 
 export interface FormFieldSection {

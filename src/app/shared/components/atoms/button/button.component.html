@@ -4,7 +4,7 @@
   class="button"
   [ngClass]="buttonClasses"
 >
-  <app-spinner *ngIf="isLoading"></app-spinner>
+  <app-spinner *ngIf="isLoading" color="white"></app-spinner>
   <span class="button__content" [class.button__content--hidden]="isLoading">
     <ng-content></ng-content>
   </span>

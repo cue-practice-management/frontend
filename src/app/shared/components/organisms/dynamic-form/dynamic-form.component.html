@@ -7,7 +7,9 @@
 
     <ng-container *ngFor="let field of section.fields">
       <app-input-form-row [control]="getFormControl(field.key)" [id]="field.key" [label]="field.label"
-        [placeholder]="field.placeholder || ''" [type]="field.type" [typeaheadConfig]="field.typeaheadConfig" [selectOptions]="field.selectOptions" [multiSelectConfig]="field.multiSelectConfig" />
+        [placeholder]="field.placeholder || ''" [type]="field.type" [typeaheadConfig]="field.typeaheadConfig"
+        [selectOptions]="field.selectOptions" [multiSelectConfig]="field.multiSelectConfig"
+        [fileConfig]="field.fileConfig" />
     </ng-container>
   </ng-container>
 

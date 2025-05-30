@@ -11,15 +11,15 @@
     <thead>
       <tr>
         <th *ngFor="let col of columns" [class.sortable]="col.sortable"
-          [class.active]="col.sortable && col.field === pagination.sortBy"
-          (click)="col.sortable && col.field ? onSort(col.field.toString()) : null">
+            [class.active]="col.sortable && col.field === pagination.sortBy"
+            (click)="col.sortable && col.field ? onSort(col.field.toString()) : null">
           <span class="th-content">
             {{ col.label }}
             <ng-container *ngIf="col.sortable">
               <lucide-icon *ngIf="col.field === pagination.sortBy"
-                [name]="pagination.sortOrder === 'asc' ? ChevronUp : ChevronDown" size="14"></lucide-icon>
-              <lucide-icon *ngIf="col.field !== pagination.sortBy" [name]="ChevronDown" class="invisible-icon"
-                size="14"></lucide-icon>
+                           [name]="pagination.sortOrder === 'asc' ? ChevronUp : ChevronDown" size="14" />
+              <lucide-icon *ngIf="col.field !== pagination.sortBy"
+                           [name]="ChevronDown" class="invisible-icon" size="14" />
             </ng-container>
           </span>
         </th>
@@ -44,17 +44,35 @@
 
       <!-- ROWS -->
       <tr *ngFor="let row of pageData.docs" (click)="onRowClick(row)" [class.clickable]="clickableRows">
-        <td *ngFor="let col of columns" [class.center]="col.align === 'center'" [class.right]="col.align === 'right'">
-          <ng-container *ngIf="col.cell; else defaultCell">
-            {{ col.cell(row) }}
+        <td *ngFor="let col of columns"
+            [class.center]="col.align === 'center'"
+            [class.right]="col.align === 'right'">
+          <ng-container *ngIf="col.isFile; else defaultRendering">
+            <ng-container *ngIf="row[col.field!] as fileUrl; else noFile">
+              <a [href]="fileUrl" target="_blank" rel="noopener noreferrer">
+                Ver documento
+              </a>
+            </ng-container>
+            <ng-template #noFile>
+              <span class="muted">No cargado</span>
+            </ng-template>
           </ng-container>
-          <ng-template #defaultCell>
-            {{ row[col.field!] }}
+
+          <ng-template #defaultRendering>
+            <ng-container *ngIf="col.cell; else defaultCell">
+              {{ col.cell(row) }}
+            </ng-container>
+            <ng-template #defaultCell>
+              {{ row[col.field!] }}
+            </ng-template>
           </ng-template>
         </td>
+
         <td *ngIf="actions.length" class="center">
-          <button *ngFor="let action of actions" [class.danger]="action.danger" [disabled]="action.disabled?.(row)"
-            (click)="action.action(row)">
+          <button *ngFor="let action of actions"
+                  [class.danger]="action.danger"
+                  [disabled]="action.disabled?.(row)"
+                  (click)="action.action(row)">
             <lucide-icon [name]="action.icon" size="16"></lucide-icon>
           </button>
         </td>
@@ -65,11 +83,17 @@
 
 <!-- PAGINATION -->
 <div class="pagination" *ngIf="hasPagination && pageData">
-  <app-button size="sm" variant="outline" (click)="goToPage(pageData.page - 1)" [disabled]="pageData.page === 1">
+  <app-button size="sm" variant="outline"
+              (click)="goToPage(pageData.page - 1)"
+              [disabled]="pageData.page === 1">
     Anterior
   </app-button>
+
   <span>Página {{ pageData.page }} de {{ pageData.totalPages }}</span>
-  <app-button size="sm" (click)="goToPage(pageData.page + 1)" [disabled]="pageData.page === pageData.totalPages">
+
+  <app-button size="sm"
+              (click)="goToPage(pageData.page + 1)"
+              [disabled]="pageData.page === pageData.totalPages">
     Siguiente
   </app-button>
 </div>
