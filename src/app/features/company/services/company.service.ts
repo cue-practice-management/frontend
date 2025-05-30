@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Company, CompanyContract, CompanyDetail, CompanyFilter, CreateCompanyContractRequest, CreateCompanyRequest, UpdateCompanyRequest } from '../company.models';
+import { Company, CompanyContract, CompanyContractFilter, CompanyDetail, CompanyFilter, CreateCompanyContractRequest, CreateCompanyRequest, UpdateCompanyContractRequest, UpdateCompanyRequest } from '../company.models';
 import { PaginatedResult } from '@/core/models/paginated-result.model';
 import { objectToHttpParams } from '@/core/utils/http-params.util';
 import { API_ENDPOINTS } from '@/core/constants/api-endpoints.constants';
@@ -47,5 +47,25 @@ export class CompanyService {
       API_ENDPOINTS.COMPANY.CREATE_CONTRACT(companyId),
       formData
     );
+  }
+
+  getCompanyContracts(companyId: string, filter: CompanyContractFilter): Observable<PaginatedResult<CompanyContract>> {
+    const params = objectToHttpParams(filter);
+    return this.http.get<PaginatedResult<CompanyContract>>(
+      API_ENDPOINTS.COMPANY.GET_CONTRACTS(companyId),
+      { params }
+    );
+  }
+
+  updateCompanyContract(contractId: string, dto: UpdateCompanyContractRequest, file?: File): Observable<CompanyContract> {
+    const formData = buildFormData(dto, file);
+    return this.http.put<CompanyContract>(
+      API_ENDPOINTS.COMPANY.UPDATE_CONTRACT(contractId),
+      formData
+    );
+  }
+
+  deleteCompanyContract(contractId: string): Observable<void> {
+    return this.http.delete<void>(API_ENDPOINTS.COMPANY.DELETE_CONTRACT(contractId));
   }
 }

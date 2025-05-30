@@ -1,10 +1,16 @@
-import { Component, Input } from '@angular/core';
-import { DataTableComponent } from "../../../../shared/components/organisms/data-table/data-table.component";
-import { ColumnConfig, TableRowAction } from '@/shared/components/organisms/data-table/data-table.models';
-import { CompanyContract } from '../../company.models';
 import { PaginatedResult } from '@/core/models/paginated-result.model';
+import { Component, Input, OnInit } from '@angular/core';
+import { CompanyContract, CompanyContractFilter } from '../../company.models';
+import { ColumnConfig, TableRowAction } from '@/shared/components/organisms/data-table/data-table.models';
+import { DataTableComponent } from '@/shared/components/organisms/data-table/data-table.component';
+import { Observable } from 'rxjs';
+import { ModalService } from '@/core/services/modal.service';
+import { CompanyContractFormComponent } from '../company-contract-form/company-contract-form.component';
+import { DataTable } from '@/shared/abstracts/data-table.abstract';
 import { formatDate } from '@angular/common';
-import { Edit, Trash } from 'lucide-angular';
+import { CompanyService } from '../../services/company.service';
+import { getCompanyContractStatusLabel, getCompanyContractTypeLabel } from '../../company.enums';
+import { TableAction } from '@/shared/models/table-actions.enum';
 
 @Component({
   selector: 'app-company-contracts-table',
@@ -13,27 +19,24 @@ import { Edit, Trash } from 'lucide-angular';
   templateUrl: './company-contracts-table.component.html',
   styleUrl: './company-contracts-table.component.scss'
 })
-export class CompanyContractsTableComponent {
-  @Input() contracts: CompanyContract[] = [];
-  @Input() loading = false;
+export class CompanyContractsTableComponent extends DataTable<CompanyContract, CompanyContractFilter> implements OnInit {
+  override entityName = 'Contrato';
+  override entityKeyName = 'contract';
+  override formComponent = CompanyContractFormComponent;
+  @Input() override allowedActions = [TableAction.EDIT, TableAction.DELETE];
+  @Input() companyId!: string;
 
-  @Input() onAdd!: () => void;
-  @Input() onEdit!: (contract: CompanyContract) => void;
-  @Input() onDelete!: (contract: CompanyContract) => void;
-
-  get mockedPageData(): PaginatedResult<CompanyContract> {
-    return {
-      docs: this.contracts,
-      totalDocs: this.contracts.length,
-      totalPages: 1,
-      page: 1,
-      limit: this.contracts.length,
-    };
-  }
-
-  columns: ColumnConfig<CompanyContract>[] = [
-    { label: 'Tipo', field: 'type' },
-    { label: 'Estado', field: 'status' },
+  readonly columns: ColumnConfig<CompanyContract>[] = [
+    {
+      label: 'Tipo',
+      field: 'type',
+      cell: (c) => getCompanyContractTypeLabel(c.type),
+    },
+    {
+      label: 'Estado',
+      field: 'status',
+      cell: (c) => getCompanyContractStatusLabel(c.status),
+    },
     {
       label: 'Fecha Inicio',
       field: 'startDate',
@@ -46,25 +49,28 @@ export class CompanyContractsTableComponent {
     },
     {
       label: 'Documento',
-      cell: (c) =>
-        c.fileUrl
-          ? `<a href="${c.fileUrl}" target="_blank">Ver</a>`
-          : 'No cargado',
-      align: 'center',
-    },
+      field: 'fileUrl',
+      isFile: true,
+    }
   ];
 
-  actions: TableRowAction<CompanyContract>[] = [
-    {
-      icon: Edit,
-      label: 'Editar',
-      action: (c) => this.onEdit?.(c),
-    },
-    {
-      icon: Trash,
-      label: 'Eliminar',
-      action: (c) => this.onDelete?.(c),
-      danger: true,
-    },
-  ];
+  constructor(private companyService: CompanyService, modalService: ModalService) {
+    super(modalService);
+  }
+
+  ngOnInit(): void {
+    this.loadPageData(this.filter);
+  }
+
+  override getAll(filter: CompanyContractFilter): Observable<PaginatedResult<CompanyContract>> {
+    return this.companyService.getCompanyContracts(this.companyId, filter);
+  }
+
+  override delete(id: string): Observable<void> {
+    return this.companyService.deleteCompanyContract(id);
+  }
+
+  get actions(): TableRowAction<CompanyContract>[] {
+    return this.getTableActions();
+  }
 }
