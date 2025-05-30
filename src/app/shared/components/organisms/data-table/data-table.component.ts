@@ -20,8 +20,10 @@ export class DataTableComponent<T> {
   @Input() actions: TableRowAction<T>[] = [];
   @Input() loading = false;
   @Input() pagination: PaginationQuery = { page: 1, limit: 10 };
+  @Input() clickableRows = false;
 
   @Output() paginationChange = new EventEmitter<PaginationQuery>();
+  @Output() rowClicked = new EventEmitter<T>();
 
   goToPage(page: number): void {
     if (!this.pageData) return;
@@ -49,6 +51,12 @@ export class DataTableComponent<T> {
     };
 
     this.paginationChange.emit(this.pagination);
+  }
+
+  onRowClick(row: T): void {
+    if (this.clickableRows) {
+      this.rowClicked.emit(row);
+    }
   }
 
   get hasData(): boolean {
