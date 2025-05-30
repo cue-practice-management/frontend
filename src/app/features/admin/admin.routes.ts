@@ -1,4 +1,5 @@
 import { Routes } from "@angular/router";
+import { COMPANY_ID_PARAM } from "./admin.constants";
 
 export const ADMIN_ROUTES: Routes = [
     {
@@ -25,6 +26,10 @@ export const ADMIN_ROUTES: Routes = [
             {
                 path: 'companies',
                 loadComponent: () => import('./pages/admin-company-page/admin-company-page.component').then(m => m.AdminCompanyPageComponent),
+            },
+            {
+                path: `companies/:${COMPANY_ID_PARAM}`,
+                loadComponent: () => import('./pages/admin-company-detail-page/admin-company-detail-page.component').then(m => m.AdminCompanyDetailPageComponent),
             },
             {
                 path: 'countries',

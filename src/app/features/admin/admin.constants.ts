@@ -35,3 +35,6 @@ export const ADMIN_SIDEBAR_ITEMS: SidebarItem[] = [
     ]
   }
 ];
+
+
+export const COMPANY_ID_PARAM = 'companyId';
