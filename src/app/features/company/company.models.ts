@@ -1,6 +1,6 @@
 import { PaginationQuery } from "@/core/models/pagination-query.model";
 import { AcademicProgram } from "../academic-program/academic-program.models";
-import { CompanyContractStatus, CompanyContractType, CompanySize } from "./comany.enums";
+import { CompanyContractStatus, CompanyContractType, CompanySize } from "./company.enums";
 import { City } from "../city/city.models";
 import { Country } from "../country/country.models";
 
@@ -64,11 +64,16 @@ export interface CompanyContract {
     fileUrl: string | null;
     startDate: Date;
     endDate: Date;
-    status: string;
-    type: string;
+    status: CompanyContractStatus;
+    type: CompanyContractType;
     observations?: string;
     createdAt: Date;
     updatedAt: Date;
+}
+
+export interface CompanyContractFilter extends PaginationQuery {
+    type?: CompanyContractType;
+    status?: CompanyContractStatus;
 }
 
 export interface CreateCompanyContractRequest {

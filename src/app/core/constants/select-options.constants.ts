@@ -1,7 +1,7 @@
 import { SelectOption } from "@/shared/components/atoms/input-select/input-select.models";
 import { Gender } from "../enums/gender.enum";
 import { DocumentType } from "../enums/document-type.enum";
-import { CompanySize } from "@/features/company/comany.enums";
+import { CompanyContractStatus, CompanyContractType, CompanySize } from "@/features/company/company.enums";
 
 export const GENDER_SELECT_OPTIONS: SelectOption[] = [
     { label: 'Masculino', value: Gender.MALE },
@@ -23,3 +23,12 @@ export const COMPANY_SIZE_SELECT_OPTIONS: SelectOption[] = [
     { label: 'Gran empresa', value: CompanySize.LARGE },
 ]
 
+export const COMPANY_CONTRACT_TYPE_SELECT_OPTIONS: SelectOption[] = [
+    {label: 'Marco', value: CompanyContractType.MARCO}
+]
+
+export const COMPANY_CONTRACT_STATUS_SELECT_OPTIONS: SelectOption[] = [
+    { label: 'Activo', value: CompanyContractStatus.ACTIVE },
+    { label: 'Expirado', value: CompanyContractStatus.EXPIRED },
+    { label: 'Terminado', value: CompanyContractStatus.TERMINATED },
+]

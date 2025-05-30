@@ -1,0 +1,11 @@
+export type FileAcceptType =
+  | 'image/*'
+  | 'application/pdf'
+  | '.doc'
+  | '.docx'
+  | '.xls'
+  | '.xlsx'
+  | '.png'
+  | '.jpg'
+  | '.jpeg'
+  | '/*'
