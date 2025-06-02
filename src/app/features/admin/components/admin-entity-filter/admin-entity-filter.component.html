@@ -1,22 +1,20 @@
 <form [formGroup]="form" (ngSubmit)="onApply()" class="generic-filter">
   <div class="generic-filter__filters">
     <ng-container *ngFor="let field of fields">
-      <app-input-text
-        *ngIf="field.type === 'text'"
-        [id]="field.key"
-        [placeholder]="field.placeholder"
+      
+      <app-input-text *ngIf="field.type === 'text'" [id]="field.key" [placeholder]="field.placeholder"
         [control]="getControl(field.key)" />
 
-      <app-input-select
-        *ngIf="field.type === 'select'"
-        [id]="field.key"
-        [placeholder]="field.placeholder"
-        [control]="getControl(field.key)"
-        [options]="field.options || []" />
+      <app-input-select *ngIf="field.type === 'select'" [id]="field.key" [placeholder]="field.placeholder"
+        [control]="getControl(field.key)" [options]="field.options || []" />
 
-      <app-academic-program-typeahead
-        *ngIf="field.type === 'typeahead' && field.key === 'academicProgram'"
+      <app-academic-program-typeahead *ngIf="field.type === 'typeahead' && field.key === 'academicProgram'"
         [control]="getControl(field.key)" />
+
+      <app-company-typeahead *ngIf="field.type === 'typeahead' && field.key === 'company'"
+        [control]="getControl(field.key)" />
+
+
     </ng-container>
   </div>
 
