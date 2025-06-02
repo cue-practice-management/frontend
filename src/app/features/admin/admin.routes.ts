@@ -24,6 +24,10 @@ export const ADMIN_ROUTES: Routes = [
                 loadComponent: () => import('./pages/admin-professor-page/admin-professor-page.component').then(m => m.AdminProfessorPageComponent),
             },
             {
+                path: 'company-mentors',
+                loadComponent: () => import('./pages/admin-company-mentor-page/admin-company-mentor-page.component').then(m => m.AdminCompanyMentorPageComponent),
+            },
+            {
                 path: 'companies',
                 loadComponent: () => import('./pages/admin-company-page/admin-company-page.component').then(m => m.AdminCompanyPageComponent),
             },
