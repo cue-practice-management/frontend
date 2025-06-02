@@ -6,7 +6,6 @@ import { StudentFormComponent } from '@/features/student/components/student-form
 import { Student, StudentFilter } from '@/features/student/student.model';
 import { StudentFilterComponent } from '@/features/student/components/student-filter/student-filter.component';
 import { TableAction } from '@/shared/models/table-actions.enum';
-import { HeroSectionBentoComponent } from '@/features/homes/components/hero-section/hero-section-bento/hero-section-bento.component';
 
 @Component({
   selector: 'app-admin-student-page',
