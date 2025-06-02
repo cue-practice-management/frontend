@@ -13,6 +13,7 @@ export const ROUTES = {
         HOME: `${ADMIN_PREFFIX}`,
         STUDENTS: `${ADMIN_PREFFIX}/students`,
         PROFESSORS: `${ADMIN_PREFFIX}/professors`,
+        COMPANY_MENTORS: `${ADMIN_PREFFIX}/company-mentors`,
         FACULTIES: `${ADMIN_PREFFIX}/faculties`,
         ACADEMIC_PROGRAMS: `${ADMIN_PREFFIX}/academic-programs`,
         COMPANIES: `${ADMIN_PREFFIX}/companies`,

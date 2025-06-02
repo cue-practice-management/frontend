@@ -8,7 +8,8 @@ export const ADMIN_SIDEBAR_ITEMS: SidebarItem[] = [
     icon: LucideIcons.User,
     children: [
       { label: 'Estudiantes', route: ROUTES.ADMIN.STUDENTS, icon: LucideIcons.User },
-      { label: 'Profesores', route: ROUTES.ADMIN.PROFESSORS, icon: LucideIcons.UserCheck }
+      { label: 'Profesores', route: ROUTES.ADMIN.PROFESSORS, icon: LucideIcons.UserCheck },
+      { label: 'Tutores Empresariales', route: ROUTES.ADMIN.COMPANY_MENTORS, icon: LucideIcons.UserSearch },
     ]
   },
   {
