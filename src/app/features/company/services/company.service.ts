@@ -6,6 +6,7 @@ import { objectToHttpParams } from '@/core/utils/http-params.util';
 import { API_ENDPOINTS } from '@/core/constants/api-endpoints.constants';
 import { Observable } from 'rxjs';
 import { buildFormData } from '@/core/utils/form-data.utils';
+import { TypeaheadItem } from '@/shared/models/typeahead-item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,12 @@ export class CompanyService {
 
   getCompanyById(id: string): Observable<CompanyDetail> {
     return this.http.get<CompanyDetail>(API_ENDPOINTS.COMPANY.GET_BY_ID(id));
+  }
+
+  getTypeaheadCompanies(query: string): Observable<TypeaheadItem[]> {
+    return this.http.get<TypeaheadItem[]>(API_ENDPOINTS.COMPANY.GET_TYPEAHEAD, {
+      params: { query }
+    });
   }
 
   createCompany(createCompanyRequest: CreateCompanyRequest): Observable<Company> {
