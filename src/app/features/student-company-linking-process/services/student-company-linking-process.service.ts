@@ -25,7 +25,7 @@ export class StudentCompanyLinkingProcessService {
   }
 
   updateStudentCompanyLinkingProcessStatus(progressId: string, status: UpdateStudentCompanyLinkingProcessStatus): Observable<StudentCompanyLinkingProcess> {
-    return this.http.put<StudentCompanyLinkingProcess>(API_ENDPOINTS.STUDENT_COMPANY_LINKING_PROCESS.UPDATE_STATUS(progressId), status);
+    return this.http.patch<StudentCompanyLinkingProcess>(API_ENDPOINTS.STUDENT_COMPANY_LINKING_PROCESS.UPDATE_STATUS(progressId), status);
   }
 
   deleteStudentCompanyLinkingProcess(id: string): Observable<void> {

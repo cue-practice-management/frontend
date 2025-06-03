@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { PaginatedResult } from '@/core/models/paginated-result.model';
 import { DataTableComponent } from "@organisms/data-table/data-table.component";
 import { StudentFormComponent } from '../student-form/student-form.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-table',
@@ -34,7 +35,7 @@ export class StudentTableComponent extends DataTable<Student, StudentFilter> imp
     { label: 'Empresa actual', field: 'currentCompany', sortable: false },
   ];
 
-  constructor(private studentService: StudentService, modalService: ModalService) {
+  constructor(private studentService: StudentService, private router: Router, modalService: ModalService) {
     super(modalService);
   }
 
@@ -52,6 +53,10 @@ export class StudentTableComponent extends DataTable<Student, StudentFilter> imp
 
   get actions(): TableRowAction<Student>[] {
     return this.getTableActions();
+  }
+
+  onRowClick(student: Student): void {
+    this.router.navigate(['/admin/students', student._id]);
   }
 
 }

@@ -1,5 +1,5 @@
 import { Routes } from "@angular/router";
-import { COMPANY_ID_PARAM } from "./admin.constants";
+import { COMPANY_ID_PARAM, STUDENT_ID_PARAM } from "./admin.constants";
 
 export const ADMIN_ROUTES: Routes = [
     {
@@ -18,6 +18,10 @@ export const ADMIN_ROUTES: Routes = [
             {
                 path: 'students',
                 loadComponent: () => import('./pages/admin-student-page/admin-student-page.component').then(m => m.AdminStudentPageComponent),
+            },
+            {
+                path:`students/:${STUDENT_ID_PARAM}`,
+                loadComponent: () => import('./pages/admin-student-detail-page/admin-student-detail-page.component').then(m => m.AdminStudentDetailPageComponent),
             },
             {
                 path: 'professors',

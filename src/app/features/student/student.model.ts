@@ -2,15 +2,16 @@ import { CreateUserRequest, UpdateUserRequest, User } from "@/core/models/user.m
 import { AcademicProgram } from "../academic-program/academic-program.models";
 import { Gender } from "@/core/enums/gender.enum";
 import { PaginationQuery } from "@/core/models/pagination-query.model";
+import { Company } from "../company/company.models";
 
 export interface Student extends User {
     academicProgram: AcademicProgram;
     phoneNumber: string;
     documentNumber: string;
     currentSemester: number;
-    currentCompany: string;
-    curriculumUrl: string;
-    epsCertificationUrl: string;
+    currentCompany?: Company;
+    curriculumUrl?: string;
+    epsCertificationUrl?: string;
 }
 
 export interface StudentFilter extends PaginationQuery {

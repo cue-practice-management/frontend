@@ -1,6 +1,32 @@
+@import 'variables';
+
 .avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  display: inline-block;
+
+  &--xs {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  &--sm {
     width: 2.5rem;
     height: 2.5rem;
-    border-radius: 50%;
-    object-fit: cover;
+  }
+
+  &--md {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  &--lg {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  &--xl {
+    width: 7rem;
+    height: 7rem;
+  }
 }

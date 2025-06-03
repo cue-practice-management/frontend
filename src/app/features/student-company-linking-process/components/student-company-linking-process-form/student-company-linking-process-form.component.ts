@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { StudentCompanyLinkingProcessService } from '../../services/student-company-linking-process.service';
 import { ModalRef } from '@/shared/components/organisms/modal/modal.ref';
 import { DynamicFormComponent } from "@organisms/dynamic-form/dynamic-form.component";
+import { STUDENT_COMPANY_LINKING_PROCESS_STATUS_SELECT_OPTIONS } from '@/core/constants/select-options.constants';
 
 @Component({
   selector: 'app-student-company-linking-process-form',
@@ -82,12 +83,7 @@ export class StudentCompanyLinkingProcessFormComponent extends FormSubmitCompone
         value: this.studentCompanyLinkingProcess?.status ?? '',
         type: FormFieldType.SELECT,
         placeholder: 'Selecciona un estado',
-        selectOptions: [
-          { label: 'Pendiente', value: 'pending' },
-          { label: 'Entrevista agendada', value: 'interview_scheduled' },
-          { label: 'Aprobado', value: 'approved' },
-          { label: 'Rechazado', value: 'rejected' },
-        ],
+        selectOptions: STUDENT_COMPANY_LINKING_PROCESS_STATUS_SELECT_OPTIONS,
         validators: [Validators.required],
       }
     ];

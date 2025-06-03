@@ -1,0 +1,16 @@
+<app-admin-section-wrapper [title]="'Detalles del Estudiante'">
+    <div class="student-detail-page__loading" *ngIf="isLoading">
+        <app-spinner></app-spinner>
+    </div>
+    <app-tabs *ngIf="!isLoading && student">
+        
+        <app-tab label="Información General">
+            <app-student-profile [student]="student"></app-student-profile>
+        </app-tab>
+
+        <app-tab label="Procesos de vinculación">
+            <app-student-company-linking-process-table [filter]="{student: student._id, page: 1, limit: 10}"></app-student-company-linking-process-table>
+        </app-tab>
+
+    </app-tabs>
+</app-admin-section-wrapper>

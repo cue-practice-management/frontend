@@ -1,0 +1,64 @@
+@import 'mixins';
+@import 'variables';
+
+.student-detail-info {
+  @include flex-column(flex-start, center, 2rem);
+  @include container;
+
+  &__header {
+    @include flex(column, center, center, nowrap, 1rem);
+  }
+
+  &__photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid $primary-color;
+  }
+
+  &__title {
+    @include flex-column(center, center, 0.25rem);
+    text-align: center;
+
+    h2 {
+      @include text-xl;
+      color: $primary-color;
+      margin: 0;
+    }
+
+    &__role {
+      @include text-md;
+      color: $gray-color;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    padding-top: 1rem;
+    margin: 0 auto;
+    justify-items: center;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__item {
+    @include text-sm;
+    color: $dark-color;
+    width: 100%;
+
+    a {
+      color: $primary-color;
+      text-decoration: underline;
+    }
+  }
+}

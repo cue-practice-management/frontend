@@ -27,6 +27,10 @@ export class StudentService {
     });
   }
 
+  getStudentById(id: string): Observable<Student> {
+    return this.http.get<Student>(API_ENDPOINTS.STUDENT.GET_BY_ID(id));
+  }
+
   createStudent(student: CreateStudentRequest): Observable<Student> {
     return this.http.post<Student>(API_ENDPOINTS.STUDENT.CREATE, student);
   }
