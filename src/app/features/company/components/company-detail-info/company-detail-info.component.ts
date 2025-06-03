@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { CompanyDetail } from '../../company.models';
 import { CommonModule } from '@angular/common';
 import { CompanyLogoUploaderComponent } from "../company-logo-uploader/company-logo-uploader.component";
-import { CompanyContractsTableComponent } from "../company-contracts-table/company-contracts-table.component";
 
 @Component({
   selector: 'app-company-detail-info',
