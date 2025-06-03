@@ -8,7 +8,7 @@ import { ProfessorService } from '../../services/professor.service';
 import { ModalService } from '@/core/services/modal.service';
 import { PaginatedResult } from '@/core/models/paginated-result.model';
 import { Observable } from 'rxjs';
-import { DataTableComponent } from "../../../../shared/components/organisms/data-table/data-table.component";
+import { DataTableComponent } from "@organisms/data-table/data-table.component";
 
 @Component({
   selector: 'app-professor-table',
