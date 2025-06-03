@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, input, Input, OnInit } from '@angular/core';
 import { DataTableComponent } from "@organisms/data-table/data-table.component";
 import { StudentCompanyLinkingProcess, StudentCompanyLinkingProcessFilter } from '../../student-company-linking-process.models';
 import { TableAction } from '@/shared/models/table-actions.enum';
@@ -23,6 +23,7 @@ export class StudentCompanyLinkingProcessTableComponent extends DataTable<Studen
   override entityKeyName = 'studentCompanyLinkingProcess';
   override formComponent = StudentCompanyLinkingProcessFormComponent;
   @Input() override allowedActions: TableAction[] = [TableAction.EDIT, TableAction.DELETE];
+  @Input() override filter!: StudentCompanyLinkingProcessFilter;
 
   readonly columns: ColumnConfig<StudentCompanyLinkingProcess>[] = [
     { label: 'Estudiante', field: 'student', cell: (row) => `${row.student.firstName} ${row.student.lastName}`, sortable: true },
