@@ -56,6 +56,7 @@
     @include flex(row, flex-start, center, nowrap, 0.75rem);
     @include padding-y(0.75rem);
     @include padding-x(1rem);
+    font-size: small;
     color: $dark-color;
     text-decoration: none;
     transition: background-color 0.3s ease, border-left 0.3s ease;

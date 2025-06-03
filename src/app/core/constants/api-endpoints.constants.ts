@@ -69,5 +69,11 @@ export const API_ENDPOINTS = {
         UPDATE: (id: string) => `/city/update/${id}`,
         DELETE: (id: string) => `/city/delete/${id}`,
         GET_TYPEAHEAD: '/city/typeahead',
-    }
+    },
+    STUDENT_COMPANY_LINKING_PROCESS: {
+        GET: '/student-company-linking-processes',
+        CREATE: '/student-company-linking-processes/create',
+        UPDATE_STATUS: (id: string) => `/student-company-linking-processes/update/${id}/status`,
+        DELETE: (id: string) => `/student-company-linking-processes/delete/${id}`,
+    },
 };

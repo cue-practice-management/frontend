@@ -3,7 +3,6 @@ import { AdminEntityPageConfig } from '../../admin.models';
 import { TableAction } from '@/shared/models/table-actions.enum';
 import { AdminEntityPageComponent } from "../../components/admin-entity-page/admin-entity-page.component";
 import { ProfessorTableComponent } from '@/features/professor/components/professor-table/professor-table.component';
-import { StudentFormComponent } from '@/features/student/components/student-form/student-form.component';
 import { ProfessorFilterComponent } from '@/features/professor/components/professor-filter/professor-filter.component';
 import { Professor, ProfessorFilter } from '@/features/professor/professor.models';
 import { ProfessorFormComponent } from '@/features/professor/components/professor-form/professor-form.component';

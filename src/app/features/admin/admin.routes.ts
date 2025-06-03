@@ -42,6 +42,10 @@ export const ADMIN_ROUTES: Routes = [
             {
                 path: 'cities',
                 loadComponent: () => import('./pages/admin-city-page/admin-city-page.component').then(m => m.AdminCityPageComponent),
+            },
+            {
+                path: 'student-company-linking-process',
+                loadComponent: () => import('./pages/admin-student-company-linking-process-page/admin-student-company-linking-process-page.component').then(m => m.AdminStudentCompanyLinkingProcessPageComponent),
             }
         ]
     }
