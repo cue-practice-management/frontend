@@ -44,3 +44,4 @@ export const ADMIN_SIDEBAR_ITEMS: SidebarItem[] = [
 
 
 export const COMPANY_ID_PARAM = 'companyId';
+export const STUDENT_ID_PARAM = 'studentId';

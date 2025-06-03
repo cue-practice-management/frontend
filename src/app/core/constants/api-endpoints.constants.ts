@@ -10,6 +10,7 @@ export const API_ENDPOINTS = {
     },
     STUDENT: {
         GET: '/students',
+        GET_BY_ID: (id: string) => `/students/${id}`,
         CREATE: '/students/create',
         UPDATE: (id: string) => `/students/update/${id}`,
         DELETE: (id: string) => `/students/delete/${id}`,
