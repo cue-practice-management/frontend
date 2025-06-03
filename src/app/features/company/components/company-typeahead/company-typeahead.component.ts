@@ -13,7 +13,7 @@ import { InputTypeaheadComponent } from "@atoms/input-typeahead/input-typeahead.
 })
 export class CompanyTypeaheadComponent {
   @Input() control!: FormControl;
-  @Output() selectedProgramItem: EventEmitter<TypeaheadItem> = new EventEmitter<TypeaheadItem>();
+  @Output() selectedCompanyItem: EventEmitter<TypeaheadItem> = new EventEmitter<TypeaheadItem>();
 
   constructor(
     private companyService: CompanyService
@@ -25,6 +25,6 @@ export class CompanyTypeaheadComponent {
   }
 
   onSelectedOption(option: TypeaheadItem): void {
-    this.selectedProgramItem.emit(option);
+    this.selectedCompanyItem.emit(option);
   }
 }
