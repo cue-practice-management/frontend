@@ -1,1 +1,4 @@
-<img [src]="src || defaultAvatar" alt="Avatar" class="avatar" />
+<img [src]="src || defaultAvatar"
+     [alt]="alt"
+     class="avatar"
+     [ngClass]="'avatar--' + size" />
