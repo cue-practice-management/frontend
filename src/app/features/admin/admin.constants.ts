@@ -18,6 +18,11 @@ export const ADMIN_SIDEBAR_ITEMS: SidebarItem[] = [
     icon: LucideIcons.Building
   },
   {
+    label: 'Vinculacion Estudiantes - Empresas',
+    route: ROUTES.ADMIN.STUDENT_COMPANY_LINKING_PROCESS,
+    icon: LucideIcons.Link2
+  },
+  {
     label: 'Facultades',
     route: ROUTES.ADMIN.FACULTIES,
     icon: LucideIcons.SwatchBook

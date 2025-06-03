@@ -19,6 +19,7 @@ export const ROUTES = {
         COMPANIES: `${ADMIN_PREFFIX}/companies`,
         COUNTRIES: `${ADMIN_PREFFIX}/countries`,
         CITIES: `${ADMIN_PREFFIX}/cities`,
+        STUDENT_COMPANY_LINKING_PROCESS: `${ADMIN_PREFFIX}/student-company-linking-process`,
     },
 }
 
