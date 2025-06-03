@@ -41,6 +41,7 @@ export abstract class DataTable<T extends { _id: string }, U extends PaginationQ
     }
 
     protected editEntity(entity: T): void {
+        console.log('Editing entity:', entity);
         this.modalService
             .open(this.formComponent, { data: { [this.entityKeyName]: entity } })
             .afterClosed()
