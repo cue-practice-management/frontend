@@ -1,6 +1,2 @@
-<app-data-table
-  [pageData]="pageData"
-  [columns]="columns"
-  [actions]="actions"
-  [loading]="isLoading"
-  (paginationChange)="onPaginationChange($event)"/>
+<app-data-table [pageData]="pageData" [columns]="columns" [actions]="actions" [loading]="isLoading"
+  [clickableRows]="true" (rowClicked)="onRowClick($event)" (paginationChange)="onPaginationChange($event)" />
