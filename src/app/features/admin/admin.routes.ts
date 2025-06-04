@@ -50,6 +50,10 @@ export const ADMIN_ROUTES: Routes = [
             {
                 path: 'student-company-linking-process',
                 loadComponent: () => import('./pages/admin-student-company-linking-process-page/admin-student-company-linking-process-page.component').then(m => m.AdminStudentCompanyLinkingProcessPageComponent),
+            },
+            {
+                path: 'news',
+                loadComponent: () => import('./pages/admin-news-page/admin-news-page.component').then(m => m.AdminNewsPageComponent),
             }
         ]
     }

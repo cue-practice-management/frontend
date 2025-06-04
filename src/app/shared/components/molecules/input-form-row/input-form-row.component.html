@@ -11,6 +11,7 @@
     <app-input-otp *ngSwitchCase="'otp'" [formControl]="control" /> 
     <app-input-date *ngSwitchCase="'date'" [control]="control" [id]="id" />
     <app-input-file *ngSwitchCase="'file'" [control]="control" [id]="id" [config]="fileConfig!" />
+    <app-input-rich-text *ngSwitchCase="'rich-text'" [control]="control" [id]="id" [placeholder]="placeholder" />
   </ng-container>
 
   <div class="input-form-row__error" [class.input-form-row__error--visible]="showError">

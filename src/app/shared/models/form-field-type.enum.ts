@@ -9,4 +9,5 @@ export enum FormFieldType {
     OTP = 'otp',
     DATE = 'date',
     FILE = 'file',
+    RICH_TEXT = 'rich-text',
 } 

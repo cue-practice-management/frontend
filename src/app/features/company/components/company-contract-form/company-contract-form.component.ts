@@ -90,7 +90,6 @@ export class CompanyContractFormComponent extends FormSubmitComponent<CreateComp
   }
 
   override submitData(data: CreateCompanyContractRequest): Observable<CompanyContract> {
-    console.log('Submitting data:', data);
     if (this.contract) {
       return this.companyService.updateCompanyContract(this.contract._id, data);
     } else {
