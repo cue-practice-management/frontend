@@ -77,4 +77,11 @@ export const API_ENDPOINTS = {
         UPDATE_STATUS: (id: string) => `/student-company-linking-processes/update/${id}/status`,
         DELETE: (id: string) => `/student-company-linking-processes/delete/${id}`,
     },
+    NEWS: {
+        GET: '/news',
+        GET_BY_ID: (id: string) => `/news/${id}`,
+        CREATE: '/news/create',
+        UPDATE: (id: string) => `/news/update/${id}`,
+        DELETE: (id: string) => `/news/delete/${id}`,
+    },
 };

@@ -33,6 +33,11 @@ export const ADMIN_SIDEBAR_ITEMS: SidebarItem[] = [
     icon: LucideIcons.BookType
   },
   {
+    label: 'Noticias',
+    route: ROUTES.ADMIN.NEWS,
+    icon: LucideIcons.Newspaper
+  },
+  {
     label: 'Configuración',
     icon: LucideIcons.Settings,
     children: [
