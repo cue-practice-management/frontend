@@ -1,0 +1,9 @@
+.rich-text-wrapper {
+    width: 100%;
+    max-width: 100%;
+    font-family: inherit;
+
+    &:has(.ng-invalid.ng-touched) {
+        border-color: #dc2626 !important;
+    }
+}
