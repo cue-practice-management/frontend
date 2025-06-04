@@ -15,6 +15,7 @@ import { InputMultiSelectComponent } from "../../atoms/input-multi-select/input-
 import { FileConfig } from '../../atoms/input-file/input-file.models';
 import { InputDateComponent } from "../../atoms/input-date/input-date.component";
 import { InputFileComponent } from "../../atoms/input-file/input-file.component";
+import { InputRichTextComponent } from "../../atoms/input-rich-text/input-rich-text.component";
 
 @Component({
   selector: 'app-input-form-row',
@@ -30,7 +31,8 @@ import { InputFileComponent } from "../../atoms/input-file/input-file.component"
     CommonModule,
     InputMultiSelectComponent,
     InputDateComponent,
-    InputFileComponent
+    InputFileComponent,
+    InputRichTextComponent
 ],
   templateUrl: './input-form-row.component.html',
   styleUrl: './input-form-row.component.scss'
