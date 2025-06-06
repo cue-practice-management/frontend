@@ -1,6 +1,6 @@
 import { FormFieldType } from '@/shared/models/form-field-type.enum';
 import { TypeaheadConfig } from '@/shared/models/typeahead-item.model';
-import { ValidatorFn } from '@angular/forms';
+import { FormGroup, ValidatorFn } from '@angular/forms';
 import { SelectOption } from '../../atoms/input-select/input-select.models';
 import { MultiSelectConfig } from '../../atoms/input-multi-select/input-multi-select.models';
 import { FileConfig } from '../../atoms/input-file/input-file.models';
@@ -17,6 +17,7 @@ export interface FormField {
   multiSelectConfig?: MultiSelectConfig;
   selectOptions?: SelectOption[];
   fileConfig?: FileConfig;
+  hiddenWhen?: (form: FormGroup) => boolean;
 }
 
 export interface FormFieldSection {
