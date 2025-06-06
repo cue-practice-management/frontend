@@ -23,6 +23,11 @@ export const ADMIN_SIDEBAR_ITEMS: SidebarItem[] = [
     icon: LucideIcons.Link2
   },
   {
+    label: 'Contratos Estudiantes - Empresas',
+    route: ROUTES.ADMIN.STUDENT_COMPANY_CONTRACTS,
+    icon: LucideIcons.FileText
+  },
+  {
     label: 'Facultades',
     route: ROUTES.ADMIN.FACULTIES,
     icon: LucideIcons.SwatchBook

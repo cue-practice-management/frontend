@@ -21,6 +21,7 @@ export const ROUTES = {
         CITIES: `${ADMIN_PREFFIX}/cities`,
         STUDENT_COMPANY_LINKING_PROCESS: `${ADMIN_PREFFIX}/student-company-linking-process`,
         NEWS: `${ADMIN_PREFFIX}/news`,
+        STUDENT_COMPANY_CONTRACTS: `${ADMIN_PREFFIX}/student-company-contracts`,
     },
 }
 
