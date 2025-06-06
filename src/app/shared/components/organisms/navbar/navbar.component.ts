@@ -1,4 +1,4 @@
-import { Component, HostListener, inject} from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { LogoComponent } from '../../atoms/logo/logo.component';
 import { ButtonComponent } from '../../atoms/button/button.component';
 import { CommonModule, NgClass } from '@angular/common';
@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ROUTES } from '@/core/constants/routes.constants';
 import { CurrentUserService } from '@/core/services/current-user.service';
 import { User } from '@/core/models/user.model';
+import { AuthService } from '@/features/auth/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -20,6 +21,7 @@ export class NavbarComponent {
 
   private router = inject(Router);
   private currentUserService = inject(CurrentUserService);
+  private authService = inject(AuthService);
 
   user: User | null = this.currentUserService.currentUserValue;
 
@@ -48,6 +50,10 @@ export class NavbarComponent {
     this.scrollTimeout = setTimeout(() => {
       this.isHidden = false;
     }, 150);
+  }
+
+  logout(): void {
+    this.authService.logout();
   }
 
 

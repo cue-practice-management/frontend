@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angul
 import { CommonModule } from '@angular/common';
 
 import { InputFormRowComponent } from '../../molecules/input-form-row/input-form-row.component';
-import { DynacmicFormConfig } from './dynamic.form.models';
+import { DynacmicFormConfig, FormField } from './dynamic.form.models';
 import { ButtonComponent } from '../../atoms/button/button.component';
 import { SpinnerComponent } from '../../atoms/spinner/spinner.component';
 
@@ -79,4 +79,10 @@ export class DynamicFormComponent<T> implements OnInit {
   get buttonLabel(): string {
     return this.dynamicFormConfig.buttonLabel || 'Enviar';
   }
+
+
+  shouldHideField(field: FormField): boolean {
+    return typeof field.hiddenWhen === 'function' ? field.hiddenWhen(this.form) : false;
+  }
+
 }

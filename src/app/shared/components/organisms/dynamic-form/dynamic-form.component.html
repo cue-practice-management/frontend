@@ -6,11 +6,14 @@
     <h3 class="dynamic-form__section-title" *ngIf="section.title">{{ section.title }}</h3>
 
     <ng-container *ngFor="let field of section.fields">
-      <app-input-form-row [control]="getFormControl(field.key)" [id]="field.key" [label]="field.label"
-        [placeholder]="field.placeholder || ''" [type]="field.type" [typeaheadConfig]="field.typeaheadConfig"
-        [selectOptions]="field.selectOptions" [multiSelectConfig]="field.multiSelectConfig"
-        [fileConfig]="field.fileConfig" />
+      <ng-container *ngIf="!shouldHideField(field)">
+        <app-input-form-row [control]="getFormControl(field.key)" [id]="field.key" [label]="field.label"
+          [placeholder]="field.placeholder || ''" [type]="field.type" [typeaheadConfig]="field.typeaheadConfig"
+          [selectOptions]="field.selectOptions" [multiSelectConfig]="field.multiSelectConfig"
+          [fileConfig]="field.fileConfig" />
+      </ng-container>
     </ng-container>
+
   </ng-container>
 
   <div class="dynamic-form__button-container">

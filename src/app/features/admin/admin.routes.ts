@@ -54,6 +54,10 @@ export const ADMIN_ROUTES: Routes = [
             {
                 path: 'news',
                 loadComponent: () => import('./pages/admin-news-page/admin-news-page.component').then(m => m.AdminNewsPageComponent),
+            },
+            {
+                path: 'student-company-contracts',
+                loadComponent: () => import('./pages/admin-student-company-contract-page/admin-student-company-contract-page.component').then(m => m.AdminStudentCompanyContractPageComponent),
             }
         ]
     }

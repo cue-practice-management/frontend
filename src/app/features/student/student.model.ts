@@ -32,3 +32,5 @@ export interface UpdateStudentRequest extends UpdateUserRequest {
     academicProgram?: string;
     currentSemester?: number;
 }
+
+export type StudentBasicInfo = Omit<Student,'academicProgram' | 'currentCompany' | 'curriculumUrl' | 'epsCertificationUrl'>;
