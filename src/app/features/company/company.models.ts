@@ -91,3 +91,5 @@ export interface UpdateCompanyContractRequest {
     type?: CompanyContractType;
     observations?: string;
 }
+
+export type CompanyBasicInfo = Omit<Company, 'associatedAcademicPrograms' | 'city' | 'country'>;
