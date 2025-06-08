@@ -3,13 +3,19 @@
         <app-spinner></app-spinner>
     </div>
     <app-tabs *ngIf="!isLoading && student">
-        
+
         <app-tab label="Información General">
             <app-student-profile [student]="student"></app-student-profile>
         </app-tab>
 
         <app-tab label="Procesos de vinculación">
-            <app-student-company-linking-process-table [filter]="{student: student._id, page: 1, limit: 10}"></app-student-company-linking-process-table>
+            <app-student-company-linking-process-table
+                [filter]="{student: student._id, page: 1, limit: 10}"></app-student-company-linking-process-table>
+        </app-tab>
+
+        <app-tab label="Contratos con empresas">
+            <app-student-company-contract-table
+                [filter]="{student: student._id, page: 1, limit: 10}"></app-student-company-contract-table>
         </app-tab>
 
     </app-tabs>

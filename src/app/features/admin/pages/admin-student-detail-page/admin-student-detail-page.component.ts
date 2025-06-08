@@ -15,11 +15,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { StudentCompanyLinkingProcessTableComponent } from "../../../student-company-linking-process/components/student-company-linking-process-table/student-company-linking-process-table.component";
 import { StudentProfileComponent } from "../../../student/components/student-profile/student-profile.component";
+import { StudentCompanyContractTableComponent } from "../../../student-company-contract/components/student-company-contract-table/student-company-contract-table.component";
 
 @Component({
   selector: 'app-admin-student-detail-page',
   standalone: true,
-  imports: [AdminSectionWrapperComponent, SpinnerComponent, TabComponent, TabsComponent, CommonModule, StudentCompanyLinkingProcessTableComponent, StudentProfileComponent],
+  imports: [AdminSectionWrapperComponent, SpinnerComponent, TabComponent, TabsComponent, CommonModule, StudentCompanyLinkingProcessTableComponent, StudentProfileComponent, StudentCompanyContractTableComponent],
   templateUrl: './admin-student-detail-page.component.html',
   styleUrl: './admin-student-detail-page.component.scss'
 })
