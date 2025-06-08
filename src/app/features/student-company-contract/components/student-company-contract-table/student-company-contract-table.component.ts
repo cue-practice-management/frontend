@@ -9,6 +9,9 @@ import { ModalService } from '@/core/services/modal.service';
 import { Observable } from 'rxjs';
 import { PaginatedResult } from '@/core/models/paginated-result.model';
 import { DataTableComponent } from "@organisms/data-table/data-table.component";
+import { getStudentCompanyContractStatusLabel, StudentCompanyContractStatus } from '../../student-company-contract.enums';
+import { CheckSquare } from 'lucide-angular';
+import { StudentCompanyContractActivateFormComponent } from '../student-company-contract-activate-form/student-company-contract-activate-form.component';
 
 @Component({
   selector: 'app-student-company-contract-table',
@@ -28,7 +31,7 @@ export class StudentCompanyContractTableComponent extends DataTable<StudentCompa
     { label: 'Empresa', field: 'company', cell: c => c.company.corporateName, sortable: true },
     { label: 'Fecha Inicio', field: 'startDate', cell: c => c.startDate ? formatDate(c.startDate, 'dd/MM/yyyy', 'en-US') : '', },
     { label: 'Fecha Fin', field: 'endDate', sortable: true, cell: c => c.endDate ? formatDate(c.endDate, 'dd/MM/yyyy', 'en-US') : '' },
-    { label: 'Estado', field: 'status', cell: c => c.status, sortable: true },
+    { label: 'Estado', field: 'status', cell: c => getStudentCompanyContractStatusLabel(c.status), sortable: true },
     { label: 'Documento', field: 'contractUrl', isFile: true }
   ];
 
@@ -49,7 +52,27 @@ export class StudentCompanyContractTableComponent extends DataTable<StudentCompa
   }
 
   get actions(): TableRowAction<StudentCompanyContract>[] {
-    return this.getTableActions();
+    const actions = this.getTableActions();
+
+    actions.push({
+      icon: CheckSquare,
+      label: 'Activar',
+      action: (row) => this.openActivateModal(row),
+      disabled: (row) => row.status !== StudentCompanyContractStatus.PENDING_SIGNATURE
+    });
+
+    return actions;
   }
 
+  private openActivateModal(contract: StudentCompanyContract) {
+    this.modalService.open(StudentCompanyContractActivateFormComponent, {
+      data: { contract },
+    }).afterClosed().subscribe(result => {
+      if (result) {
+        this.loadPageData(this.filter);
+      }
+    });
+  }
+
+  
 }
