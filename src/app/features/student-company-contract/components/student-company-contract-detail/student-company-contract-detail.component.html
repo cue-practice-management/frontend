@@ -1,0 +1,91 @@
+<div class="contract-detail-card">
+  <header class="contract-detail-card__header">
+    <div>
+      <h2 class="contract-detail-card__title">Detalle del Contrato</h2>
+    </div>
+  </header>
+
+  <section class="contract-detail-card__section">
+    <h3 class="contract-detail-card__section-title">
+      <lucide-icon [name]="User" size="18" /> Estudiante
+    </h3>
+    <div class="contract-detail-card__entity">
+      <app-avatar class="contract-detail-card__avatar" [src]="contract.student.photoUrl" alt="Foto del estudiante" />
+      <div>
+        <div class="contract-detail-card__entity-name">
+          {{ contract.student.firstName }} {{ contract.student.lastName }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contract-detail-card__section">
+
+    <h3 class="contract-detail-card__section-title">
+      <lucide-icon [name]="Building2" size="18" /> Empresa
+    </h3>
+    <div class="contract-detail-card__entity">
+      <app-avatar class="contract-detail-card__avatar" [src]="contract.company.logoUrl" alt="Logo de la empresa" />
+      <div>
+        <div class="contract-detail-card__entity-name">
+          {{ contract.company.name }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contract-detail-card__section">
+    <span class="contract-detail-card__status contract-detail-card__status--{{ contract.status }}">
+      {{ statusLabel }}
+    </span>
+    <h3 class="contract-detail-card__section-title">
+      <lucide-icon [name]="CalendarDays" size="18" /> Información del Contrato
+    </h3>
+    <dl class="contract-detail-card__info-grid">
+      <div>
+        <dt>Inicio</dt>
+        <dd>{{ contract.startDate ? (contract.startDate | date:'mediumDate') : 'N/A' }}</dd>
+      </div>
+      <div>
+        <dt>Fin</dt>
+        <dd>{{ contract.endDate ? (contract.endDate | date:'mediumDate') : 'N/A' }}</dd>
+      </div>
+      <div>
+        <dt>Pago</dt>
+        <dd>
+          <lucide-icon [name]="BadgeDollarSign" size="15" />
+          {{ contract.isPaid ? 'Sí' : 'No' }}
+        </dd>
+      </div>
+      <div *ngIf="contract.contractUrl">
+        <dt>Documento</dt>
+        <dd>
+          <a class="contract-detail-card__link" [href]="contract.contractUrl" target="_blank">
+            <lucide-icon [name]="Eye" size="15" /> Ver contrato
+          </a>
+        </dd>
+      </div>
+    </dl>
+  </section>
+
+  <section *ngIf="contract.status === 'cancelled'"
+    class="contract-detail-card__section contract-detail-card__section--cancelled">
+    <h3 class="contract-detail-card__section-title">
+      <lucide-icon [name]="Ban" size="18" /> Información de Cancelación
+    </h3>
+    <dl class="contract-detail-card__info-grid">
+      <div>
+        <dt>Cancelado por</dt>
+        <dd>{{ cancelledByLabel }}</dd>
+      </div>
+      <div>
+        <dt>Motivo</dt>
+        <dd>{{ contract.cancellationReason }}</dd>
+      </div>
+      <div>
+        <dt>Fecha</dt>
+        <dd>{{ contract.cancellationDate | date:'mediumDate' }}</dd>
+      </div>
+    </dl>
+  </section>
+</div>

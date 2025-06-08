@@ -11,4 +11,5 @@ export enum FormFieldType {
     FILE = 'file',
     RICH_TEXT = 'rich-text',
     CHECKBOX = 'checkbox',
+    TEXTAREA = 'textarea',
 } 

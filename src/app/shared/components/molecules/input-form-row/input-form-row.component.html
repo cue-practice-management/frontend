@@ -13,6 +13,7 @@
     <app-input-file *ngSwitchCase="'file'" [control]="control" [id]="id" [config]="fileConfig!" />
     <app-input-rich-text *ngSwitchCase="'rich-text'" [control]="control" [id]="id" [placeholder]="placeholder" />
     <app-input-check-box *ngSwitchCase="'checkbox'" [control]="control" [id]="id" [label]="checkboxLabel" />
+    <app-input-textarea *ngSwitchCase="'textarea'" [control]="control" [id]="id" [placeholder]="placeholder" />
   </ng-container>
 
   <div class="input-form-row__error" [class.input-form-row__error--visible]="showError">

@@ -1,0 +1,27 @@
+@import 'variables';
+
+.input-textarea {
+  padding: 0.5rem 1rem;
+  border: 1px solid $dark-color;
+  background-color: $light-color;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+  resize: vertical;
+  min-height: 3rem;
+  font-family: inherit;
+  font-size: 1rem;
+
+  &:focus {
+    outline: none;
+    background-color: $white-color;
+    border-color: $primary-color;
+    box-shadow: 0 0 2px $primary-color;
+  }
+
+  &.ng-invalid.ng-touched {
+    border-color: $error-color;
+    background-color: rgba($error-color-light, 0.1);
+    box-shadow: 0 0 2px $error-color;
+  }
+}

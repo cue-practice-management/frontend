@@ -1,0 +1,107 @@
+@import 'mixins';
+@import 'variables';
+
+.contract-detail-card {
+  &__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  &__icon {
+    color: $primary-color;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: $primary-color-dark;
+  }
+
+  &__status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    
+
+    margin-top: 0.25rem;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.2rem 0.75rem;
+    border-radius: 1rem;
+    background: $gray-light-color;
+    color: $dark-color;
+
+    &--active { background: $success-color; color: $white-color; }
+    &--pending_signature { background: $warning-color; color: $white-color; }
+    &--finished { background: $info-color; color: $white-color; }
+    &--cancelled { background: $error-color; color: $white-color; }
+  }
+
+  &__section {
+    margin-bottom: 2rem;
+    &:last-child { margin-bottom: 0; }
+    &--cancelled {
+      background: $gray-light-color;
+      border-left: 4px solid $error-color;
+      padding: 1rem;
+      border-radius: 0.5rem;
+    }
+    position: relative;
+  }
+
+  &__section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $primary-color;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__entity {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+
+  &__entity-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: $dark-color;
+  }
+
+  &__info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 2rem;
+    margin: 0;
+    dt {
+      font-weight: 500;
+      color: $gray-color;
+      font-size: 0.97rem;
+    }
+    dd {
+      margin: 0;
+      font-weight: 600;
+      color: $dark-color;
+      font-size: 1rem;
+    }
+  }
+
+  &__link {
+    color: $primary-color;
+    font-weight: 500;
+    text-decoration: underline;
+    &:hover { color: $primary-color-light; }
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+}
