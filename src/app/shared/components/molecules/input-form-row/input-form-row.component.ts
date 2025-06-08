@@ -16,6 +16,7 @@ import { FileConfig } from '../../atoms/input-file/input-file.models';
 import { InputDateComponent } from "../../atoms/input-date/input-date.component";
 import { InputFileComponent } from "../../atoms/input-file/input-file.component";
 import { InputRichTextComponent } from "../../atoms/input-rich-text/input-rich-text.component";
+import { InputCheckBoxComponent } from "../../atoms/input-check-box/input-check-box.component";
 
 @Component({
   selector: 'app-input-form-row',
@@ -32,7 +33,8 @@ import { InputRichTextComponent } from "../../atoms/input-rich-text/input-rich-t
     InputMultiSelectComponent,
     InputDateComponent,
     InputFileComponent,
-    InputRichTextComponent
+    InputRichTextComponent,
+    InputCheckBoxComponent
 ],
   templateUrl: './input-form-row.component.html',
   styleUrl: './input-form-row.component.scss'
@@ -47,6 +49,7 @@ export class InputFormRowComponent {
   @Input() multiSelectConfig?: MultiSelectConfig;
   @Input() selectOptions?: SelectOption[];
   @Input() fileConfig?: FileConfig;
+  @Input() checkboxLabel? = '';
 
 
   get showError(): boolean {
