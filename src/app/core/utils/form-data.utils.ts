@@ -2,7 +2,7 @@ export function buildFormData(data: Record<string, any>, file?: File, fileField 
   const formData = new FormData();
 
   Object.entries(data).forEach(([key, value]) => {
-    if (value !== null && value !== undefined) {
+    if (value !== null && value !== undefined && value !== '') {
       formData.append(key, value);
     }
   });
