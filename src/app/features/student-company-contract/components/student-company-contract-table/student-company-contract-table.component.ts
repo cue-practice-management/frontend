@@ -10,8 +10,10 @@ import { Observable } from 'rxjs';
 import { PaginatedResult } from '@/core/models/paginated-result.model';
 import { DataTableComponent } from "@organisms/data-table/data-table.component";
 import { getStudentCompanyContractStatusLabel, StudentCompanyContractStatus } from '../../student-company-contract.enums';
-import { CheckSquare } from 'lucide-angular';
+import { CheckSquare, Eye, XIcon } from 'lucide-angular';
 import { StudentCompanyContractActivateFormComponent } from '../student-company-contract-activate-form/student-company-contract-activate-form.component';
+import { StudentCompanyContractCancelFormComponent } from '../student-company-contract-cancel-form/student-company-contract-cancel-form.component';
+import { StudentCompanyContractDetailComponent } from '../student-company-contract-detail/student-company-contract-detail.component';
 
 @Component({
   selector: 'app-student-company-contract-table',
@@ -22,6 +24,7 @@ import { StudentCompanyContractActivateFormComponent } from '../student-company-
 })
 export class StudentCompanyContractTableComponent extends DataTable<StudentCompanyContract, StudentCompanyContractFilter> implements OnInit {
   @Input() override allowedActions = [];
+  @Input() override filter!: StudentCompanyContractFilter;
   override entityName = 'Contrato Estudiante - Empresa';
   override entityKeyName = 'studentCompanyContract';
   override formComponent = StudentCompanyContractFormComponent;
@@ -61,6 +64,19 @@ export class StudentCompanyContractTableComponent extends DataTable<StudentCompa
       disabled: (row) => row.status !== StudentCompanyContractStatus.PENDING_SIGNATURE
     });
 
+    actions.push({
+      icon: XIcon,
+      label: 'Cancelar',
+      action: (row) => this.openCancelModal(row),
+      disabled: (row) => row.status !== StudentCompanyContractStatus.ACTIVE
+    });
+
+    actions.push({
+      icon: Eye,
+      label: 'Ver Detalle',
+      action: (row) => this.openViewModal(row)
+    });
+
     return actions;
   }
 
@@ -74,5 +90,19 @@ export class StudentCompanyContractTableComponent extends DataTable<StudentCompa
     });
   }
 
-  
+  private openCancelModal(contract: StudentCompanyContract) {
+    this.modalService.open(StudentCompanyContractCancelFormComponent, {
+      data: { contract },
+    }).afterClosed().subscribe(result => {
+      if (result) {
+        this.loadPageData(this.filter);
+      }
+    });
+  }
+
+  private openViewModal(contract: StudentCompanyContract) {
+    this.modalService.open(StudentCompanyContractDetailComponent, {
+      data: { contract },
+    })
+  }
 }
