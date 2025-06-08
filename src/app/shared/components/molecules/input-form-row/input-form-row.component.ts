@@ -17,6 +17,7 @@ import { InputDateComponent } from "../../atoms/input-date/input-date.component"
 import { InputFileComponent } from "../../atoms/input-file/input-file.component";
 import { InputRichTextComponent } from "../../atoms/input-rich-text/input-rich-text.component";
 import { InputCheckBoxComponent } from "../../atoms/input-check-box/input-check-box.component";
+import { InputTextareaComponent } from '../../atoms/input-textarea/input-textarea.component';
 
 @Component({
   selector: 'app-input-form-row',
@@ -34,7 +35,8 @@ import { InputCheckBoxComponent } from "../../atoms/input-check-box/input-check-
     InputDateComponent,
     InputFileComponent,
     InputRichTextComponent,
-    InputCheckBoxComponent
+    InputCheckBoxComponent,
+    InputTextareaComponent
 ],
   templateUrl: './input-form-row.component.html',
   styleUrl: './input-form-row.component.scss'
@@ -76,7 +78,6 @@ export class InputFormRowComponent {
       return 'El número de teléfono no es válido, debe tener 10 dígitos y comenzar con 3.';
     }
     if (this.control.hasError('pattern')) return 'Formato inválido.';
-    console.error(this.control.errors);
     return 'Valor inválido.';
   }
 
