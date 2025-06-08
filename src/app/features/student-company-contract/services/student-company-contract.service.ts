@@ -28,9 +28,11 @@ export class StudentCompanyContractService {
   }
 
   activateStudentCompanyContract(contractId: string, activateStudentCompanyContractRequest: ActivateStudentCompanyContractRequest, file?: File): Observable<StudentCompanyContract> {
+    const formData = buildFormData(activateStudentCompanyContractRequest, file);
+
     return this.http.patch<StudentCompanyContract>(
       API_ENDPOINTS.STUDENT_COMPANY_CONTRACT.ACTIVATE(contractId),
-      activateStudentCompanyContractRequest
+      formData
     );
   }
 
