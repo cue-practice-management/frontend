@@ -10,9 +10,11 @@
         <app-input-form-row [control]="getFormControl(field.key)" [id]="field.key" [label]="field.label"
           [placeholder]="field.placeholder || ''" [type]="field.type" [typeaheadConfig]="field.typeaheadConfig"
           [selectOptions]="field.selectOptions" [multiSelectConfig]="field.multiSelectConfig"
-          [fileConfig]="field.fileConfig" />
+          [fileConfig]="field.fileConfig">
+        </app-input-form-row>
       </ng-container>
     </ng-container>
+
 
   </ng-container>
 
