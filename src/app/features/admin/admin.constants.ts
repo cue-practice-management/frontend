@@ -28,6 +28,22 @@ export const ADMIN_SIDEBAR_ITEMS: SidebarItem[] = [
     icon: LucideIcons.FileText
   },
   {
+    label: 'Prácticas',
+    icon: LucideIcons.Clipboard,
+    children: [
+      {
+        label: 'Plantillas de Prácticas',
+        route: ROUTES.ADMIN.PRACTICE_TEMPLATES,
+        icon: LucideIcons.LayoutTemplate
+      },
+      {
+        label: 'Defincion de Prácticas',
+        route: ROUTES.ADMIN.PRACTICE_DEFINITION,
+        icon: LucideIcons.LucideSettings
+      },
+    ]
+  },
+  {
     label: 'Facultades',
     route: ROUTES.ADMIN.FACULTIES,
     icon: LucideIcons.SwatchBook
