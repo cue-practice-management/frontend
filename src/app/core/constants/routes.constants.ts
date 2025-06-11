@@ -22,6 +22,8 @@ export const ROUTES = {
         STUDENT_COMPANY_LINKING_PROCESS: `${ADMIN_PREFFIX}/student-company-linking-process`,
         NEWS: `${ADMIN_PREFFIX}/news`,
         STUDENT_COMPANY_CONTRACTS: `${ADMIN_PREFFIX}/student-company-contracts`,
+        PRACTICE_TEMPLATES: `${ADMIN_PREFFIX}/practice-templates`,
+        PRACTICE_DEFINITION:  `${ADMIN_PREFFIX}/practice-definition`
     },
 }
 

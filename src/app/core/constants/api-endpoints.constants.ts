@@ -90,5 +90,12 @@ export const API_ENDPOINTS = {
         DELETE: (id: string) => `/student-company-contracts/delete/${id}`,
         ACTIVATE: (id: string) => `/student-company-contracts/${id}/activate`,
         CANCEL: (id: string) => `/student-company-contracts/${id}/cancel`,
-    }
+    },
+    PRACTICE_TEMPLATE: {
+        GET: '/practice-templates',
+        CREATE: '/practice-templates/create',
+        UPDATE: (id: string) => `/practice-templates/update/${id}`,
+        DELETE: (id: string) => `/practice-templates/delete/${id}`,
+        GET_TYPEAHEAD: '/practice-templates/typeahead',
+    },
 };
