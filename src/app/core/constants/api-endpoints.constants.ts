@@ -97,5 +97,11 @@ export const API_ENDPOINTS = {
         UPDATE: (id: string) => `/practice-templates/update/${id}`,
         DELETE: (id: string) => `/practice-templates/delete/${id}`,
         GET_TYPEAHEAD: '/practice-templates/typeahead',
+        DELIVERABLES: {
+            GET: (practiceTemplateId: string) => `/practice-templates/${practiceTemplateId}/deliverables`,
+            CREATE: (practiceTemplateId: string) => `/practice-templates/${practiceTemplateId}/deliverables/create`,
+            UPDATE: (practiceTemplateId: string, deliverableId: string) => `/practice-templates/${practiceTemplateId}/deliverables/update/${deliverableId}`,
+            DELETE: (practiceTemplateId: string, deliverableId: string) => `/practice-templates/${practiceTemplateId}/deliverables/delete/${deliverableId}`,
+        }
     },
 };
