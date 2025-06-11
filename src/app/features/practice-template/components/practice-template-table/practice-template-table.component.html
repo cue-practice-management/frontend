@@ -4,5 +4,7 @@
     [actions]="actions"
     [loading]="isLoading"
     [clickableRows]="false"
+    (rowClicked)="onRowClick($event)"
+    [clickableRows]="true"
     (paginationChange)="onPaginationChange($event)"
   />

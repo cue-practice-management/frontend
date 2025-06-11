@@ -8,6 +8,7 @@ import { ModalService } from '@/core/services/modal.service';
 import { PracticeTemplateService } from '../../services/practice-template.service';
 import { Observable } from 'rxjs';
 import { PaginatedResult } from '@/core/models/paginated-result.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-practice-template-table',
@@ -46,6 +47,7 @@ export class PracticeTemplateTableComponent extends DataTable<PracticeTemplate, 
 
   constructor(
     private readonly practiceTemplateService: PracticeTemplateService,
+    private readonly router: Router,
     modalService: ModalService
   ) {
     super(modalService);
@@ -65,6 +67,10 @@ export class PracticeTemplateTableComponent extends DataTable<PracticeTemplate, 
 
   get actions(): TableRowAction<PracticeTemplate>[] {
     return this.getTableActions();
+  }
+
+  onRowClick(template: PracticeTemplate): void {
+    this.router.navigate(['/admin/practice-templates', template._id]);
   }
 
 }
