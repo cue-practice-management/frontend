@@ -26,6 +26,10 @@ export interface PracticeTemplateDeliverable {
     updatedAt: Date;
 }
 
+export interface PracticeTemplateDeliverableFilter extends PaginationQuery {
+    title?: string;
+}
+
 export type CreatePracticeTemplateDeliverableRequest = Omit<PracticeTemplateDeliverable, '_id' | 'createdAt' | 'updatedAt'>;
 export type UpdatePracticeTemplateDeliverableRequest = Partial<Omit<PracticeTemplateDeliverable, '_id' | 'createdAt' | 'updatedAt'>>;
 
@@ -36,6 +40,10 @@ export interface PracticeTemplateFormat {
     fileUrl: string;
     createdAt: Date;
     updatedAt: Date;
+}
+
+export interface PracticeTemplateFormatFilter extends PaginationQuery {
+    name?: string;
 }
 
 export type CreatePracticeTemplateFormat = Omit<PracticeTemplateFormat, '_id' | 'createdAt' | 'updatedAt'>;
