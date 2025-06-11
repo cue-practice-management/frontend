@@ -58,6 +58,10 @@ export const ADMIN_ROUTES: Routes = [
             {
                 path: 'student-company-contracts',
                 loadComponent: () => import('./pages/admin-student-company-contract-page/admin-student-company-contract-page.component').then(m => m.AdminStudentCompanyContractPageComponent),
+            },
+            {
+                path: 'practice-templates',
+                loadComponent: () => import('./pages/admin-practice-template-page/admin-practice-template-page.component').then(m => m.AdminPracticeTemplatePageComponent),
             }
         ]
     }
