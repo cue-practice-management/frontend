@@ -1,0 +1,10 @@
+<app-admin-section-wrapper [title]="'Detalles de la plantilla de prácticas'">
+
+    <app-tabs *ngIf="practiceTemplateId">
+
+        <app-tab label="Entregables">
+            <app-practice-template-deliverable-table
+                [templateId]="practiceTemplateId" [allowedActions]="deliverableActions"></app-practice-template-deliverable-table>
+        </app-tab>
+    </app-tabs>
+</app-admin-section-wrapper>
