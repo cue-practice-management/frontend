@@ -102,6 +102,12 @@ export const API_ENDPOINTS = {
             CREATE: (practiceTemplateId: string) => `/practice-templates/${practiceTemplateId}/deliverables/create`,
             UPDATE: (practiceTemplateId: string, deliverableId: string) => `/practice-templates/${practiceTemplateId}/deliverables/update/${deliverableId}`,
             DELETE: (practiceTemplateId: string, deliverableId: string) => `/practice-templates/${practiceTemplateId}/deliverables/delete/${deliverableId}`,
+        },
+        FORMATS: {
+            GET: (practiceTemplateId: string) => `/practice-templates/${practiceTemplateId}/formats`,
+            CREATE: (practiceTemplateId: string) => `/practice-templates/${practiceTemplateId}/formats/create`,
+            UPDATE: (practiceTemplateId: string, formatId: string) => `/practice-templates/${practiceTemplateId}/formats/update/${formatId}`,
+            DELETE: (practiceTemplateId: string, formatId: string) => `/practice-templates/${practiceTemplateId}/formats/delete/${formatId}`,
         }
     },
 };

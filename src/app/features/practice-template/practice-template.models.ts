@@ -46,6 +46,6 @@ export interface PracticeTemplateFormatFilter extends PaginationQuery {
     name?: string;
 }
 
-export type CreatePracticeTemplateFormat = Omit<PracticeTemplateFormat, '_id' | 'createdAt' | 'updatedAt'>;
-export type UpdatePracticeTemplateFormat = Partial<Omit<PracticeTemplateFormat, '_id' | 'createdAt' | 'updatedAt'>>;
+export type CreatePracticeTemplateFormatRequest = Omit<PracticeTemplateFormat, '_id' | 'createdAt' | 'updatedAt'>;
+export type UpdatePracticeTemplateFormatRequest = Partial<Omit<PracticeTemplateFormat, '_id' | 'createdAt' | 'updatedAt'>>;
 
