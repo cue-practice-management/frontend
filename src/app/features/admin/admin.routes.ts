@@ -1,5 +1,5 @@
 import { Routes } from "@angular/router";
-import { COMPANY_ID_PARAM, STUDENT_ID_PARAM } from "./admin.constants";
+import { COMPANY_ID_PARAM, PRACTICE_TEMPLATE_ID_PARAM, STUDENT_ID_PARAM } from "./admin.constants";
 
 export const ADMIN_ROUTES: Routes = [
     {
@@ -20,7 +20,7 @@ export const ADMIN_ROUTES: Routes = [
                 loadComponent: () => import('./pages/admin-student-page/admin-student-page.component').then(m => m.AdminStudentPageComponent),
             },
             {
-                path:`students/:${STUDENT_ID_PARAM}`,
+                path: `students/:${STUDENT_ID_PARAM}`,
                 loadComponent: () => import('./pages/admin-student-detail-page/admin-student-detail-page.component').then(m => m.AdminStudentDetailPageComponent),
             },
             {
@@ -62,6 +62,10 @@ export const ADMIN_ROUTES: Routes = [
             {
                 path: 'practice-templates',
                 loadComponent: () => import('./pages/admin-practice-template-page/admin-practice-template-page.component').then(m => m.AdminPracticeTemplatePageComponent),
+            },
+            {
+                path: `practice-templates/:${PRACTICE_TEMPLATE_ID_PARAM}`,
+                loadComponent: () => import('./pages/admin-practice-template-detail-page/admin-practice-template-detail-page.component').then(m => m.AdminPracticeTemplateDetailPageComponent),
             }
         ]
     }

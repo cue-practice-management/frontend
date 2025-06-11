@@ -101,3 +101,39 @@ tr.clickable {
         background-color: rgba($primary-color, 0.04);
     }
 }
+
+.table-inline-create-row {
+    td {
+        border: none;
+        position: relative;
+        padding: 1rem 0 !important;
+    }
+}
+
+.table-inline-create-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed rgba($primary-color, 0.09);
+    border-radius: 0.5rem;
+    transition: border-color 0.2s;
+    cursor: pointer;
+
+    &:hover {
+        border-color: darken($primary-color, 10%);
+        background: rgba($primary-color, 0.06);
+    }
+
+    .table-create-button {
+        background: none;
+        border: none;
+        color: rgba($gray-color, 0.7);
+        padding: 0.5rem 1rem;
+        font-weight: 600;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+    }
+}

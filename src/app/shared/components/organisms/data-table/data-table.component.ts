@@ -1,5 +1,5 @@
 import { PaginatedResult } from '@/core/models/paginated-result.model';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Input, Output } from '@angular/core';
 import { ColumnConfig, TableRowAction } from './data-table.models';
 import { CommonModule } from '@angular/common';
 import { ChevronDown, ChevronUp, File, LucideAngularModule } from 'lucide-angular';
@@ -21,7 +21,9 @@ export class DataTableComponent<T> {
   @Input() loading = false;
   @Input() pagination: PaginationQuery = { page: 1, limit: 10 };
   @Input() clickableRows = false;
+  @Input() enableInlineCreate = false;
 
+  @Output() create = new EventEmitter<void>();
   @Output() paginationChange = new EventEmitter<PaginationQuery>();
   @Output() rowClicked = new EventEmitter<T>();
 
@@ -57,6 +59,10 @@ export class DataTableComponent<T> {
     if (this.clickableRows) {
       this.rowClicked.emit(row);
     }
+  }
+
+  onCreateRow(): void {
+    this.create.emit();
   }
 
   get hasData(): boolean {
