@@ -66,6 +66,10 @@ export const ADMIN_ROUTES: Routes = [
             {
                 path: `practice-templates/:${PRACTICE_TEMPLATE_ID_PARAM}`,
                 loadComponent: () => import('./pages/admin-practice-template-detail-page/admin-practice-template-detail-page.component').then(m => m.AdminPracticeTemplateDetailPageComponent),
+            },
+            {
+                path: 'practice-definitions',
+                loadComponent: () => import('./pages/admin-practice-definition-page/admin-practice-definition-page.component').then(m => m.AdminPracticeDefinitionPageComponent),
             }
         ]
     }

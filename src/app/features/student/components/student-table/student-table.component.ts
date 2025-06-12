@@ -32,7 +32,7 @@ export class StudentTableComponent extends DataTable<Student, StudentFilter> imp
     { label: 'Número de documento', field: 'documentNumber', sortable: false },
     { label: 'Programa académico', field: 'academicProgram', cell: (row) => row.academicProgram.name, sortable: true },
     { label: 'Semestre actual', field: 'currentSemester', sortable: false },
-    { label: 'Empresa actual', field: 'currentCompany', sortable: false },
+    { label: 'Empresa actual', field: 'currentCompany', sortable: false, cell: (row) => row.currentCompany?.name || 'N/A' },
   ];
 
   constructor(private studentService: StudentService, private router: Router, modalService: ModalService) {
