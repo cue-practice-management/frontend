@@ -110,4 +110,10 @@ export const API_ENDPOINTS = {
             DELETE: (practiceTemplateId: string, formatId: string) => `/practice-templates/${practiceTemplateId}/formats/delete/${formatId}`,
         }
     },
+    PRACTICE_DEFINITION: {
+        GET: '/practice-definitions',
+        CREATE: '/practice-definitions/create',
+        UPDATE: (id: string) => `/practice-definitions/update/${id}`,
+        DELETE: (id: string) => `/practice-definitions/delete/${id}`,
+    }
 };
