@@ -1,0 +1,45 @@
+<section class="testimonials section" id="testimonials">
+    <div class="container">
+        <div class="testimonials__header">
+            <h2 class="testimonials__title">{{ testimonialsTitle }}</h2>
+            <div class="testimonials__underline"></div>
+            <p class="testimonials__subtitle">{{ testimonialsSubtitle }}</p>
+        </div>
+
+        <div class="testimonials__slider">
+            <div class="testimonials__slider-container">
+                <div class="testimonials__card" *ngFor="let testimonial of testimonials; let i = index"
+                    [class.testimonials__card--active]="i === activeTestimonialIndex">
+                    <div class="testimonials__quote">
+                        <lucide-icon [img]="QuoteIcon">format_quote</lucide-icon>
+                        <p>{{ testimonial.quote }}</p>
+                    </div>
+
+                    <div class="testimonials__author">
+                        <div class="testimonials__avatar">
+                            <img [src]="testimonial.avatar" [alt]="testimonial.name" />
+                        </div>
+                        <div class="testimonials__info">
+                            <h4 class="testimonials__name">{{ testimonial.name }}</h4>
+                            <p class="testimonials__role">{{ testimonial.role }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonials__controls">
+                <button class="testimonials__control testimonials__control--prev" (click)="previousTestimonial()">
+                    <lucide-icon [img]="LeftArrowIcon"></lucide-icon>
+                </button>
+                <div class="testimonials__indicators">
+                    <button class="testimonials__indicator" *ngFor="let testimonial of testimonials; let i = index"
+                        [class.testimonials__indicator--active]="i === activeTestimonialIndex"
+                        (click)="selectTestimonial(i)"></button>
+                </div>
+                <button class="testimonials__control testimonials__control--next" (click)="nextTestimonial()">
+                    <lucide-icon [img]="RightArrowIcon"></lucide-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

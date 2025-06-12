@@ -1,0 +1,21 @@
+<section class="features section" id="features">
+    <div class="container">
+        <div class="features__header">
+            <h2 class="features__title">{{ featuresTitle }}</h2>
+            <div class="features__underline"></div>
+            <p class="features__subtitle">{{ featuresSubtitle }}</p>
+        </div>
+
+        <div class="features__grid">
+            <div class="features__card" *ngFor="let feature of features">
+                <div class="features__card-icon">
+                    <lucide-icon [img]="feature.icon"></lucide-icon>
+                </div>
+                <div class="features__card-content">
+                    <h3 class="features__card-title">{{ feature.title }}</h3>
+                    <p class="features__card-description">{{ feature.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,209 @@
+@import 'variables';
+@import 'mixins';
+
+.testimonials {
+    padding: 4rem 0;
+    background-color: $light-color;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -50px;
+        right: -50px;
+        width: 200px;
+        height: 200px;
+        background-color: rgba($primary-color-extra-light, 0.2);
+        border-radius: 50%;
+        z-index: 0;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -50px;
+        left: -50px;
+        width: 150px;
+        height: 150px;
+        background-color: rgba($primary-color-extra-light, 0.15);
+        border-radius: 50%;
+        z-index: 0;
+    }
+
+    .container {
+        position: relative;
+        z-index: 1;
+    }
+
+    &__header {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 4rem;
+    }
+
+    &__title {
+        color: $primary-color-dark;
+        margin-bottom: 1rem;
+    }
+
+    &__underline {
+        height: 4px;
+        width: 60px;
+        background-color: $primary-color-extra-light;
+        margin: 0 auto 1.5rem;
+        border-radius: 2px;
+    }
+
+    &__subtitle {
+        color: $dark-color;
+        font-size: 1.125rem;
+    }
+
+    &__slider {
+        @include container;
+        padding: 0 1.5rem;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    &__slider-container {
+        position: relative;
+        overflow: hidden;
+        min-height: 300px;
+        border-radius: 8px;
+        @include box-shadow-md;
+    }
+
+    &__card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $white-color;
+        padding: 2.5rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 8px;
+        transform: translateX(30px);
+
+        &--active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+    }
+
+    &__quote {
+        margin-bottom: 2rem;
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: $dark-color;
+            font-style: italic;
+        }
+    }
+
+    &__quote-icon {
+        color: $primary-color-extra-light;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    &__author {
+        display: flex;
+        align-items: center;
+    }
+
+    &__avatar {
+        margin-right: 1rem;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid $primary-color-light;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__info {
+        flex: 1;
+    }
+
+    &__name {
+        margin-bottom: 0.25rem;
+        font-size: 1.125rem;
+        color: $primary-color-dark;
+    }
+
+    &__role {
+        margin: 0;
+        font-size: 0.875rem;
+        color: $gray-color;
+    }
+
+    &__controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    &__control {
+        background: none;
+        border: none;
+        color: $dark-color;
+        font-size: 1rem;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: rgba($primary-color, 0.1);
+            color: $primary-color;
+        }
+
+        .material-icons {
+            font-size: 1rem;
+        }
+    }
+
+    &__indicators {
+        display: flex;
+        align-items: center;
+        margin: 0 1rem;
+    }
+
+    &__indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: rgba($dark-color, 0.2);
+        margin: 0 0.5rem;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &--active {
+            background-color: $primary-color;
+            transform: scale(1.3);
+        }
+    }
+}
