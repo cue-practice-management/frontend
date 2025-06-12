@@ -3,8 +3,13 @@
     <app-tabs *ngIf="practiceTemplateId">
 
         <app-tab label="Entregables">
-            <app-practice-template-deliverable-table
-                [templateId]="practiceTemplateId" [allowedActions]="deliverableActions"></app-practice-template-deliverable-table>
+            <app-practice-template-deliverable-table [templateId]="practiceTemplateId"
+                [allowedActions]="deliverableActions"></app-practice-template-deliverable-table>
+        </app-tab>
+
+        <app-tab label="Formatos">
+            <app-practice-template-format-table [templateId]="practiceTemplateId"
+                [allowedActions]="formatActions"></app-practice-template-format-table>
         </app-tab>
     </app-tabs>
 </app-admin-section-wrapper>
