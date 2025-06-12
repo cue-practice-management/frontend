@@ -21,6 +21,12 @@ export class PracticeTemplateService {
     const params = objectToHttpParams(filter);
     return this.http.get<PaginatedResult<PracticeTemplate>>(API_ENDPOINTS.PRACTICE_TEMPLATE.GET, { params });
   }
+  
+  getTypeaheadPracticeTemplates(query:string): Observable<TypeaheadItem[]> {
+    return this.http.get<TypeaheadItem[]>(API_ENDPOINTS.PRACTICE_TEMPLATE.GET_TYPEAHEAD, {
+      params: { query }
+    });
+  }
 
   createPracticeTemplate(template: CreatePracticeTemplateRequest): Observable<PracticeTemplate> {
     return this.http.post<PracticeTemplate>(API_ENDPOINTS.PRACTICE_TEMPLATE.CREATE, template);
