@@ -2,45 +2,131 @@
 @import 'variables';
 
 
-.hero-section {
-    &__header {
-        @include width-full;
-        @include flex(column, center, center, nowrap, 0.4rem);
-        color:black;
-    }
-
-    &__title {
-        @include text-xl;
-        text-align: center;
-    }
-
-    &__subtitle {
-        @include text-md;
-        text-align: center;
-        max-width: 60ch;
-    }
-}
-
-
-::ng-deep .section__content.hero-section__content {
-    z-index: 10;
-    @include flex(column, center, flex-start, nowrap, 2rem);
-}
-
-::ng-deep .section.hero-section {
+.hero {
     position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
     overflow: hidden;
+    background-color: $light-color;
 
-    &::before {
-        content: '';
+    &__svg-bg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        z-index: 1;
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__overlay {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: -10;
-        filter: blur(10px);
-        opacity: 0.3;
-        pointer-events: none;
+        background: radial-gradient(circle at top right, rgba($primary-color-light, 0.05), transparent 70%);
+        z-index: 2;
+    }
+
+    .container {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        @include container;
+
+        @include tablet {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    &__content {
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 2rem;
+        padding: 0 1.5rem;
+
+        @include tablet {
+            max-width: 50%;
+            text-align: left;
+            margin-bottom: 0;
+        }
+    }
+
+    &__title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        color: $primary-color-dark;
+        line-height: 1.2;
+
+        @include laptop {
+            font-size: 3.5rem;
+        }
+    }
+
+    &__tagline {
+        font-size: 1.125rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        color: $dark-color;
+        max-width: 600px;
+
+        @include mobile {
+            font-size: 1.25rem;
+        }
+
+        @include tablet {
+            margin-left: 0;
+            margin-right: auto;
+        }
+    }
+
+    &__cta {
+        display: flex;
+        justify-content: center;
+
+        @include tablet {
+            justify-content: flex-start;
+        }
+    }
+
+    &__image {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+
+        @include tablet {
+            width: 45%;
+        }
+    }
+
+    &__illustration {
+        width: 100%;
+        height: auto;
+        animation: float 6s ease-in-out infinite;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
     }
 }

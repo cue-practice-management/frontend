@@ -4,15 +4,15 @@ import { ActivatedRoute } from '@angular/router';
 import { PRACTICE_TEMPLATE_ID_PARAM } from '../../admin.constants';
 import { TabsComponent } from "@organisms/tabs/tabs.component";
 import { TabComponent } from "@molecules/tab/tab.component";
-import { PracticeTemplateDeliverableFormComponent } from "../../../practice-template/components/practice-template-deliverable-form/practice-template-deliverable-form.component";
 import { PracticeTemplateDeliverableTableComponent } from "../../../practice-template/components/practice-template-deliverable-table/practice-template-deliverable-table.component";
 import { CommonModule } from '@angular/common';
 import { TableAction } from '@/shared/models/table-actions.enum';
+import { PracticeTemplateFormatTableComponent } from "../../../practice-template/components/practice-template-format-table/practice-template-format-table.component";
 
 @Component({
   selector: 'app-admin-practice-template-detail-page',
   standalone: true,
-  imports: [AdminSectionWrapperComponent, TabsComponent, TabComponent, PracticeTemplateDeliverableFormComponent, PracticeTemplateDeliverableTableComponent, CommonModule],
+  imports: [AdminSectionWrapperComponent, TabsComponent, TabComponent, PracticeTemplateDeliverableTableComponent, CommonModule, PracticeTemplateFormatTableComponent],
   templateUrl: './admin-practice-template-detail-page.component.html',
   styleUrl: './admin-practice-template-detail-page.component.scss'
 })
@@ -20,6 +20,7 @@ export class AdminPracticeTemplateDetailPageComponent implements OnInit {
   practiceTemplateId!: string;
 
   deliverableActions = [TableAction.EDIT, TableAction.DELETE];
+  formatActions = [TableAction.EDIT, TableAction.DELETE];
 
   constructor(
     private readonly route: ActivatedRoute

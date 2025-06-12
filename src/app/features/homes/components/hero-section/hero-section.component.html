@@ -1,13 +1,31 @@
-<app-section-wrapper sectionClass="hero-section" sectionContentClass="hero-section__content">
-    <header class="hero-section__header" @fadeInScale>
-        <h1 class="hero-section__title">Transformando la prácticas empresariales con tecnología real</h1>
-        <p class="hero-section__subtitle">
-            Gestiona, supervisa y transforma cada etapa de la práctica académica con herramientas inteligentes y
-            conectadas.
-        </p>
-    </header>
+<section class="hero">
+    <div class="hero__overlay"></div>
+    <div class="hero__svg-bg">
+        <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#003f70" fill-opacity="0.2"
+                d="M0,160L48,138.7C96,117,192,75,288,64C384,53,480,75,576,96C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+            </path>
+            <path fill="#005b9a" fill-opacity="0.3"
+                d="M0,192L48,176C96,160,192,128,288,117.3C384,107,480,117,576,149.3C672,181,768,235,864,224C960,213,1056,139,1152,122.7C1248,107,1344,149,1392,170.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+            </path>
+            <path fill="#0ba1fe" fill-opacity="0.1"
+                d="M0,224L48,213.3C96,203,192,181,288,170.7C384,160,480,160,576,176C672,192,768,224,864,208C960,192,1056,128,1152,106.7C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+            </path>
+        </svg>
+    </div>
 
-    <app-hero-section-bento></app-hero-section-bento>
+    <div class="container">
+        <div class="hero__content">
+            <h1 class="hero__title">{{ title }}</h1>
+            <p class="hero__tagline">{{ tagline }}</p>
+            <div class="hero__cta">
+                <app-button>{{ctaButtonText}}</app-button>
+            </div>
+        </div>
 
+        <div class="hero__image">
+            <img src="assets/images/hero/hero-image.png" alt="Internship Management System" class="hero__illustration">
+        </div>
+    </div>
 
-</app-section-wrapper>
+</section>

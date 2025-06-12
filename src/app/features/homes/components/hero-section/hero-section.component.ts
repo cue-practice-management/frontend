@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { HeroSectionBentoComponent } from "./hero-section-bento/hero-section-bento.component";
 import { transition, trigger, useAnimation } from '@angular/animations';
 import { fadeInScale } from '@/shared/animations/enter-animations';
-import { SectionWrapperComponent } from '@/shared/components/atoms/section-wrapper/section-wrapper.component';
+import { ButtonComponent } from "@atoms/button/button.component";
 
 @Component({
   selector: 'app-hero-section',
   standalone: true,
-  imports: [SectionWrapperComponent, HeroSectionBentoComponent],
+  imports: [ButtonComponent],
   templateUrl: './hero-section.component.html',
   styleUrl: './hero-section.component.scss',
   animations: [
@@ -17,5 +16,7 @@ import { SectionWrapperComponent } from '@/shared/components/atoms/section-wrapp
   ]
 })
 export class HeroSectionComponent {
-
+  title = 'Gestión de Prácticas Profesionales';
+  tagline = 'Una plataforma para gestionar las prácticas profesionales de manera eficiente y efectiva.';
+  ctaButtonText = 'Iniciar Sesión';
 }

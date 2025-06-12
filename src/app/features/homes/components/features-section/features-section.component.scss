@@ -1,0 +1,105 @@
+@import 'variables';
+@import 'mixins';
+
+.features {
+    padding: 4rem 0;
+    background-color: $light-color;
+    position: relative;
+
+    &__header {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 4rem;
+    }
+
+    &__title {
+        color: $primary-color-dark;
+        margin-bottom: 1rem;
+    }
+
+    &__underline {
+        height: 4px;
+        width: 60px;
+        background-color: $primary-color-extra-light;
+        margin: 0 auto 1.5rem;
+        border-radius: 2px;
+    }
+
+    &__subtitle {
+        color: $dark-color;
+        font-size: 1.125rem;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 1.5rem;
+        @include container;
+
+        @include mobile {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include laptop {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    &__card {
+        background-color: $white-color;
+        border-radius: 8px;
+        padding: 2rem;
+        @include box-shadow-md;
+        transition: all 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+            .features__card-icon {
+                background-color: $primary-color;
+                color: $white-color;
+            }
+        }
+    }
+
+    &__card-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        background-color: rgba($primary-color, 0.1);
+        border-radius: 50%;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+        color: $primary-color;
+
+        .material-icons {
+            font-size: 28px;
+        }
+    }
+
+    &__card-content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__card-title {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        color: $primary-color-dark;
+    }
+
+    &__card-description {
+        color: $dark-color;
+        margin-bottom: 0;
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+}
