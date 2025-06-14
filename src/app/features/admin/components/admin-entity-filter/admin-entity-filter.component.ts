@@ -9,11 +9,13 @@ import { ButtonComponent } from "@atoms/button/button.component";
 import { CommonModule } from '@angular/common';
 import { CompanyTypeaheadComponent } from "../../../company/components/company-typeahead/company-typeahead.component";
 import { StudentTypeaheadComponent } from "../../../student/components/student-typeahead/student-typeahead.component";
+import { ProfessorTypeaheadComponent } from "../../../professor/components/professor-typeahead/professor-typeahead.component";
+import { PracticeDefinitionTypeaheadComponent } from "../../../practice-definition/components/practice-definition-typeahead/practice-definition-typeahead.component";
 
 @Component({
   selector: 'app-admin-entity-filter',
   standalone: true,
-  imports: [InputTextComponent, InputSelectComponent, AcademicProgramTypeaheadComponent, ButtonComponent, ReactiveFormsModule, CommonModule, CompanyTypeaheadComponent, StudentTypeaheadComponent],
+  imports: [InputTextComponent, InputSelectComponent, AcademicProgramTypeaheadComponent, ButtonComponent, ReactiveFormsModule, CommonModule, CompanyTypeaheadComponent, StudentTypeaheadComponent, ProfessorTypeaheadComponent, PracticeDefinitionTypeaheadComponent],
   templateUrl: './admin-entity-filter.component.html',
   styleUrl: './admin-entity-filter.component.scss'
 })

@@ -17,6 +17,12 @@
       <app-student-typeahead *ngIf="field.type === 'typeahead' && field.key === 'student'"
         [control]="getControl(field.key)" />
 
+      <app-professor-typeahead *ngIf="field.type === 'typeahead' && field.key === 'professor'"
+        [control]="getControl(field.key)" />
+
+      <app-practice-definition-typeahead *ngIf="field.type === 'typeahead' && field.key === 'practiceDefinition'"
+        [control]="getControl(field.key)" />
+
     </ng-container>
   </div>
 
