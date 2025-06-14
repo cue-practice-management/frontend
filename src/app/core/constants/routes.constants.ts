@@ -23,7 +23,8 @@ export const ROUTES = {
         NEWS: `${ADMIN_PREFFIX}/news`,
         STUDENT_COMPANY_CONTRACTS: `${ADMIN_PREFFIX}/student-company-contracts`,
         PRACTICE_TEMPLATES: `${ADMIN_PREFFIX}/practice-templates`,
-        PRACTICE_DEFINITION:  `${ADMIN_PREFFIX}/practice-definitions`
+        PRACTICE_DEFINITION:  `${ADMIN_PREFFIX}/practice-definitions`,
+        PRACTICE_PROCESSES: `${ADMIN_PREFFIX}/practice-processes`,
     },
 }
 
