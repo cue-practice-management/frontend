@@ -41,6 +41,11 @@ export const ADMIN_SIDEBAR_ITEMS: SidebarItem[] = [
         route: ROUTES.ADMIN.PRACTICE_DEFINITION,
         icon: LucideIcons.LucideSettings
       },
+      {
+        label: 'Procesos de Prácticas',
+        route: ROUTES.ADMIN.PRACTICE_PROCESSES,
+        icon: LucideIcons.LucideFileCheck
+      },
     ]
   },
   {
