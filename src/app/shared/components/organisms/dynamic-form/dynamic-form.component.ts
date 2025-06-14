@@ -34,15 +34,21 @@ export class DynamicFormComponent<T> implements OnInit {
 
   private buildForm(config: DynacmicFormConfig): FormGroup {
     const controlsConfig: Record<string, any> = {};
+
     config.sections.forEach(section =>
-      section.fields.forEach(field =>
+      section.fields.forEach(field => {
         controlsConfig[field.key] = [
           { value: field.value ?? '', disabled: field.disabled ?? false },
           field.validators ?? [],
-        ]
-      )
+        ];
+      })
     );
-    return this.fb.group(controlsConfig);
+
+    const formGroup = this.fb.group(controlsConfig, {
+      validators: config.groupValidators || []
+    });
+
+    return formGroup;
   }
 
   private subscribeToFieldChanges(config: DynacmicFormConfig): void {

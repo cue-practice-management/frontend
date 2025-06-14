@@ -4,6 +4,7 @@ import { DocumentType } from "../enums/document-type.enum";
 import { CompanyContractStatus, CompanyContractType, CompanySize } from "@/features/company/company.enums";
 import { StudentCompanyLinkingProcessStatus } from "@/features/student-company-linking-process/student-company-linking-process.enums";
 import { StudentCompanyContractCancelledBy, StudentCompanyContractStatus } from "@/features/student-company-contract/student-company-contract.enums";
+import { PracticeProcessCancelledBy, PracticeProcessStatus } from "@/features/practice-process/practice-process.enums";
 
 export const GENDER_SELECT_OPTIONS: SelectOption[] = [
     { label: 'Masculino', value: Gender.MALE },
@@ -55,3 +56,16 @@ export const STUDENT_COMPANY_CONTRACT_CANCELLED_BY_SELECT_OPTIONS: SelectOption[
     { label: 'Empresa', value: StudentCompanyContractCancelledBy.COMPANY },
     { label: 'Universidad', value: StudentCompanyContractCancelledBy.UNIVERSITY },
 ];
+
+export const PRACTICE_PROCESS_CANCELLED_BY_SELECT_OPTIONS: SelectOption[] = [
+    { label: 'Estudiante', value: PracticeProcessCancelledBy.STUDENT },
+    { label: 'Empresa', value: PracticeProcessCancelledBy.COMPANY },
+    { label: 'Universidad', value: PracticeProcessCancelledBy.UNIVERSITY },
+]
+
+export const PRACTICE_PROCESS_STATUS_SELECT_OPTIONS: SelectOption[] = [
+    { label: 'Pendiente', value: PracticeProcessStatus.PENDING },
+    { label: 'En curso', value: PracticeProcessStatus.IN_PROGRESS },
+    { label: 'Completado', value: PracticeProcessStatus.COMPLETED },
+    { label: 'Cancelado', value: PracticeProcessStatus.CANCELLED },
+]

@@ -70,6 +70,10 @@ export const ADMIN_ROUTES: Routes = [
             {
                 path: 'practice-definitions',
                 loadComponent: () => import('./pages/admin-practice-definition-page/admin-practice-definition-page.component').then(m => m.AdminPracticeDefinitionPageComponent),
+            },
+            {
+                path: 'practice-processes',
+                loadComponent: () => import('./pages/admin-practice-process-page/admin-practice-process-page.component').then(m => m.AdminPracticeProcessPageComponent),
             }
         ]
     }

@@ -115,5 +115,12 @@ export const API_ENDPOINTS = {
         CREATE: '/practice-definitions/create',
         UPDATE: (id: string) => `/practice-definitions/update/${id}`,
         DELETE: (id: string) => `/practice-definitions/delete/${id}`,
-    }
+        GET_TYPEAHEAD: '/practice-definitions/typeahead',
+    },
+    PRACTICE_PROCESS: {
+        GET: '/practice-processes',
+        START: '/practice-processes/start',
+        DELETE: (id: string) => `/practice-processes/delete/${id}`,
+        CANCEL: (id: string) => `/practice-processes/${id}/cancel`,
+    },
 };

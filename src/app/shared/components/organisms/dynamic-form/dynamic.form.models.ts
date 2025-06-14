@@ -29,4 +29,5 @@ export interface DynacmicFormConfig {
   sections: FormFieldSection[];
   buttonLabel?: string;
   title?: string;
+   groupValidators?: ValidatorFn[];
 }
