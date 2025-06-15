@@ -77,4 +77,10 @@
         font-size: 1rem;
         color: $dark-color;
     }
+
+    &__user{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
 }

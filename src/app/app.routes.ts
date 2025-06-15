@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomePageComponent } from './features/homes/pages/home-page/home-page.component';
-import { ADMIN_PREFFIX, AUTH_PREFFIX } from './core/constants/routes.constants';
+import { ADMIN_PREFFIX, AUTH_PREFFIX, NOT_FOUND_PREFFIX } from './core/constants/routes.constants';
 import { MainLayoutComponent } from './shared/components/layouts/main-layout/main-layout.component';
 
 export const routes: Routes = [
@@ -22,5 +22,9 @@ export const routes: Routes = [
     {
         path: ADMIN_PREFFIX,
         loadChildren: () => import('./features/admin/admin.routes').then(m => m.ADMIN_ROUTES)
+    },
+    {
+        path: NOT_FOUND_PREFFIX,
+        loadChildren: () => import('./features/not-found/not-found.routes').then(m => m.NOT_FOUND_ROUTES)
     }
 ];
