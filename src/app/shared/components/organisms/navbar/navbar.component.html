@@ -1,4 +1,5 @@
-<nav class="navbar" [ngClass]="{'navbar--scrolled': isScrolled, 'navbar--hidden': isHidden}" aria-label="Main navigation">
+<nav class="navbar" [ngClass]="{'navbar--scrolled': isScrolled, 'navbar--hidden': isHidden}"
+  aria-label="Main navigation">
   <div class="navbar__container">
     <div class="navbar__brand">
       <a routerLink="/" aria-label="Inicio">
@@ -14,13 +15,21 @@
       </li>
     </ul>
     <div class="navbar__auth">
-      <ng-container *ngIf="!user; else loggedIn">
-        <app-button (click)="navigateToLogin()" size="sm">Ingresar</app-button>
+      <ng-container *ngIf="user() as u; else loggedOut">
+        
+        <app-dropdown [items]="authenticatedDropdownItems">
+          <div class="navbar__user" dropdownTrigger>
+            <app-avatar [src]="u.photoUrl" size="sm"></app-avatar>
+            <span class="navbar__user-name">{{ u.firstName }} {{ u.lastName }}</span>
+          </div>
+        </app-dropdown>
+        
       </ng-container>
-      <ng-template #loggedIn>
-        <span class="navbar__welcome">Bienvenido, <strong>{{ user!.firstName }}</strong></span>
-        <app-button (click)="logout()" size="sm" variant="outline">Salir</app-button>
+
+      <ng-template #loggedOut>
+        <app-button (click)="navigateToLogin()" size="sm">Ingresar</app-button>
       </ng-template>
+
     </div>
   </div>
 </nav>

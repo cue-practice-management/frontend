@@ -7,11 +7,14 @@ import { ROUTES } from '@/core/constants/routes.constants';
 import { CurrentUserService } from '@/core/services/current-user.service';
 import { User } from '@/core/models/user.model';
 import { AuthService } from '@/features/auth/services/auth.service';
+import { DropdownComponent } from "../../molecules/dropdown/dropdown.component";
+import { AvatarComponent } from "../../atoms/avatar/avatar.component";
+import { LogOut } from 'lucide-angular';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [LogoComponent, ButtonComponent, CommonModule],
+  imports: [LogoComponent, ButtonComponent, CommonModule, DropdownComponent, AvatarComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
@@ -23,8 +26,7 @@ export class NavbarComponent {
   private currentUserService = inject(CurrentUserService);
   private authService = inject(AuthService);
 
-  user: User | null = this.currentUserService.currentUserValue;
-
+  readonly user = this.currentUserService.currentUser;
   isScrolled = false;
   isHidden = false;
 
@@ -54,6 +56,13 @@ export class NavbarComponent {
 
   logout(): void {
     this.authService.logout();
+  }
+
+  get authenticatedDropdownItems() {
+    return [
+      { label: 'Cerrar sesión', icon: LogOut, danger: true, action: () => this.authService.logout() }
+    ];
+
   }
 
 

@@ -1,5 +1,6 @@
 export const AUTH_PREFFIX = 'auth';
 export const ADMIN_PREFFIX = 'admin';
+export const NOT_FOUND_PREFFIX = '**';
 
 export const ROUTES = {
     AUTH: {
