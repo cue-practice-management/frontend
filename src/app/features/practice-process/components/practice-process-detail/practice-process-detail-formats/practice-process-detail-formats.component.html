@@ -1,0 +1,23 @@
+<div class="practice-formats">
+    <ng-container *ngIf="formats.length > 0; else noFormats">
+        <div class="practice-formats__container">
+            <h2 class="practice-formats__title">Formatos Guía</h2>
+            <div class="practice-formats__card" *ngFor="let format of formats">
+                <div class="practice-formats__content">
+                    <h3 class="practice-formats__name">{{ format.name }}</h3>
+                    <p class="practice-formats__description">{{ format.description }}</p>
+                </div>
+                <div class="practice-formats__action">
+                    <a [href]="format.fileUrl" target="_blank" rel="noopener">
+                        <app-button variant="primary" size="xs">
+                            <span class="practice-formats__action-text"><lucide-icon [img]="DownloadIcon" />Descargar</span>
+                        </app-button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #noFormats>
+        <div class="practice-formats__empty">No hay formatos disponibles.</div>
+    </ng-template>
+</div>

@@ -1,0 +1,82 @@
+@import 'variables';
+@import 'mixins';
+
+.practice-formats {
+    @include flex-column(1.5rem);
+
+    &__title {
+        @include text-lg;
+        font-weight: 700;
+        color: $dark-color;
+        margin: 0;
+    }
+
+    &__container {
+        background-color: $white-color;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        @include box-shadow-md();
+        @include flex-column(flex-start, flex-start, 1.25rem);
+        width: 100%;
+    }
+
+    &__card {
+        background-color: $light-color;
+        border-radius: 0.75rem;
+        border: 1px solid $gray-light-color;
+        padding: 1rem 1.25rem;
+        @include flex-column($gap: 0.75rem);
+        width: 100%;
+    
+        flex-wrap: wrap;
+        @include text-sm;
+    }
+
+    &__file-icon {
+        color: $primary-color;
+        font-size: 1.75rem;
+
+        lucide-icon {
+            width: 1.75rem;
+            height: 1.75rem;
+        }
+    }
+
+    &__content {
+        flex: 1;
+        @include flex-column(flex-start, flex-start, 0.25rem);
+    }
+
+    &__name {
+        @include text-sm;
+        font-weight: 600;
+        margin: 0;
+        color: $dark-color;
+    }
+
+    &__description {
+        @include text-sm;
+        margin: 0;
+        color: $gray-dark-color;
+    }
+
+    &__action {
+        @include flex(row, flex-start, center, nowrap, 0.25rem);
+
+        &-text {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+    }
+
+    &__empty {
+        background: $light-color;
+        border: 1px dashed $gray-light-color;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        text-align: center;
+        color: $gray-color;
+        width: 100%;
+    }
+}
