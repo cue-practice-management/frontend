@@ -1,0 +1,55 @@
+@import 'variables';
+@import 'mixins';
+
+.status-badge {
+  display: inline-block;
+  border-radius: 999px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.25rem 0.75rem;
+
+  &--sm {
+    font-size: 0.65rem;
+  }
+
+  &--md {
+    font-size: 0.75rem;
+  }
+
+  &--lg {
+    font-size: 0.875rem;
+  }
+
+  &--pending {
+    background-color: $warning-color-light;
+    color: $warning-color-dark;
+  }
+
+  &--in_progress {
+    background-color: $info-color-light;
+    color: $white-color;
+  }
+
+  &--completed {
+    background-color: $success-color-light;
+    color: $success-color-dark;
+  }
+
+  &--cancelled,
+  &--missed {
+    background-color: $error-color-light;
+    color: $error-color-dark;
+  }
+
+  &--scheduled {
+    background-color: $primary-color-extra-light;
+    color: $primary-color-dark;
+  }
+
+  &--graded,
+  &--submitted {
+    background-color: $secondary-color-light;
+    color: $white-color;
+  }
+}
