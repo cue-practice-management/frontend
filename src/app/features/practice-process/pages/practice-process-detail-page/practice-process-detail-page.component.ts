@@ -15,11 +15,13 @@ import { CommonModule } from '@angular/common';
 import { SectionWrapperComponent } from "@atoms/section-wrapper/section-wrapper.component";
 import { UserRole } from '@/core/enums/user-role.enum';
 import { SpinnerComponent } from "@atoms/spinner/spinner.component";
+import { PracticeProcessDetailDeliverablesComponent } from "../../components/practice-process-detail/practice-process-detail-deliverables/practice-process-detail-deliverables.component";
+import { PracticeProcessDetailFormatsComponent } from "../../components/practice-process-detail/practice-process-detail-formats/practice-process-detail-formats.component";
 
 @Component({
   selector: 'app-practice-process-detail-page',
   standalone: true,
-  imports: [PracticeProcessDetailHeaderComponent, CommonModule, SectionWrapperComponent, SpinnerComponent],
+  imports: [PracticeProcessDetailHeaderComponent, CommonModule, SectionWrapperComponent, SpinnerComponent, PracticeProcessDetailDeliverablesComponent, PracticeProcessDetailFormatsComponent],
   templateUrl: './practice-process-detail-page.component.html',
   styleUrl: './practice-process-detail-page.component.scss'
 })

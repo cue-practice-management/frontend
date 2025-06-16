@@ -96,6 +96,14 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+@mixin text-xs {
+    font-size: 0.75rem;
+
+    @include tablet() {
+        font-size: 0.85rem;
+    }
+
+}
 
 @mixin text-sm {
     font-size: 0.875rem;

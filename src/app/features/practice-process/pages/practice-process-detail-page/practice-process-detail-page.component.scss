@@ -2,4 +2,35 @@
 
 ::ng-deep .practice-process-detail {
   @include padding-y(2rem);
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include tablet {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  &__main {
+    @include flex-column($gap:2rem);
+  }
+
+  &__sidebar {
+    @include flex-column(flex-start, flex-start, 2rem);
+    position: relative;
+
+    @include tablet {
+      position: sticky;
+      top: 7rem; 
+    }
+  }
+}
+
+::ng-deep .practice-process-detail__content {
+  @include flex-column($gap:2rem);
+  width: 100%;
 }

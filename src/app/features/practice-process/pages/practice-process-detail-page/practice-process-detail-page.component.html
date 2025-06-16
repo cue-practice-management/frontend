@@ -1,12 +1,25 @@
-<app-section-wrapper *ngIf="practiceProcess && !isLoading" sectionClass="practice-process-detail">
+<app-section-wrapper *ngIf="practiceProcess && !isLoading" sectionClass="practice-process-detail" sectionContentClass="practice-process-detail__content">
 
-    <app-practice-process-detail-header [practice]="practiceProcess" [showStudent]="!isStudent" [showProfessor]="!isProfessor" />
+    <!-- Header (full width) -->
+    <app-practice-process-detail-header [practice]="practiceProcess" [showStudent]="!isStudent"
+        [showProfessor]="!isProfessor" />
 
-    <section class="practice-process-detail__section">
-        <p>Contenido por secciones aquí...</p>
+    <!-- Grid layout -->
+    <section class="practice-process-detail__grid">
+
+        <div class="practice-process-detail__main">
+            <app-practice-process-detail-deliverables [practice]="practiceProcess" [permissions]="permissions" />
+            <!-- Follow Ups -->
+        </div>
+
+        <aside class="practice-process-detail__sidebar">
+            <app-practice-process-detail-formats [practice]="practiceProcess" />
+        </aside>
+
     </section>
+
 </app-section-wrapper>
 
 <ng-container *ngIf="isLoading">
-    <app-spinner></app-spinner>
+    <app-spinner />
 </ng-container>
