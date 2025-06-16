@@ -1,0 +1,19 @@
+<header class="student-home__hero">
+  <div class="student-home__hero-inner">
+    <div class="student-home__greeting">
+      <p class="student-home__date">{{ today | date:'longDate' }}</p>
+      <h1 class="student-home__title">
+        Bienvenido, {{ student.firstName }}!
+      </h1>
+      <p class="student-home__subtitle">
+        Tu portal de prácticas empresariales
+      </p>
+    </div>
+    <div class="student-home__profile">
+      <div class="student-home__avatar-container">
+        <app-avatar [src]="student.photoUrl" [alt]="student.firstName" size="xl"
+          class="student-home__avatar"></app-avatar>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,78 @@
+<div class="active-process" *ngIf="!isLoading">
+    <ng-container *ngIf="practiceProcess; else noProcess">
+        <div class="active-process__card">
+            <div class="active-process__header">
+                <div class="active-process__header-content">
+                    <h3 class="active-process__title">Tu Práctica Actual</h3>
+                    <app-status-badge [status]="practiceProcess.status" type="practice" size="md"></app-status-badge>
+                </div>
+
+                <div class="active-process__company">
+                    <div class="active-process__company-logo">
+                        <app-avatar *ngIf="practiceProcess.company.logoUrl" [src]="practiceProcess.company.logoUrl"
+                            [alt]="practiceProcess.company.name" size="md">
+                        </app-avatar>
+                        <div *ngIf="!practiceProcess.company.logoUrl" class="active-process__company-fallback">
+                            {{ practiceProcess.company.name.charAt(0) }}
+                        </div>
+                    </div>
+                    <div class="active-process__company-info">
+                        <h4 class="active-process__company-name">{{ practiceProcess.company.name }}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="active-process__divider"></div>
+
+            <div class="active-process__details">
+                <div class="active-process__detail-item">
+                    <lucide-icon [img]="CalendarIcon" class="active-process__detail-icon"></lucide-icon>
+                    <div>
+                        <span class="active-process__detail-label">Período</span>
+                        <p class="active-process__detail-value">{{ practiceProcess.startDate | date: 'dd MMM' }} - {{
+                            practiceProcess.endDate | date: 'dd MMM, yyyy' }}</p>
+                    </div>
+                </div>
+
+                <div class="active-process__detail-item">
+                    <lucide-icon [img]="UserIcon" class="active-process__detail-icon"></lucide-icon>
+                    <div>
+                        <span class="active-process__detail-label">Profesor</span>
+                        <p class="active-process__detail-value">{{ practiceProcess.professor.firstName }} {{
+                            practiceProcess.professor.lastName }}</p>
+                    </div>
+                </div>
+
+                <div class="active-process__detail-item active-process__detail-item--full">
+                    <lucide-icon [img]="BriefcaseIcon" class="active-process__detail-icon"></lucide-icon>
+                    <div>
+                        <span class="active-process__detail-label">Practica</span>
+                        <p class="active-process__detail-value">{{ practiceProcess.practiceDefinition.name }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="active-process__actions">
+                <app-button size="sm" variant="primary" class="active-process__button" (click)="onViewDetails()">
+                    Ver Detalles
+                </app-button>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #noProcess>
+        <div class="active-process__empty">
+            <div class="active-process__empty-icon-container">
+                <lucide-icon [img]="BriefcaseIcon" class="active-process__empty-icon"></lucide-icon>
+            </div>
+            <h4 class="active-process__empty-title">Sin prácticas activas</h4>
+            <p class="active-process__empty-text">Aún no tienes una práctica activa asignada.</p>
+        </div>
+    </ng-template>
+</div>
+
+<div class="active-process" *ngIf="isLoading">
+    <div class="active-process__card">
+        <app-spinner size="md"></app-spinner>
+    </div>
+</div>

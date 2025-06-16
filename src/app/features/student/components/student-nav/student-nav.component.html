@@ -1,0 +1,56 @@
+<nav class="student-nav" [class.student-nav--open]="menuOpen">
+  <div class="student-nav__wrapper">
+    <button class="student-nav__toggle" (click)="toggleMenu()" aria-label="Abrir menú">
+      <lucide-icon [img]="HamburguerIcon"></lucide-icon>
+    </button>
+
+    <app-logo class="student-nav__logo"></app-logo>
+
+    <div class="student-nav__desktop-menu">
+      <ul class="student-nav__list">
+        <li class="student-nav__item">
+          <app-link [routerLink]="['/student']" routerLinkActive="active" class="student-nav__link">
+            Inicio
+          </app-link>
+        </li>
+        <li class="student-nav__item">
+          <app-link [routerLink]="['/student/companies']" routerLinkActive="active" class="student-nav__link">
+            Empresas
+          </app-link>
+        </li>
+      </ul>
+
+      <app-dropdown [items]="dropdownItems">
+        <div class="student-nav__user" dropdownTrigger>
+          <app-avatar [src]="user()?.photoUrl" size="sm"></app-avatar>
+          <span class="student-nav__user-name">{{ user()?.firstName }}</span>
+        </div>
+      </app-dropdown>
+    </div>
+  </div>
+
+  <div class="student-nav__overlay" *ngIf="menuOpen" (click)="toggleMenu()"></div>
+
+  <div class="student-nav__drawer">
+    <ul class="student-nav__list">
+      <li class="student-nav__item">
+        <app-link (click)="toggleMenu()" [routerLink]="['/student']" routerLinkActive="active" class="student-nav__link">
+          Inicio
+        </app-link>
+      </li>
+      <li class="student-nav__item">
+        <app-link (click)="toggleMenu()" [routerLink]="['/student/companies']" routerLinkActive="active" class="student-nav__link">
+          Empresas
+        </app-link>
+      </li>
+    </ul>
+
+    <app-dropdown [items]="dropdownItems">
+      <div class="student-nav__user" dropdownTrigger>
+        <app-avatar [src]="user()?.photoUrl" size="sm"></app-avatar>
+        <span class="student-nav__user-name">{{ user()?.firstName }}</span>
+      </div>
+    </app-dropdown>
+  </div>
+</nav>
+

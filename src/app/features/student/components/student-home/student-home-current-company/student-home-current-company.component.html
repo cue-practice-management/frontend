@@ -1,0 +1,58 @@
+<div class="current-company">
+  <ng-container *ngIf="company; else noCompany">
+    <div class="current-company__card">
+      <div class="current-company__header">
+        <h3 class="current-company__title">Tu Empresa Actual</h3>
+      </div>
+
+      <div class="current-company__content">
+        <div class="current-company__logo-container">
+          <ng-container *ngIf="company.logoUrl; else companyFallback">
+            <app-avatar [src]="company.logoUrl" [alt]="company.name" size="xl" class="current-company__logo">
+            </app-avatar>
+          </ng-container>
+
+          <ng-template #companyFallback>
+            <div class="current-company__logo-fallback">
+              {{ company.name.charAt(0) }}
+            </div>
+          </ng-template>
+        </div>
+
+        <div class="current-company__info">
+          <h4 class="current-company__name">{{ company.name }}</h4>
+          <p class="current-company__corporate">{{ company.corporateName }}</p>
+
+          <div class="current-company__meta">
+            <div class="current-company__location-wrapper">
+              <lucide-icon [img]="MapPinIcon"></lucide-icon>
+              <p class="current-company__location">
+                {{ company.city.name }}, {{ company.country.name }}
+              </p>
+            </div>
+
+            <a *ngIf="company.websiteUrl" [href]="company.websiteUrl" target="_blank" rel="noopener"
+              class="current-company__website">
+              <lucide-icon [img]="GlobeIcon" class="current-company__meta-icon"></lucide-icon>
+              <span>Visitar sitio web</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #noCompany>
+    <div class="current-company__card">
+      <div class="current-company__empty">
+        <div class="current-company__empty-icon-container">
+          <lucide-icon [img]="BuildingIcon" class="current-company__empty-icon"></lucide-icon>
+        </div>
+        <h4 class="current-company__empty-title">Sin empresa vinculada</h4>
+        <p class="current-company__empty-text">
+          Aún no estás vinculado a ninguna empresa.
+        </p>
+      </div>
+    </div>
+  </ng-template>
+</div>

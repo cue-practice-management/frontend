@@ -1,0 +1,21 @@
+<app-section-wrapper *ngIf="student" sectionClass="student-home-page">
+    <div class="student-home">
+        <!-- Header Section -->
+        <app-student-home-header [student]="student!" class="student-home__header"></app-student-home-header>
+
+        <!-- Grid Layout -->
+        <div class="student-home__grid">
+            <app-student-home-active-practice-process [student]="student"
+                class="student-home__card student-home__card--practice">
+            </app-student-home-active-practice-process>
+
+            <app-student-home-current-company [student]="student"
+                class="student-home__card student-home__card--company">
+            </app-student-home-current-company>
+        </div>
+    </div>
+</app-section-wrapper>
+
+<app-section-wrapper *ngIf="isLoading" class="student-home__loading">
+    <app-spinner></app-spinner>
+</app-section-wrapper>
