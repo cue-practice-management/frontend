@@ -1,0 +1,97 @@
+@import 'variables';
+@import 'mixins';
+
+.student-home {
+  &__hero {
+    position: relative;
+    border-radius: 1.25rem;
+    @include box-shadow-md();
+    overflow: hidden;
+    margin-bottom: 2rem;
+    background-color: $primary-color;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+  }
+
+  &__hero-inner {
+    @include container;
+    @include flex-column(center, space-between, 2rem);
+    padding: 2.5rem 2rem;
+    position: relative;
+    z-index: 2;
+
+    @include tablet {
+      @include flex(row, space-between, center, nowrap, 2rem);
+      padding: 3rem 2.5rem;
+    }
+
+    @include desktop {
+      padding: 3.5rem 3rem;
+    }
+  }
+
+  &__greeting {
+    text-align: left;
+    color: $white-color;
+    max-width: 600px;
+
+    @include mobile {
+      text-align: center;
+    }
+  }
+
+  &__date {
+    font-size: 0.95rem;
+    font-weight: 500;
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+    letter-spacing: 0.01em;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0.25rem 0;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+
+    @include tablet {
+      font-size: 2.25rem;
+    }
+
+    @include desktop {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.125rem;
+    font-weight: 500;
+    opacity: 0.9;
+    margin: 0.5rem 0 0;
+
+    @include tablet {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__profile {
+    @include flex(row, center, center);
+
+    @include mobile {
+      margin-top: 0.5rem;
+    }
+  }
+
+  &__avatar-container {
+    position: relative;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+
+}

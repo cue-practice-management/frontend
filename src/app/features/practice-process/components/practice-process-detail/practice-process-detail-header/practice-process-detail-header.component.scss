@@ -1,0 +1,107 @@
+@import 'variables';
+@import 'mixins';
+
+.practice-header {
+  padding: 1.75rem;
+  background-color: $white-color;
+  border-radius: 1rem;
+  @include box-shadow-md();
+  @include flex-column(flex-start, flex-start, 1.5rem);
+  position: relative;
+
+  &__top {
+    @include padding-y(0.5rem);
+    position:absolute;
+    top: 0rem;
+    right: 1.75rem;
+  }
+
+  &__status {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 999px;
+    text-transform: uppercase;
+
+    &--pending {
+      background-color: $warning-color-light;
+      color: $warning-color-dark;
+    }
+
+    &--in_progress {
+      background-color: $info-color-light;
+      color: $info-color-dark;
+    }
+
+    &--completed {
+      background-color: $success-color-light;
+      color: $success-color-dark;
+    }
+
+    &--cancelled {
+      background-color: $error-color-light;
+      color: $error-color-dark;
+    }
+  }
+
+  &__main {
+    width: 100%;
+    @include flex-column(flex-start, flex-start, 1.5rem);
+  }
+
+  &__definition {
+    @include flex-column(flex-start, flex-start, 0.5rem);
+    flex: 1;
+
+    &-title {
+      @include text-xl;
+      font-weight: 700;
+      color: $dark-color;
+      margin: 0;
+    }
+
+    &-subtitle {
+      @include text-sm;
+      color: $gray-dark-color;
+      margin: 0;
+    }
+  }
+
+  &__meta {
+    @include flex-column(flex-start, flex-start, 0.5rem);
+    max-width: 320px;
+    @include text-sm;
+    color: $gray-dark-color;
+  }
+
+  &__company {
+    @include flex(row, flex-start, center, nowrap, 0.75rem);
+  }
+
+  &__logo {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__company-info {
+    @include flex-column(flex-start, flex-start, 0.1rem);
+  }
+
+  &__company-name {
+    font-weight: 600;
+    margin: 0;
+    color: $dark-color;
+  }
+
+  &__company-location {
+    margin: 0;
+    color: $gray-color;
+  }
+
+  &__person {
+    margin: 0;
+    color: $gray-dark-color;
+  }
+}
