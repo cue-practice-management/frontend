@@ -103,6 +103,8 @@ export class AuthService {
     switch (role) {
       case UserRole.ADMIN:
         return ROUTES.ADMIN.HOME;
+      case UserRole.STUDENT:
+        return ROUTES.STUDENT.HOME;
       default:
         return ROUTES.HOME;
     }

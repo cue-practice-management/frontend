@@ -1,5 +1,6 @@
 export const AUTH_PREFFIX = 'auth';
 export const ADMIN_PREFFIX = 'admin';
+export const STUDENT_PREFFIX = 'student';
 export const NOT_FOUND_PREFFIX = '**';
 
 export const ROUTES = {
@@ -26,6 +27,9 @@ export const ROUTES = {
         PRACTICE_TEMPLATES: `${ADMIN_PREFFIX}/practice-templates`,
         PRACTICE_DEFINITION:  `${ADMIN_PREFFIX}/practice-definitions`,
         PRACTICE_PROCESSES: `${ADMIN_PREFFIX}/practice-processes`,
+    },
+    STUDENT: {
+        HOME: `${STUDENT_PREFFIX}`,
     },
 }
 
