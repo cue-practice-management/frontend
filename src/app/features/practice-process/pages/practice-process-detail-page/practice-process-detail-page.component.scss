@@ -1,0 +1,5 @@
+@import 'mixins';
+
+::ng-deep .practice-process-detail {
+  @include padding-y(2rem);
+}

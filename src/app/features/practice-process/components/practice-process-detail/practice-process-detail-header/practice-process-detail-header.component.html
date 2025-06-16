@@ -1,0 +1,34 @@
+<div class="practice-header">
+    <div class="practice-header__top">
+        <app-status-badge [status]="practice.status" type="practice" size="md"></app-status-badge>
+    </div>
+
+    <div class="practice-header__main">
+        <div class="practice-header__definition">
+            <h1 class="practice-header__definition-title">
+                {{ practice.practiceDefinition.name }}
+            </h1>
+            <p class="practice-header__definition-subtitle">
+                {{ practice.startDate | date: 'longDate' }} – {{ practice.endDate | date: 'longDate' }}
+            </p>
+        </div>
+
+        <div class="practice-header__meta">
+            <div class="practice-header__company">
+                <app-avatar *ngIf="practice.company.logoUrl" [src]="practice.company.logoUrl"
+                    [alt]="practice.company.name" class="practice-header__logo" size="sm"></app-avatar>
+                <div class="practice-header__company-info">
+                    <p class="practice-header__company-name">{{ practice.company.name }}</p>
+                </div>
+            </div>
+
+            <p class="practice-header__person" *ngIf="showProfessor">
+                <strong>Docente Asesor:</strong> {{ practice.professor.firstName }} {{ practice.professor.lastName }}
+            </p>
+
+            <p class="practice-header__person" *ngIf="showStudent">
+                Estudiante: {{ practice.student.firstName }} {{ practice.student.lastName }}
+            </p>
+        </div>
+    </div>
+</div>

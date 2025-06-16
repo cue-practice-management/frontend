@@ -1,0 +1,12 @@
+<app-section-wrapper *ngIf="practiceProcess && !isLoading" sectionClass="practice-process-detail">
+
+    <app-practice-process-detail-header [practice]="practiceProcess" [showStudent]="!isStudent" [showProfessor]="!isProfessor" />
+
+    <section class="practice-process-detail__section">
+        <p>Contenido por secciones aquí...</p>
+    </section>
+</app-section-wrapper>
+
+<ng-container *ngIf="isLoading">
+    <app-spinner></app-spinner>
+</ng-container>
