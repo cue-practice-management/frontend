@@ -24,6 +24,12 @@
     width: 100%;
   }
 
+  &--xs {
+    @include text-xs;
+    @include padding-y(0.25rem);
+    @include padding-x(0.75rem);
+  }
+
   &--sm {
     @include text-sm;
     @include padding-y(0.4rem);
