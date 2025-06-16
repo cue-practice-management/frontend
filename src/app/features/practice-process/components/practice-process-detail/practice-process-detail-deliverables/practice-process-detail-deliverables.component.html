@@ -1,0 +1,58 @@
+<div class="practice-deliverables">
+
+    <ng-container *ngIf="practice.deliverables.length > 0; else noDeliverables">
+        <div class="practice-deliverables__container">
+            
+            <h2 class="practice-deliverables__title">Entregables</h2>
+            <div class="practice-deliverables__card" *ngFor="let d of practice.deliverables">
+                <div class="practice-deliverables__header">
+                    <h3 class="practice-deliverables__name">{{ d.title }}</h3>
+                    <app-status-badge [status]="d.status" type="deliverable" size="sm" />
+                </div>
+
+                <p class="practice-deliverables__description" *ngIf="d.description">
+                    {{ d.description }}
+                </p>
+
+                <p class="practice-deliverables__date">
+                    Fecha límite: <strong>{{ d.dueDate | date: 'longDate' }}</strong>
+                </p>
+
+                <div class="practice-deliverables__details">
+                    <p *ngIf="d.submittedAt">📤 Entregado el: <strong>{{ d.submittedAt | date: 'longDate' }}</strong>
+                    </p>
+                    <p *ngIf="d.gradedAt">📊 Calificado el: <strong>{{ d.gradedAt | date: 'longDate' }}</strong></p>
+                    <p *ngIf="d.grade !== undefined">📝 Nota: <strong>{{ d.grade }}/5</strong></p>
+                    <p *ngIf="d.gradeObservations">💬 Observaciones: {{ d.gradeObservations }}</p>
+                    <a *ngIf="d.submissionUrl" [href]="d.submissionUrl" target="_blank"
+                        class="practice-deliverables__file-link">
+                        Ver entrega enviada
+                    </a>
+                </div>
+
+                <div class="practice-deliverables__actions">
+                    <app-button *ngIf="permissions.canSubmitDeliverables && d.status === 'pending'" variant="success"
+                        (click)="onSubmit(d._id)" size="sm">
+                        Entregar
+                    </app-button>
+
+                    <app-button *ngIf="permissions.canSubmitDeliverables && d.status === 'submitted'"
+                        (click)="onSubmit(d._id)" size="sm">
+                        Editar Entrega
+                    </app-button>
+
+                    <app-button *ngIf="permissions.canEvaluateDeliverables && d.status === 'submitted'"
+                        variant="success" (click)="onGrade(d._id)" size="sm">
+                        Calificar
+                    </app-button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #noDeliverables>
+        <div class="practice-deliverables__empty">
+            No hay entregables asignados.
+        </div>
+    </ng-template>
+</div>

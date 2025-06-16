@@ -50,6 +50,8 @@ export interface CancelPracticeProcessRequest {
 
 export interface PracticeProcessDeliverable {
     _id: string;
+    title: string;
+    description?: string;
     dueDate: Date;
     submittedAt?: Date;
     submissionUrl?: string;

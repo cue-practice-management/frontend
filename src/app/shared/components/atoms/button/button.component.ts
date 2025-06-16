@@ -14,7 +14,7 @@ import { SpinnerComponent } from "../spinner/spinner.component";
 })
 export class ButtonComponent {
   @Input() variant: 'primary' | 'success' | 'danger' | 'light' | 'dark' | 'ghost'| 'outline' = 'primary';
-  @Input() size: 'sm' | 'md' | 'lg' = 'md';
+  @Input() size: 'xs' | 'sm' | 'md' | 'lg' = 'md';
   @Input() type: 'button' | 'submit' = 'button';
   @Input() disabled = false;
   @Input() fullWidth = false;
