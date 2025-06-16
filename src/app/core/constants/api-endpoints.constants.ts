@@ -15,6 +15,7 @@ export const API_ENDPOINTS = {
         UPDATE: (id: string) => `/students/update/${id}`,
         DELETE: (id: string) => `/students/delete/${id}`,
         GET_TYPEAHEAD: '/students/typeahead',
+        ME: '/students/me',
     },
     PROFESSOR: {
         GET: '/professors',
@@ -119,8 +120,10 @@ export const API_ENDPOINTS = {
     },
     PRACTICE_PROCESS: {
         GET: '/practice-processes',
+        GET_BY_ID: (id: string) => `/practice-processes/${id}`,
         START: '/practice-processes/start',
         DELETE: (id: string) => `/practice-processes/delete/${id}`,
         CANCEL: (id: string) => `/practice-processes/${id}/cancel`,
+        GET_STUDENT_CURRENT: '/practice-processes/student/me/current',
     },
 };

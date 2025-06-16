@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CancelPracticeProcessRequest, PracticeProcess, PracticeProcessFilter, StartPracticeProcessRequest } from '../practice-process.models';
+import { CancelPracticeProcessRequest, PracticeProcess, PracticeProcessDetail, PracticeProcessFilter, StartPracticeProcessRequest } from '../practice-process.models';
 import { Observable } from 'rxjs';
 import { API_ENDPOINTS } from '@/core/constants/api-endpoints.constants';
 import { PaginatedResult } from '@/core/models/paginated-result.model';
@@ -28,8 +28,16 @@ export class PracticeProcessService {
     return this.http.get<PaginatedResult<PracticeProcess>>(API_ENDPOINTS.PRACTICE_PROCESS.GET, { params });
   }
 
+  getPracticeProcessById(id: string): Observable<PracticeProcessDetail> {
+    return this.http.get<PracticeProcessDetail>(API_ENDPOINTS.PRACTICE_PROCESS.GET_BY_ID(id));
+  }
+
+  getStudentCurrentPracticeProcess(): Observable<PracticeProcess | null> {
+    return this.http.get<PracticeProcess | null>(API_ENDPOINTS.PRACTICE_PROCESS.GET_STUDENT_CURRENT);
+  }
+
   deletePracticeProcess(id: string): Observable<void> {
     return this.http.delete<void>(API_ENDPOINTS.PRACTICE_PROCESS.DELETE(id));
   }
-  
+
 }

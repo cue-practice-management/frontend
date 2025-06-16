@@ -42,4 +42,8 @@ export class StudentService {
   deleteStudent(id: string): Observable<void> {
     return this.http.delete<void>(API_ENDPOINTS.STUDENT.DELETE(id));
   }
+  
+  getCurrentStudent(): Observable<Student> {
+    return this.http.get<Student>(API_ENDPOINTS.STUDENT.ME);
+  }
 }
