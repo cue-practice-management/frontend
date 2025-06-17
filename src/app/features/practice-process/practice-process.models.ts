@@ -61,6 +61,10 @@ export interface PracticeProcessDeliverable {
     gradedAt?: Date;
 }
 
+export interface SubmitPracticeProcessDeliverableRequest {
+    file: File;
+}
+
 export interface PracticeProcessFollowUp {
     _id: string;
     status: PracticeProcessFollowUpStatus;

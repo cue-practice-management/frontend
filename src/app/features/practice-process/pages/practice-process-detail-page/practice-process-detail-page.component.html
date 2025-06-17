@@ -8,7 +8,7 @@
     <section class="practice-process-detail__grid">
 
         <div class="practice-process-detail__main">
-            <app-practice-process-detail-deliverables [practice]="practiceProcess" [permissions]="permissions" />
+            <app-practice-process-detail-deliverables [practice]="practiceProcess" [permissions]="permissions" (deliverableSubmitted)="onDeliverableSubmitted()" />
             <!-- Follow Ups -->
         </div>
 

@@ -15,6 +15,7 @@ export enum PracticeProcessDeliverableStatus {
     SCHEDULED = 'scheduled',
     PENDING = 'pending',
     SUBMITTED = 'submitted',
+    SUBMITTED_LATE = 'submitted_late',
     GRADED = 'graded',
 }
 
@@ -42,6 +43,7 @@ export const PRACTICE_PROCESS_DELIVERABLE_STATUS_LABELS: Record<PracticeProcessD
     [PracticeProcessDeliverableStatus.SCHEDULED]: 'Programado',
     [PracticeProcessDeliverableStatus.PENDING]: 'Pendiente',
     [PracticeProcessDeliverableStatus.SUBMITTED]: 'Entregado',
+    [PracticeProcessDeliverableStatus.SUBMITTED_LATE]: 'Entregado Tarde',
     [PracticeProcessDeliverableStatus.GRADED]: 'Calificado',
 };
 

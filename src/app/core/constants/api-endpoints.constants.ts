@@ -126,4 +126,7 @@ export const API_ENDPOINTS = {
         CANCEL: (id: string) => `/practice-processes/${id}/cancel`,
         GET_STUDENT_CURRENT: '/practice-processes/student/me/current',
     },
+    PRACTICE_PROCESS_DELIVERABLE: {
+        SUBMIT: (practiceProcessId: string, deliverableId: string) => `/practice-processes/${practiceProcessId}/deliverables/${deliverableId}/submit`,
+    },
 };
