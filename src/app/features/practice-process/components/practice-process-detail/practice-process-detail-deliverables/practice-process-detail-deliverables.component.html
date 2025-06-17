@@ -2,43 +2,57 @@
 
     <ng-container *ngIf="practice.deliverables.length > 0; else noDeliverables">
         <div class="practice-deliverables__container">
-            
+
             <h2 class="practice-deliverables__title">Entregables</h2>
             <div class="practice-deliverables__card" *ngFor="let d of practice.deliverables">
+
                 <div class="practice-deliverables__header">
                     <h3 class="practice-deliverables__name">{{ d.title }}</h3>
                     <app-status-badge [status]="d.status" type="deliverable" size="sm" />
+
                 </div>
 
                 <p class="practice-deliverables__description" *ngIf="d.description">
                     {{ d.description }}
                 </p>
 
-                <p class="practice-deliverables__date">
+                <p class="practice-deliverables__date"
+                    [ngClass]="{'practice-deliverables__date--warning': isDueDatePassedAndPending(d)}">
                     Fecha límite: <strong>{{ d.dueDate | date: 'longDate' }}</strong>
                 </p>
 
                 <div class="practice-deliverables__details">
-                    <p *ngIf="d.submittedAt">📤 Entregado el: <strong>{{ d.submittedAt | date: 'longDate' }}</strong>
-                    </p>
-                    <p *ngIf="d.gradedAt">📊 Calificado el: <strong>{{ d.gradedAt | date: 'longDate' }}</strong></p>
-                    <p *ngIf="d.grade !== undefined">📝 Nota: <strong>{{ d.grade }}/5</strong></p>
-                    <p *ngIf="d.gradeObservations">💬 Observaciones: {{ d.gradeObservations }}</p>
-                    <a *ngIf="d.submissionUrl" [href]="d.submissionUrl" target="_blank"
-                        class="practice-deliverables__file-link">
+                    <span class="practice-deliverables__row" *ngIf="d.submittedAt">
+                        <lucide-icon [img]="calendarIcon" class="practice-deliverables__icon" />
+                        Entregado el: <strong>{{ d.submittedAt | date: 'longDate' }}</strong>
+                    </span>
+
+                    <span class="practice-deliverables__row" *ngIf="d.gradedAt">
+                        <lucide-icon [img]="checkIcon" class="practice-deliverables__icon" />
+                        Calificado el: <strong>{{ d.gradedAt | date: 'longDate' }}</strong>
+                    </span>
+
+                    <span class="practice-deliverables__row" *ngIf="d.grade !== undefined">
+                        <lucide-icon [img]="fileIcon" class="practice-deliverables__icon" />
+                        Nota: <strong>{{ d.grade }}/5</strong>
+                    </span>
+
+                    <span class="practice-deliverables__row" *ngIf="d.gradeObservations">
+                        <lucide-icon [img]="commentIcon" class="practice-deliverables__icon" />
+                        Observaciones: {{ d.gradeObservations }}
+                    </span>
+
+                    <a class="practice-deliverables__row practice-deliverables__file-link" *ngIf="d.submissionUrl"
+                        [href]="d.submissionUrl" target="_blank">
+                        <lucide-icon [img]="downloadIcon" class="practice-deliverables__icon" />
                         Ver entrega enviada
                     </a>
                 </div>
 
                 <div class="practice-deliverables__actions">
-                    <app-button *ngIf="permissions.canSubmitDeliverables && d.status === 'pending'" variant="success"
+                    <app-button *ngIf="permissions.canSubmitDeliverables && d.status === 'pending'"
                         (click)="onSubmit(d._id)" size="sm">
                         Entregar
-                    </app-button>
-
-                    <app-button *ngIf="permissions.canSubmitDeliverables && d.status === 'submitted'"
-                        (click)="onSubmit(d._id)" size="sm">
-                        Editar Entrega
                     </app-button>
 
                     <app-button *ngIf="permissions.canEvaluateDeliverables && d.status === 'submitted'"

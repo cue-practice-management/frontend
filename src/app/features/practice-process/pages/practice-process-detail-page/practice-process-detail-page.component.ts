@@ -51,7 +51,7 @@ export class PracticeProcessDetailPageComponent extends RetrieveData<PracticePro
 
     this.practiceProcessId = practiceProcessId;
     this.permissions = getPracticeProcessDetailPermissions(this.user.role);
-    this.loadData(); 
+    this.loadData();
   }
 
   protected override fetchData(): Observable<PracticeProcessDetail> {
@@ -64,6 +64,10 @@ export class PracticeProcessDetailPageComponent extends RetrieveData<PracticePro
 
   protected override onError(): void {
     this.router.navigate([ROUTES.HOME]);
+  }
+
+  onDeliverableSubmitted(): void {
+    this.loadData();
   }
 
   get isStudent(): boolean {

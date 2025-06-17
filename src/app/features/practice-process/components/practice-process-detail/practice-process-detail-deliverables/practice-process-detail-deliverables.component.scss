@@ -5,7 +5,7 @@
     @include flex-column(flex-start, flex-start, 1.5rem);
 
     &__title {
-        @include text-lg;
+        @include text-md;
         font-weight: 700;
         color: $dark-color;
         margin: 0;
@@ -27,13 +27,15 @@
         padding: 1rem 1.25rem;
         @include flex-column(flex-start, flex-start, 0.75rem);
         width: 100%;
-        max-width:300px;
+        max-width: 300px;
+        position: relative;
     }
 
     &__header {
         @include flex(row, space-between, center, nowrap, 1rem);
         width: 100%;
     }
+
 
     &__name {
         @include text-md;
@@ -51,7 +53,10 @@
     &__date {
         @include text-sm;
         color: $gray-color;
-        margin: 0;
+        
+        &--warning {
+            color: $error-color-light;
+        }
     }
 
     &__details {
@@ -67,6 +72,19 @@
                 color: $primary-color-dark;
             }
         }
+    }
+
+    &__row {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        @include text-sm;
+        color: $gray-dark-color;
+        margin-bottom: 0.25rem;
+    }
+
+    &__icon {
+        color: $gray-color;
     }
 
     &__file-link {
