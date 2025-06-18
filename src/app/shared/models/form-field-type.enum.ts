@@ -8,6 +8,7 @@ export enum FormFieldType {
     MULTISELECT = 'multiselect',
     OTP = 'otp',
     DATE = 'date',
+    DATETIME_LOCAL = 'datetime-local',
     FILE = 'file',
     RICH_TEXT = 'rich-text',
     CHECKBOX = 'checkbox',
