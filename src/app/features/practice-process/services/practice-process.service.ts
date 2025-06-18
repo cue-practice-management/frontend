@@ -36,6 +36,10 @@ export class PracticeProcessService {
     return this.http.get<PracticeProcess | null>(API_ENDPOINTS.PRACTICE_PROCESS.GET_STUDENT_CURRENT);
   }
 
+  getProfessorCurrentPracticeProcesses(): Observable<PracticeProcess[] | []> {
+    return this.http.get<PracticeProcess[] | []>(API_ENDPOINTS.PRACTICE_PROCESS.GET_PROFESSOR_CURRENT);
+  }
+
   deletePracticeProcess(id: string): Observable<void> {
     return this.http.delete<void>(API_ENDPOINTS.PRACTICE_PROCESS.DELETE(id));
   }
