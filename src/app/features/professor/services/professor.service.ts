@@ -26,6 +26,10 @@ export class ProfessorService {
     return this.http.get<TypeaheadItem[]>(API_ENDPOINTS.PROFESSOR.GET_TYPEAHEAD, { params });
   }
 
+  getCurrentProfessor(): Observable<Professor> {
+    return this.http.get<Professor>(API_ENDPOINTS.PROFESSOR.ME);
+  }
+
   creatProfessor(createProfessorRequest: CreateProfessorRequest): Observable<Professor> {
     return this.http.post<Professor>(API_ENDPOINTS.PROFESSOR.CREATE, createProfessorRequest);
   }

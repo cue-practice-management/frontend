@@ -65,6 +65,11 @@ export interface SubmitPracticeProcessDeliverableRequest {
     file: File;
 }
 
+export interface GradePracticeProcessDeliverableRequest {
+    grade: number;
+    gradeObservations: string;
+}
+
 export interface PracticeProcessFollowUp {
     _id: string;
     status: PracticeProcessFollowUpStatus;

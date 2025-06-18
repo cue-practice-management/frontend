@@ -23,6 +23,7 @@ export const API_ENDPOINTS = {
         UPDATE: (id: string) => `/professors/update/${id}`,
         DELETE: (id: string) => `/professors/delete/${id}`,
         GET_TYPEAHEAD: '/professors/typeahead',
+        ME: '/professors/me',
     },
     COMPANY_MENTOR: {
         GET: '/company-mentors',
@@ -125,8 +126,10 @@ export const API_ENDPOINTS = {
         DELETE: (id: string) => `/practice-processes/delete/${id}`,
         CANCEL: (id: string) => `/practice-processes/${id}/cancel`,
         GET_STUDENT_CURRENT: '/practice-processes/student/me/current',
+        GET_PROFESSOR_CURRENT: '/practice-processes/professor/me/current',
     },
     PRACTICE_PROCESS_DELIVERABLE: {
         SUBMIT: (practiceProcessId: string, deliverableId: string) => `/practice-processes/${practiceProcessId}/deliverables/${deliverableId}/submit`,
+        GRADE: (practiceProcessId: string, deliverableId: string) => `/practice-processes/${practiceProcessId}/deliverables/${deliverableId}/grade`,
     },
 };

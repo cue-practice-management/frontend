@@ -69,6 +69,10 @@ export class PracticeProcessDetailPageComponent extends RetrieveData<PracticePro
   onDeliverableSubmitted(): void {
     this.loadData();
   }
+  
+  onDeliverableGraded(): void {
+    this.loadData();
+  }
 
   get isStudent(): boolean {
     return this.user?.role === UserRole.STUDENT;

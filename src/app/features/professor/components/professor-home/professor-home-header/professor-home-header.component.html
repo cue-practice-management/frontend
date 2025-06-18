@@ -1,0 +1,24 @@
+<div class="professor-header">
+    <div class="professor-header__decorations">
+        <div class="professor-header__shape professor-header__shape--top-left"></div>
+        <div class="professor-header__shape professor-header__shape--bottom-right"></div>
+    </div>
+
+    <div class="professor-header__info">
+        <div class="professor-header__identity">
+            <app-avatar [src]="professor.photoUrl" [alt]="professor.firstName + ' ' + professor.lastName" size="lg"
+                class="professor-header__avatar" />
+            <div class="professor-header__welcome">
+                <h2 class="professor-header__name">
+                    Bienvenido, {{ professor.firstName }} {{ professor.lastName }}
+                </h2>
+                <p class="professor-header__subtitle">Tu portal de prácticas empresariales</p>
+                <p class="professor-header__date">{{ today | date: 'longDate' }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="professor-header__illustration">
+        <img src="assets/images/mascot/mascot-greeting.png" alt="Mascota educativa" />
+    </div>
+</div>

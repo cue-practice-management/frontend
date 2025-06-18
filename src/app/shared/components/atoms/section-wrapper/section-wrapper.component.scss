@@ -10,7 +10,8 @@
         padding: 2rem;
 
         @include laptop {
-            padding: 0;
+            @include padding-y(2rem);
+            @include padding-x(0.5rem);
         }
     }
 }

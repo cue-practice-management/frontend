@@ -1,0 +1,34 @@
+<div class="professor-processes">
+    <div class="professor-processes__card">
+        <h2 class="professor-processes__card-title">Procesos de prácticas asignados</h2>
+
+        <ng-container *ngIf="!isLoading; else loading">
+            <div class="professor-processes__grid">
+                <div class="professor-processes__process" *ngFor="let process of practiceProcesses" (click)="onProcessClicked(process)">
+                    <div class="professor-processes__header">
+                        <h3 class="professor-processes__student">
+                            {{ process.student.firstName }} {{ process.student.lastName }}
+                        </h3>
+                        <app-status-badge [status]="process.status" type="practice" size="sm" />
+                    </div>
+
+                    <p class="professor-processes__definition">
+                        {{ process.practiceDefinition.name }}
+                    </p>
+
+                    <p class="professor-processes__company">
+                        {{ process.company.name }}
+                    </p>
+
+                    <p class="professor-processes__dates">
+                        {{ process.startDate | date: 'MMM d, y' }} – {{ process.endDate | date: 'MMM d, y' }}
+                    </p>
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-template #loading>
+            <app-spinner />
+        </ng-template>
+    </div>
+</div>
