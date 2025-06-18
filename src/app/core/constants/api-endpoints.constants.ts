@@ -132,4 +132,9 @@ export const API_ENDPOINTS = {
         SUBMIT: (practiceProcessId: string, deliverableId: string) => `/practice-processes/${practiceProcessId}/deliverables/${deliverableId}/submit`,
         GRADE: (practiceProcessId: string, deliverableId: string) => `/practice-processes/${practiceProcessId}/deliverables/${deliverableId}/grade`,
     },
+    PRACTICE_PROCESS_FOLLOW_UP: {
+        SCHEDULE: (practiceProcessId: string) => `/practice-processes/${practiceProcessId}/follow-ups/schedule`,
+        CANCEL: (practiceProcessId: string, followUpId: string) => `/practice-processes/${practiceProcessId}/follow-ups/${followUpId}/cancel`,
+        COMPLETE: (practiceProcessId: string, followUpId: string) => `/practice-processes/${practiceProcessId}/follow-ups/${followUpId}/complete`,
+    }
 };
