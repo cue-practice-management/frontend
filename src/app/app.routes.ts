@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomePageComponent } from './features/homes/pages/home-page/home-page.component';
-import { ADMIN_PREFFIX, AUTH_PREFFIX, NOT_FOUND_PREFFIX, STUDENT_PREFFIX } from './core/constants/routes.constants';
+import { ADMIN_PREFFIX, AUTH_PREFFIX, NOT_FOUND_PREFFIX, PROFESSOR_PREFFIX, STUDENT_PREFFIX } from './core/constants/routes.constants';
 import { MainLayoutComponent } from './shared/components/layouts/main-layout/main-layout.component';
 
 export const routes: Routes = [
@@ -26,6 +26,10 @@ export const routes: Routes = [
     {
         path: STUDENT_PREFFIX,
         loadChildren: () => import('./features/student/student.routes').then(m => m.STUDENT_ROUTES)
+    },
+    {
+        path: PROFESSOR_PREFFIX,
+        loadChildren: () => import('./features/professor/professor.routes').then(m => m.PROFESSOR_ROUTES)
     },
     {
         path: NOT_FOUND_PREFFIX,

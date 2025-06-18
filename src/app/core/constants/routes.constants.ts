@@ -1,6 +1,7 @@
 export const AUTH_PREFFIX = 'auth';
 export const ADMIN_PREFFIX = 'admin';
 export const STUDENT_PREFFIX = 'student';
+export const PROFESSOR_PREFFIX = 'professor';
 export const NOT_FOUND_PREFFIX = '**';
 
 export const ROUTES = {
@@ -30,6 +31,9 @@ export const ROUTES = {
     },
     STUDENT: {
         HOME: `${STUDENT_PREFFIX}`,
+    },
+    PROFESSOR: {
+        HOME: `${PROFESSOR_PREFFIX}`,
     },
 }
 
