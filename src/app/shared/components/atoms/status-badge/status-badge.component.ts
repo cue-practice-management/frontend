@@ -10,7 +10,7 @@ import { Component, Input } from '@angular/core';
 })
 export class StatusBadgeComponent {
   @Input() status!: PracticeProcessStatus | PracticeProcessDeliverableStatus | PracticeProcessFollowUpStatus;
-  @Input() type!: 'practice' | 'deliverable' | 'followUp'; // puedes extender
+  @Input() type!: 'practice' | 'deliverable' | 'followUp';
   @Input() label?: string;
   @Input() size: 'sm' | 'md' | 'lg' = 'md';
 
