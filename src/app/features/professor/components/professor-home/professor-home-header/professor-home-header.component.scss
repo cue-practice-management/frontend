@@ -1,0 +1,121 @@
+@import 'mixins';
+@import 'variables';
+
+.professor-header {
+    position: relative;
+    overflow: hidden;
+    background-color: $white-color;
+    border-radius: 1rem;
+    @include padding-y(1rem);
+    @include padding-x(2rem);
+    @include box-shadow-md();
+    @include flex-column(flex-start, flex-start, 1.5rem);
+
+    @include tablet {
+        @include flex(row, space-between, center, nowrap, 2rem);
+    }
+
+    &__decorations {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    &__shape {
+        position: absolute;
+        background-color: rgba($primary-color-extra-light, 0.07);
+        border-radius: 50%;
+        z-index: 1;
+
+        &--top-left {
+            width: 180px;
+            height: 180px;
+            top: -60px;
+            left: -60px;
+        }
+
+        &--bottom-right {
+            width: 240px;
+            height: 240px;
+            bottom: -80px;
+            right: -80px;
+        }
+    }
+
+    &__info {
+        z-index: 2;
+        @include flex-column(flex-start, flex-start, 1rem);
+    }
+
+    &__identity {
+        @include flex(row, flex-start, center, nowrap, 1rem);
+    }
+
+    &__avatar {
+        flex-shrink: 0;
+    }
+
+    &__welcome {
+        @include flex-column(flex-start, flex-start, 0.25rem);
+    }
+
+    &__name {
+        @include text-lg;
+        font-weight: 700;
+        color: $dark-color;
+        margin: 0;
+    }
+
+    &__subtitle {
+        @include text-sm;
+        color: $gray-dark-color;
+        margin: 0;
+    }
+
+    &__date {
+        @include text-sm;
+        color: $gray-color;
+        margin: 0;
+    }
+
+    &__illustration {
+        z-index: 2;
+        display: none;
+
+        @include tablet {
+            display: block;
+            animation: floatIn 1s ease-out;
+        }
+
+        img {
+            height: 200px;
+            max-width: 100%;
+            animation: wave 4s ease-in-out infinite;
+        }
+    }
+}
+
+@keyframes floatIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes wave {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}

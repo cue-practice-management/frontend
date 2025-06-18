@@ -1,0 +1,46 @@
+<nav class="professor-nav" [class.professor-nav--open]="menuOpen">
+    <div class="professor-nav__wrapper">
+        <button class="professor-nav__toggle" (click)="toggleMenu()" aria-label="Abrir menú">
+            <lucide-icon [img]="HamburguerIcon"></lucide-icon>
+        </button>
+
+        <app-logo class="professor-nav__logo"></app-logo>
+
+        <div class="professor-nav__desktop-menu">
+            <ul class="professor-nav__list">
+                <li class="professor-nav__item">
+                    <app-link [routerLink]="['/professor']" routerLinkActive="active" class="professor-nav__link">
+                        Inicio
+                    </app-link>
+                </li>
+            </ul>
+
+            <app-dropdown [items]="dropdownItems">
+                <div class="professor-nav__user" dropdownTrigger>
+                    <app-avatar [src]="user()?.photoUrl" size="sm"></app-avatar>
+                    <span class="professor-nav__user-name">{{ user()?.firstName }}</span>
+                </div>
+            </app-dropdown>
+        </div>
+    </div>
+
+    <div class="professor-nav__overlay" *ngIf="menuOpen" (click)="toggleMenu()"></div>
+
+    <div class="professor-nav__drawer">
+        <ul class="professor-nav__list">
+            <li class="professor-nav__item">
+                <app-link (click)="toggleMenu()" [routerLink]="['/professor']" routerLinkActive="active"
+                    class="professor-nav__link">
+                    Inicio
+                </app-link>
+            </li>
+        </ul>
+
+        <app-dropdown [items]="dropdownItems">
+            <div class="professor-nav__user" dropdownTrigger>
+                <app-avatar [src]="user()?.photoUrl" size="sm"></app-avatar>
+                <span class="professor-nav__user-name">{{ user()?.firstName }}</span>
+            </div>
+        </app-dropdown>
+    </div>
+</nav>

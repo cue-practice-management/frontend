@@ -1,0 +1,132 @@
+@import 'variables';
+@import 'mixins';
+
+.professor-nav {
+  @include width-full;
+  background-color: $white-color;
+  @include box-shadow-md();
+  z-index: 1000;
+
+  &--open {
+    .professor-nav__overlay {
+      display: block;
+    }
+    .professor-nav__drawer {
+      transform: translateX(0);
+    }
+  }
+
+  &__wrapper {
+    @include container();
+    @include flex(row, space-between, center, nowrap, 1rem);
+    padding: 0.5rem 1rem;
+  }
+
+  &__toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    @include text-2xl;
+    color: $dark-color;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__logo {
+    flex-shrink: 0;
+  }
+
+  &__desktop-menu {
+    display: none;
+    @include tablet {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 1rem 2rem;
+      flex: 1;
+      justify-content: flex-end;
+    }
+  }
+
+  &__list {
+    padding: 1rem 0;
+
+    list-style: none;
+    @include flex-column(center, center, 1rem);
+    @include width-full;
+
+    @include tablet {
+      @include flex(row, flex-start, center, nowrap, 2rem);
+      width: auto;
+    }
+  }
+
+  &__item {
+    width: 100%;
+    @include tablet {
+      width: auto;
+    }
+  }
+
+  &__link {
+    @include text-sm;
+    color: $dark-color;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0;
+    text-align: center;
+    transition: color 0.3s;
+
+    &.active {
+      color: $primary-color;
+      font-weight: 600;
+    }
+
+    @include tablet {
+      text-align: left;
+      padding: 0;
+    }
+  }
+
+  &__user {
+    @include flex(row, center, center, nowrap, 0.5rem);
+    cursor: pointer;
+    @include padding-y(0.25rem);
+  }
+  &__user-name {
+    @include text-sm;
+    @include text-truncate;
+  }
+
+  &__overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  &__drawer {
+    position: fixed;
+    top: 0; left: 0;
+    width: 80vw;
+    max-width: 280px;
+    height: 100vh;
+    background-color: $white-color;
+    @include box-shadow-lg();
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1001;
+
+    padding: 2rem 1.5rem;
+    @include flex-column(space-between, center, 2rem);
+
+    @include tablet {
+      display: none;
+    }
+  }
+}
