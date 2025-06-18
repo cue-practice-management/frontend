@@ -1,14 +1,6 @@
 @import 'variables';
 @import 'mixins';
 
-::ng-deep .student-home-page {
-  padding: 1.5rem 0;
-
-  @include tablet {
-    padding: 2rem 0;
-  }
-}
-
 .student-home {
   display: flex;
   flex-direction: column;
