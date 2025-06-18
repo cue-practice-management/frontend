@@ -17,11 +17,12 @@ import { UserRole } from '@/core/enums/user-role.enum';
 import { SpinnerComponent } from "@atoms/spinner/spinner.component";
 import { PracticeProcessDetailDeliverablesComponent } from "../../components/practice-process-detail/practice-process-detail-deliverables/practice-process-detail-deliverables.component";
 import { PracticeProcessDetailFormatsComponent } from "../../components/practice-process-detail/practice-process-detail-formats/practice-process-detail-formats.component";
+import { PracticeProcessDetailFollowUpsComponent } from "../../components/practice-process-detail/practice-process-detail-follow-ups/practice-process-detail-follow-ups.component";
 
 @Component({
   selector: 'app-practice-process-detail-page',
   standalone: true,
-  imports: [PracticeProcessDetailHeaderComponent, CommonModule, SectionWrapperComponent, SpinnerComponent, PracticeProcessDetailDeliverablesComponent, PracticeProcessDetailFormatsComponent],
+  imports: [PracticeProcessDetailHeaderComponent, CommonModule, SectionWrapperComponent, SpinnerComponent, PracticeProcessDetailDeliverablesComponent, PracticeProcessDetailFormatsComponent, PracticeProcessDetailFollowUpsComponent],
   templateUrl: './practice-process-detail-page.component.html',
   styleUrl: './practice-process-detail-page.component.scss'
 })
@@ -69,7 +70,7 @@ export class PracticeProcessDetailPageComponent extends RetrieveData<PracticePro
   onDeliverableSubmitted(): void {
     this.loadData();
   }
-  
+
   onDeliverableGraded(): void {
     this.loadData();
   }
@@ -80,5 +81,21 @@ export class PracticeProcessDetailPageComponent extends RetrieveData<PracticePro
 
   get isProfessor(): boolean {
     return this.user?.role === UserRole.PROFESSOR;
+  }
+
+  onFollowUpScheduled(): void {
+    this.loadData();
+  }
+
+  onFollowUpCompleted(): void {
+    this.loadData();
+  }
+
+  onFollowUpMissed(): void {
+    this.loadData();
+  }
+
+  onFollowUpCancelled(): void {
+    this.loadData();
   }
 }
