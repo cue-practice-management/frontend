@@ -27,7 +27,7 @@
         padding: 1rem 1.25rem;
         @include flex-column(flex-start, flex-start, 0.75rem);
         width: 100%;
-        max-width: 300px;
+        max-width: 350px;
         position: relative;
     }
 
@@ -53,14 +53,14 @@
     &__date {
         @include text-sm;
         color: $gray-color;
-        
+
         &--warning {
             color: $error-color-light;
         }
     }
 
     &__details {
-        @include flex-column(flex-start, flex-start, 0.25rem);
+        @include flex-column(flex-start, flex-start, 0.45rem);
         @include text-sm;
         color: $gray-dark-color;
 
@@ -80,7 +80,6 @@
         gap: 0.5rem;
         @include text-sm;
         color: $gray-dark-color;
-        margin-bottom: 0.25rem;
     }
 
     &__icon {

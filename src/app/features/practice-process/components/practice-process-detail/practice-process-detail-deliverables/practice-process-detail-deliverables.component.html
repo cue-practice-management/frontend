@@ -45,7 +45,7 @@
                     <a class="practice-deliverables__row practice-deliverables__file-link" *ngIf="d.submissionUrl"
                         [href]="d.submissionUrl" target="_blank">
                         <lucide-icon [img]="downloadIcon" class="practice-deliverables__icon" />
-                        Ver entrega enviada
+                        Ver entregable
                     </a>
                 </div>
 
@@ -55,8 +55,8 @@
                         Entregar
                     </app-button>
 
-                    <app-button *ngIf="permissions.canEvaluateDeliverables && d.status === 'submitted'"
-                        variant="success" (click)="onGrade(d._id)" size="sm">
+                    <app-button *ngIf="permissions.canEvaluateDeliverables && (d.status === 'submitted' || d.status === 'submitted_late')"
+                        (click)="onGrade(d._id)" size="sm">
                         Calificar
                     </app-button>
                 </div>

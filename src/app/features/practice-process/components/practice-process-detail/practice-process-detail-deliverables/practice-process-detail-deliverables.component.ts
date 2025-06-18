@@ -8,6 +8,7 @@ import { ModalService } from '@/core/services/modal.service';
 import { SubmitPracticeProcessDeliverableFormComponent } from '../../submit-practice-process-deliverable-form/submit-practice-process-deliverable-form.component';
 import { Calendar, CalendarIcon, CheckCircleIcon, FileDownIcon, FileTextIcon, LucideAngularModule, MessageCircleIcon } from 'lucide-angular';
 import { PracticeProcessDeliverableStatus } from '@/features/practice-process/practice-process.enums';
+import { GradePracticeProcessDeliverableFormComponent } from '../../grade-practice-process-deliverable-form/grade-practice-process-deliverable-form.component';
 
 @Component({
   selector: 'app-practice-process-detail-deliverables',
@@ -22,6 +23,7 @@ export class PracticeProcessDetailDeliverablesComponent {
 
 
   @Output() deliverableSubmitted = new EventEmitter();
+  @Output() deliverableGraded = new EventEmitter();
 
   constructor(
     private readonly modalService: ModalService
@@ -41,7 +43,16 @@ export class PracticeProcessDetailDeliverablesComponent {
   }
 
   onGrade(deliverableId: string) {
-    // Abrir modal de calificación
+    this.modalService.open(GradePracticeProcessDeliverableFormComponent, {
+      data: {
+        practiceProcessId: this.practice._id,
+        deliverableId: deliverableId
+      }
+    }).afterClosed().subscribe((result) => {
+      if (result) {
+        this.deliverableGraded.emit();
+      }
+    });
   }
 
   isDueDatePassedAndPending(deliverable: PracticeProcessDeliverable): boolean {
