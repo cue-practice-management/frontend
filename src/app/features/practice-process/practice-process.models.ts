@@ -3,7 +3,7 @@ import { CompanyBasicInfo } from "../company/company.models";
 import { PracticeDefinition } from "../practice-definition/practice-definition.models";
 import { Professor } from "../professor/professor.models";
 import { Student } from "../student/student.model";
-import { PracticeProcessCancelledBy, PracticeProcessDeliverableStatus, PracticeProcessFollowUpStatus, PracticeProcessStatus } from "./practice-process.enums";
+import { PracticeProcessCancelledBy, PracticeProcessDeliverableStatus, PracticeProcessFollowUpMode, PracticeProcessFollowUpStatus, PracticeProcessStatus } from "./practice-process.enums";
 
 export interface PracticeProcess {
     _id: string;
@@ -73,10 +73,28 @@ export interface GradePracticeProcessDeliverableRequest {
 export interface PracticeProcessFollowUp {
     _id: string;
     status: PracticeProcessFollowUpStatus;
+    mode: PracticeProcessFollowUpMode;
+    meetingUrl?: string;
+    location?: string;
     date: Date;
     outcomeNotes?: string;
     completedAt?: Date;
     cancelledAt?: Date;
     cancellationReason?: string;
     missedNotes?: string;
+}
+
+export interface SchedulePracticeProcessFollowUpRequest {
+    mode: PracticeProcessFollowUpMode;
+    date: Date;
+    location?: string;
+    meetingUrl?: string;
+}
+
+export interface CancelPracticeProcessFollowUpRequest {
+    cancellationReason: string;
+}
+
+export interface CompletePracticeProcessFollowUpRequest {
+    outcomeNotes: string;
 }

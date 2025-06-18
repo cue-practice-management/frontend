@@ -6,5 +6,8 @@ export const getPracticeProcessDetailPermissions = (role: UserRole): PracticePro
         canSubmitDeliverables: role === UserRole.STUDENT,
         canEvaluateDeliverables: role === UserRole.PROFESSOR,
         canScheduleFollowUps: role === UserRole.PROFESSOR || role === UserRole.STUDENT,
+        canMarkAsCompletedFollowUps: role === UserRole.PROFESSOR,
+        canMarkAsMissedFollowUps: role === UserRole.PROFESSOR,
+        canMarkAsCancelledFollowUps: role === UserRole.PROFESSOR,
     }
 }

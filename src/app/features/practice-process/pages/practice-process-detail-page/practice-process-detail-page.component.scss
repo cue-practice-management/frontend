@@ -1,7 +1,6 @@
 @import 'mixins';
 
 .practice-process-detail {
-
   &__grid {
     display: flex;
     flex-direction: column;
@@ -15,21 +14,21 @@
   }
 
   &__main {
-    @include flex-column($gap:2rem);
+    @include flex-column($gap: 2rem);
   }
 
   &__sidebar {
-    @include flex-column(flex-start, flex-start, 2rem);
+    @include flex-column($gap: 2rem);
     position: relative;
 
     @include tablet {
       position: sticky;
-      top: 7rem; 
+      top: 7rem;
     }
   }
 }
 
 ::ng-deep .practice-process-detail__content {
-  @include flex-column($gap:2rem);
+  @include flex-column($gap: 2rem);
   width: 100%;
 }

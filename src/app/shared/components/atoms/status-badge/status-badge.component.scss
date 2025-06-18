@@ -28,6 +28,7 @@
   }
 
   &--graded,
+  &--scheduled,
   &--in_progress {
     background-color: $info-color-light;
     color: $white-color;
@@ -42,12 +43,7 @@
   &--cancelled,
   &--missed {
     background-color: $error-color-light;
-    color: $error-color-dark;
-  }
-
-  &--scheduled {
-    background-color: $primary-color-extra-light;
-    color: $primary-color-dark;
+    color: $white-color;
   }
 
 }

@@ -13,4 +13,5 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 export class InputDateComponent {
   @Input() id = '';
   @Input() control!: FormControl;
+  @Input() type: 'date' | 'datetime-local' = 'date';
 }

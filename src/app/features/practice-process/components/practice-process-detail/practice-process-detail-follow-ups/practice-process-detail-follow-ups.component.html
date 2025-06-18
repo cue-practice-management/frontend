@@ -1,0 +1,65 @@
+<div class="practice-follow-ups">
+    <ng-container *ngIf="practice.followUps.length > 0; else noFollowUps">
+        <div class="practice-follow-ups__container">
+            <header class="practice-follow-ups__header">
+                <h2 class="practice-follow-ups__title">Seguimientos</h2>
+                <lucide-icon class="practice-follow-ups__icon--header" (click)="onScheduleFollowUp()" [img]="calendarIcon" />
+
+            </header>
+
+            <div class="practice-follow-ups__card" *ngFor="let f of followUps">
+                <div class="practice-follow-ups__header">
+                    <h3 class="practice-follow-ups__name">{{ f.date | date: 'longDate' }}</h3>
+                    <app-status-badge [status]="f.status" type="followUp" size="sm" />
+                </div>
+
+                <div class="practice-follow-ups__details">
+                    <span class="practice-follow-ups__row">
+                        <lucide-icon [img]="calendarIcon" class="practice-follow-ups__icon" />
+                        Hora: {{ f.date | date: 'shortTime' }}
+                    </span>
+
+                    <span class="practice-follow-ups__row" *ngIf="f.location">
+                        <lucide-icon [img]="locationIcon" class="practice-follow-ups__icon" />
+                        Lugar: {{ f.location }}
+                    </span>
+
+                    <span class="practice-follow-ups__row" *ngIf="f.meetingUrl">
+                        <lucide-icon [img]="linkIcon" class="practice-follow-ups__icon" />
+                        <a [href]="f.meetingUrl" target="_blank">Enlace de reunión</a>
+                    </span>
+
+                    <span class="practice-follow-ups__row" *ngIf="f.outcomeNotes">
+                        <lucide-icon [img]="commentIcon" class="practice-follow-ups__icon" />
+                        Observaciones: {{ f.outcomeNotes }}
+                    </span>
+
+                    <span class="practice-follow-ups__row" *ngIf="f.missedNotes">
+                        <lucide-icon [img]="cancelIcon" class="practice-follow-ups__icon" />
+                        Justificación: {{ f.missedNotes }}
+                    </span>
+                </div>
+
+                <div class="practice-follow-ups__actions">
+                    <app-button *ngIf="canMarkAsCompleted(f)" (click)="onMarkAsCompleted(f._id)" size="xs">
+                        Marcar como realizado
+                    </app-button>
+
+                    <app-button *ngIf="canMarkAsMissed(f)" (click)="onMarkAsMissed(f._id)" size="xs" variant="outline">
+                        Marcar como no asistido
+                    </app-button>
+
+                    <app-button *ngIf="canMarkAsCancelled(f)" (click)="onMarkAsCancelled(f._id)" size="xs"
+                        variant="danger">
+                        Cancelar
+                    </app-button>
+
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #noFollowUps>
+        <div class="practice-follow-ups__empty">No hay seguimientos programados.</div>
+    </ng-template>
+</div>

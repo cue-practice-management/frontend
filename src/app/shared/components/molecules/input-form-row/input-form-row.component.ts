@@ -77,6 +77,9 @@ export class InputFormRowComponent {
     if (this.control.hasError('colombianPhone')) {
       return 'El número de teléfono no es válido, debe tener 10 dígitos y comenzar con 3.';
     }
+    if( this.control.hasError('notFutureDate')) {
+      return 'La fecha debe ser futura.';
+    }
     if (this.control.hasError('endBeforeStart')) {
       return 'La fecha de finalización debe ser posterior a la fecha de inicio.';
     }

@@ -26,6 +26,11 @@ export enum PracticeProcessFollowUpStatus {
     MISSED = 'missed',
 }
 
+export enum PracticeProcessFollowUpMode {
+    IN_PERSON = 'in_person',
+    ONLINE = 'online',
+}
+
 export const PRACTICE_PROCESS_STATUS_LABELS: Record<PracticeProcessStatus, string> = {
     [PracticeProcessStatus.PENDING]: 'Pendiente',
     [PracticeProcessStatus.IN_PROGRESS]: 'En Progreso',

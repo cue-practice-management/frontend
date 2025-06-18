@@ -4,7 +4,7 @@ import { DocumentType } from "../enums/document-type.enum";
 import { CompanyContractStatus, CompanyContractType, CompanySize } from "@/features/company/company.enums";
 import { StudentCompanyLinkingProcessStatus } from "@/features/student-company-linking-process/student-company-linking-process.enums";
 import { StudentCompanyContractCancelledBy, StudentCompanyContractStatus } from "@/features/student-company-contract/student-company-contract.enums";
-import { PracticeProcessCancelledBy, PracticeProcessStatus } from "@/features/practice-process/practice-process.enums";
+import { PracticeProcessCancelledBy, PracticeProcessFollowUpMode, PracticeProcessStatus } from "@/features/practice-process/practice-process.enums";
 
 export const GENDER_SELECT_OPTIONS: SelectOption[] = [
     { label: 'Masculino', value: Gender.MALE },
@@ -68,4 +68,9 @@ export const PRACTICE_PROCESS_STATUS_SELECT_OPTIONS: SelectOption[] = [
     { label: 'En curso', value: PracticeProcessStatus.IN_PROGRESS },
     { label: 'Completado', value: PracticeProcessStatus.COMPLETED },
     { label: 'Cancelado', value: PracticeProcessStatus.CANCELLED },
+]
+
+export const PRACTICE_PROCESS_FOLLOW_UP_MODE_SELECT_OPTIONS: SelectOption[] = [
+    { label: 'Presencial', value: PracticeProcessFollowUpMode.IN_PERSON },
+    { label: 'Virtual', value: PracticeProcessFollowUpMode.ONLINE },
 ]
