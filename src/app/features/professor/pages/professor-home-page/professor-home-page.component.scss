@@ -1,0 +1,4 @@
+@import 'mixins';
+::ng-deep .professor-home-page {
+    @include flex-column($gap:2rem);
+}

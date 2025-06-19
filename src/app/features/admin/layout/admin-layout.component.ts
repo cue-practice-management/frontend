@@ -10,5 +10,9 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './admin-layout.component.scss'
 })
 export class AdminLayoutComponent {
+  isSidebarCollapsed = false;
 
+  onSidebarCollapsed(isCollapsed: boolean): void {
+    this.isSidebarCollapsed = isCollapsed;
+  }
 }

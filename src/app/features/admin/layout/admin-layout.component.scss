@@ -1,3 +1,4 @@
+@import 'mixins';
 
 .admin-layout {
   display: flex;
@@ -9,5 +10,15 @@
     flex: 1;
     padding: 1.2rem;
     min-width: 0;
+
+    @include desktop {
+      margin-left: 16rem;
+    }
+
+    &--collapsed {
+      margin-left: 4.5rem;
+    }
   }
+
+  transition: all 0.3s ease;
 }

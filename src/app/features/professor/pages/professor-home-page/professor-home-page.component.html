@@ -1,4 +1,4 @@
-<app-section-wrapper *ngIf="professor && !isLoading">
+<app-section-wrapper *ngIf="professor && !isLoading" sectionContentClass="professor-home-page">
     <app-professor-home-header [professor]="professor"></app-professor-home-header>
     <app-professor-home-active-processes [professor]="professor" ></app-professor-home-active-processes>
 </app-section-wrapper>

@@ -1,7 +1,7 @@
 import { User as UserModel } from '@/core/models/user.model';
 import { CurrentUserService } from '@/core/services/current-user.service';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, signal } from '@angular/core';
 import { ADMIN_SIDEBAR_ITEMS } from '../../admin.constants';
 import { LucideAngularModule, ChevronLeft, ChevronRight, User, LogOut, ChevronDown } from 'lucide-angular';
 import { Router, RouterModule } from '@angular/router';
@@ -22,6 +22,8 @@ export class AdminSidebarComponent implements OnInit {
   expandedItem = signal<string | null>(null);
   isCollapsed = signal(false);
   sidebarItems = ADMIN_SIDEBAR_ITEMS;
+
+  @Output() sidebarCollapsed = new EventEmitter<boolean>();
 
   readonly ChevronLeft = ChevronLeft;
   readonly ChevronRight = ChevronRight;
@@ -49,6 +51,7 @@ export class AdminSidebarComponent implements OnInit {
 
   toggleSidebar(): void {
     this.isCollapsed.update((prev) => !prev);
+    this.sidebarCollapsed.emit(this.isCollapsed());
   }
 
   get currentUser(): UserModel | null {

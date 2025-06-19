@@ -136,5 +136,12 @@ export const API_ENDPOINTS = {
         SCHEDULE: (practiceProcessId: string) => `/practice-processes/${practiceProcessId}/follow-ups/schedule`,
         CANCEL: (practiceProcessId: string, followUpId: string) => `/practice-processes/${practiceProcessId}/follow-ups/${followUpId}/cancel`,
         COMPLETE: (practiceProcessId: string, followUpId: string) => `/practice-processes/${practiceProcessId}/follow-ups/${followUpId}/complete`,
+    },
+    DASHBOARD: {
+        GET_GENERAL_METRICS: '/dashboard/general-metrics',
+        GET_STUDENTS_BY_PROGRAM_CHART: '/dashboard/students-by-program',
+        GET_STUDENTS_WITH_COMPANY_AND_WITHOUT_COMPANY: '/dashboard/students-with-company-and-without-company',
+        GET_COMPANIES_BY_PROGRAM_CHART: '/dashboard/companies-by-program',
+        GET_COMPANIES_BY_CITY_CHART: '/dashboard/companies-by-city',
     }
 };

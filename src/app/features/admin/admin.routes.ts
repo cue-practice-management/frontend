@@ -1,11 +1,24 @@
 import { Routes } from "@angular/router";
 import { COMPANY_ID_PARAM, PRACTICE_TEMPLATE_ID_PARAM, STUDENT_ID_PARAM } from "./admin.constants";
+import { roleGuard } from "@/core/guards/role.guard";
+import { UserRole } from "@/core/enums/user-role.enum";
 
 export const ADMIN_ROUTES: Routes = [
     {
         path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+    },
+    {
+        path: '',
+        canActivate: [roleGuard],
+        data: { roles: [UserRole.ADMIN] }, 
         loadComponent: () => import('./layout/admin-layout.component').then(m => m.AdminLayoutComponent),
         children: [
+            {
+                path: 'dashboard',
+                loadComponent: () => import('./pages/admin-dashboard-page/admin-dashboard-page.component').then(m => m.AdminDashboardPageComponent),
+            },
             {
                 path: 'faculties',
                 loadComponent: () => import('./pages/admin-faculty-page/admin-faculty-page.component').then(m => m.AdminFacultyPageComponent),
