@@ -19,7 +19,7 @@ export class AdminStudentCompanyLinkingProcessPageComponent {
   linkingProcessPageConfig:AdminEntityPageConfig<StudentCompanyLinkingProcess, StudentCompanyLinkingProcessFilter> = {
       title: 'Procesos de vinculación',
       description: 'Gestiona los procesos de vinculación entre estudiantes y empresas',
-      createButtonLabel: 'Crear proceso de vinculación',
+      createButtonLabel: 'Iniciar proceso de vinculación',
       tableComponent: StudentCompanyLinkingProcessTableComponent,
       formComponent: StudentCompanyLinkingProcessFormComponent,
       filterComponent: StudentCompanyLinkingProcessFilterComponent,
