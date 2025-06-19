@@ -12,6 +12,8 @@ import { StudentCompanyLinkingProcessService } from '../../services/student-comp
 import { ModalRef } from '@/shared/components/organisms/modal/modal.ref';
 import { DynamicFormComponent } from "@organisms/dynamic-form/dynamic-form.component";
 import { STUDENT_COMPANY_LINKING_PROCESS_STATUS_SELECT_OPTIONS } from '@/core/constants/select-options.constants';
+import { Router } from '@angular/router';
+import { StudentCompanyLinkingProcessStatus } from '../../student-company-linking-process.enums';
 
 @Component({
   selector: 'app-student-company-linking-process-form',
@@ -28,7 +30,8 @@ export class StudentCompanyLinkingProcessFormComponent extends FormSubmitCompone
     private studentCompanyLinkingProcessService: StudentCompanyLinkingProcessService,
     private studentService: StudentService,
     private companyService: CompanyService,
-    private modalRef: ModalRef
+    private modalRef: ModalRef,
+    private router: Router
   ) {
     super();
   };
@@ -121,6 +124,10 @@ export class StudentCompanyLinkingProcessFormComponent extends FormSubmitCompone
     result: StudentCompanyLinkingProcess
   ): void => {
     this.modalRef.close(result);
+
+    if (result.status == StudentCompanyLinkingProcessStatus.ACCEPTED) {
+      this.router.navigate(['admin/student-company-contracts']);
+    }
   };
 
   onFormSubmit(formValue: CreateStudentCompanyLinkingProcess): void {

@@ -1,0 +1,45 @@
+@import 'variables';
+@import 'mixins';
+
+.metric-card {
+    background-color: $white-color;
+    padding: 0.8rem;
+    border-radius: 1rem;
+    @include box-shadow-sm();
+    @include flex-column($gap:1rem);
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.4s ease-out forwards;
+    animation-delay: 0.1s;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: $gray-dark-color;
+        font-size: smaller
+    }
+
+    &__info {
+        @include flex-column(center, flex-start, 0.2rem);
+
+        h3 {
+            margin: 0;
+            color: $gray-dark-color;
+            @include text-sm;
+        }
+
+        p {
+            font-weight: bold;
+            color: $primary-color;
+            @include text-xl;
+        }
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

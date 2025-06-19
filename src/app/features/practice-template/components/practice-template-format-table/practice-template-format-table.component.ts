@@ -37,7 +37,7 @@ export class PracticeTemplateFormatTableComponent extends DataTable<PracticeTemp
       sortable: false
     },
     {
-      label: 'Días estimados para entrega',
+      label: 'Archivo',
       field: 'fileUrl',
       isFile: true,
       sortable: false

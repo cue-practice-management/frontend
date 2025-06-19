@@ -1,0 +1,16 @@
+<div class="dashboard-metric-card-list">
+    <app-dashboard-metric-card title="Estudiantes" [icon]="studentIcon" [loading]="isLoading"
+        [value]="metrics?.totalStudents" />
+
+    <app-dashboard-metric-card title="Estudiantes sin Empresa" [icon]="alertIcon" [loading]="isLoading"
+        [value]="metrics?.totalStudentsWithoutCompany" />
+
+    <app-dashboard-metric-card title="Profesores" [icon]="teacherIcon" [loading]="isLoading"
+        [value]="metrics?.totalProfessors" />
+
+    <app-dashboard-metric-card title="Empresas" [icon]="companyIcon" [loading]="isLoading"
+        [value]="metrics?.totalCompanies" />
+
+    <app-dashboard-metric-card title="Prácticas activas" [icon]="briefCaseIcon" [loading]="isLoading"
+        [value]="metrics?.totalPracticesInProgress" />
+</div>

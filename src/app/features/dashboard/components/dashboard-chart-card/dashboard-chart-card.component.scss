@@ -1,0 +1,30 @@
+@import 'variables';
+@import 'mixins';
+
+.chart-card {
+    @include width-full;
+    @include padding-y(2rem);
+    @include box-shadow-md;
+    width: fit-content;
+    padding: 2rem;
+    border-radius: 1rem;
+
+    .chart {
+        display: block;
+        width: 100%;
+        min-width: 220px;
+        max-width: 500px;
+        height: 250px;
+
+        @media (max-width: 600px) {
+            height: 200px;
+            max-width: 100vw;
+        }
+    }
+}
+
+.chart-title {
+    color: $gray-dark-color;
+    @include text-md;
+    font-weight: bold;
+}

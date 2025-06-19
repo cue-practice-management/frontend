@@ -1,0 +1,25 @@
+<app-admin-section-wrapper title="Dashboard">
+    <section class="admin-dashboard">
+        <!-- Metric Cards Section -->
+        <div class="admin-dashboard__metrics-container">
+            <app-dashboard-metric-card-list />
+        </div>
+
+        <div class="admin-dashboard__bento-grid">
+            <!-- Main charts -->
+            <div class="bento-grid__item bento-grid__item--wide">
+                <app-dashboard-students-by-program-chart />
+            </div>
+            <div class="bento-grid__item">
+                <app-dashboard-students-with-company-donut-chart />
+            </div>
+            <div class="bento-grid__item">
+                <app-dashboard-companies-by-program-chart />
+            </div>
+            <div class="bento-grid__item bento-grid__item--wide">
+                <app-dashboard-companies-by-city-map />
+            </div>
+
+        </div>
+    </section>
+</app-admin-section-wrapper>

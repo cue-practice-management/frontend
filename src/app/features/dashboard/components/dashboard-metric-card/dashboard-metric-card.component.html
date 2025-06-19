@@ -1,0 +1,19 @@
+<div class="metric-card">
+    
+    <header class="metric-card__header">
+        <div class="metric-card__icon">
+            <lucide-icon [name]="icon" size="36"></lucide-icon>
+        </div>
+        <h3>{{ title }}</h3>
+    </header>
+
+    <div class="metric-card__info">
+        <ng-container *ngIf="!loading; else loadingState">
+            <p>{{ value }}</p>
+        </ng-container>
+
+        <ng-template #loadingState>
+            <app-spinner size="sm" />
+        </ng-template>
+    </div>
+</div>

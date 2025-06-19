@@ -1,0 +1,82 @@
+@import 'variables';
+@import 'mixins';
+
+.admin-dashboard {
+  @include flex-column(flex-start, stretch, 2.5rem);
+  padding: 1rem 0.5rem;
+
+  @include tablet {
+    padding: 1.5rem;
+  }
+
+  @include desktop {
+    padding: 2rem;
+  }
+
+  // Metrics container styling
+  &__metrics-container {
+    @include width-full;
+  }
+
+
+  &__bento-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    @include desktop {
+      gap: 2.5rem;
+    }
+
+    .bento-grid__item {
+      transition: transform 0.25s ease-in-out;
+      
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      &--wide {
+        @include tablet {
+          grid-column: span 2;
+        }
+      }
+
+      ::ng-deep .chart-card {
+        height: 100%;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+
+        .chart {
+          max-width: none;
+          width: 100%;
+
+          @include tablet {
+            min-height: 280px;
+            height: auto;
+          }
+
+          @include desktop {
+            min-height: 320px;
+          }
+        }
+      }
+
+      &--wide ::ng-deep .chart-card .chart {
+        @include tablet {
+          min-height: 350px;
+        }
+
+        @include desktop {
+          min-height: 400px;
+        }
+      }
+    }
+  }
+}
