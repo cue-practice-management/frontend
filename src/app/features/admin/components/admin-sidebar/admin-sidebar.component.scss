@@ -5,16 +5,16 @@
   background-color: $white-color;
   color: $dark-color;
   height: 100vh;
-  width: 100%;
-  max-width: 16rem;
+  width: 16rem;
   transition: max-width 0.3s ease;
   border-right: 1px solid $gray-light-color;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 10;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   &.collapsed {
     max-width: 4.5rem;
@@ -135,6 +135,7 @@
     opacity: 0;
     transform: translateY(-4px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
