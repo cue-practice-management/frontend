@@ -1,0 +1,16 @@
+@import 'variables';
+
+:host {
+    position: relative;
+
+    .badge {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        background: $error-color;
+        color: $white-color;
+        font-size: 10px;
+        padding: 2px 5px;
+        border-radius: 10px;
+    }
+}

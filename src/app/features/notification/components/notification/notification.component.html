@@ -1,0 +1,6 @@
+<app-dropdown [items]="dropdownItems">
+  <div dropdownTrigger>
+    <lucide-icon [name]="Bell" size="20" />
+    <span class="badge" *ngIf="unreadCount > 0">{{ unreadCount }}</span>
+  </div>
+</app-dropdown>
