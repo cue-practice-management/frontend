@@ -18,6 +18,9 @@
             Empresas
           </app-link>
         </li>
+        <li class="student-nav__item">
+          <app-notification />
+        </li>
       </ul>
 
       <app-dropdown [items]="dropdownItems">
@@ -34,12 +37,14 @@
   <div class="student-nav__drawer">
     <ul class="student-nav__list">
       <li class="student-nav__item">
-        <app-link (click)="toggleMenu()" [routerLink]="['/student']" routerLinkActive="active" class="student-nav__link">
+        <app-link (click)="toggleMenu()" [routerLink]="['/student']" routerLinkActive="active"
+          class="student-nav__link">
           Inicio
         </app-link>
       </li>
       <li class="student-nav__item">
-        <app-link (click)="toggleMenu()" [routerLink]="['/student/companies']" routerLinkActive="active" class="student-nav__link">
+        <app-link (click)="toggleMenu()" [routerLink]="['/student/companies']" routerLinkActive="active"
+          class="student-nav__link">
           Empresas
         </app-link>
       </li>
@@ -53,4 +58,3 @@
     </app-dropdown>
   </div>
 </nav>
-
